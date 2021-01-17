@@ -48,9 +48,9 @@
 #include "LHVMViewer.h"
 #include "MeshViewer.h"
 #include "Profiler.h"
+#include "Sound/AudioDebug.h"
 #include "Sound/SoundHandler.h"
 #include "Sound/SoundPack.h"
-#include "Sound/AudioDebug.h"
 
 // Turn off formatting because it adds spaces which break the stringifying
 // clang-format off
