@@ -82,6 +82,7 @@ target_link_libraries(
           lnd
           anm
           morph
+          sad
           imgui
           imgui-flame-graph
           ScriptLibrary
