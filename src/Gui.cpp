@@ -48,6 +48,9 @@
 #include "LHVMViewer.h"
 #include "MeshViewer.h"
 #include "Profiler.h"
+#include "Sound/SoundHandler.h"
+#include "Sound/SoundPack.h"
+#include "Sound/AudioDebug.h"
 
 // Turn off formatting because it adds spaces which break the stringifying
 // clang-format off
@@ -519,6 +522,7 @@ bool Gui::Loop(Game& game, const Renderer& renderer)
 	ShowCameraPositionOverlay(game);
 	LHVMViewer::Draw(game.GetLhvm());
 	ShowLandIslandWindow(game);
+	ShowAudioDebuggerWindow(game);
 	ShowProfilerWindow(game);
 	ShowWaterFramebuffer(game);
 
@@ -714,6 +718,11 @@ bool Gui::ShowMenu(Game& game)
 			if (ImGui::MenuItem("Open Profiler"))
 			{
 				config.showProfiler = true;
+			}
+
+			if (ImGui::MenuItem("Open Audio Debugger"))
+			{
+				config.showAudioDebugger = true;
 			}
 
 			if (ImGui::MenuItem("Console"))
@@ -1261,6 +1270,18 @@ void Gui::ShowLandIslandWindow(Game& game)
 
 		ImGui::End();
 	}
+}
+
+void Gui::ShowAudioDebuggerWindow(Game& game)
+{
+	auto& config = game.GetConfig();
+
+	if (!config.showAudioDebugger)
+	{
+		return;
+	}
+
+	audio::AudioDebug::ShowDebugGui(game);
 }
 
 void Gui::ShowCameraPositionOverlay(const Game& game)
