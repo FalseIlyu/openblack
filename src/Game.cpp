@@ -62,7 +62,8 @@ Game* Game::sInstance = nullptr;
 Game::Game(Arguments&& args)
     : _eventManager(std::make_unique<EventManager>())
     , _fileSystem(std::make_unique<FileSystem>())
-    , _entityRegistry(std::make_unique<ecs::Registry>())
+    , _levelLocator(std::make_unique<LevelLocator>())
+    , _entityRegistry(std::make_unique<entities::Registry>())
     , _config()
     , _gameSpeedMultiplier(1.0f)
     , _frameCount(0)
@@ -99,6 +100,7 @@ Game::Game(Arguments&& args)
 	_handModel = std::make_unique<L3DMesh>();
 	_handModel->LoadFromFile(_fileSystem->CreatureMeshPath() / "Hand_Boned_Base2.l3d");
 	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "The GamePath is \"{}\".", _fileSystem->GetGamePath().generic_string());
+	_levelLocator->LoadLevels(*_fileSystem);
 
 	_gui = gui::Gui::create(_window.get(), graphics::RenderPass::ImGui, args.scale);
 
