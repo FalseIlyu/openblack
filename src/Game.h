@@ -40,7 +40,6 @@ class Camera;
 class FileSystem;
 class GameWindow;
 class EventManager;
-class LevelLocator;
 class MeshPack;
 class LandIsland;
 class Profiler;
