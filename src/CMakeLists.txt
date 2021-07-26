@@ -83,6 +83,8 @@ target_link_libraries(
           anm
           morph
           sad
+          Common
+          Audio
           imgui
           imgui-flame-graph
           ScriptLibrary
