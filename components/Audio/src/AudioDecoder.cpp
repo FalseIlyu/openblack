@@ -8,18 +8,8 @@
  *****************************************************************************/
 
 #include "AudioDecoder.h"
-#include "Common/FileStream.h"
-#include "Common/FileSystem.h"
-
-#ifdef HAS_FILESYSTEM
-#include <filesystem>
-namespace fs = std::filesystem;
-#else
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
-#endif // HAS_FILESYSTEM
-
-#include <cstring>
+#include <FileStream.h>
+#include <FileSystem.h>
 
 using namespace openblack::audio;
 

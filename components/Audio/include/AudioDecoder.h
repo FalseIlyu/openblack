@@ -7,13 +7,24 @@
  * openblack is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-#include "Math.h"
+#pragma once
 
-using namespace openblack::audio;
+#include "Sound.h"
 
-float Math::MapTo(float val, float curMin, float curMax, float tarMin, float tarMax)
+namespace openblack::audio
 {
-	return (val - curMin) / (curMax - curMin) * (tarMax - tarMin) + tarMin;
-}
+class AudioDecoder
+{
+public:
+	[[nodiscard]] virtual std::string GetName() const = 0;
+	virtual void ToPCM16(Sound& sound) = 0;
+	static void DebugEmitWavFile(Sound& sound);
+};
 
-std::mt19937 Math::_random(std::random_device {}());
+class MockAudioLoader final : public AudioDecoder
+{
+public:
+	std::string GetName() const { return "Mock Player"; };
+	void ToPCM16(Sound& sound);
+};
+} // namespace openblack::audio

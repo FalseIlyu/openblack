@@ -12,6 +12,7 @@
 #include "Sound.h"
 #include <glm/glm.hpp>
 #include <string>
+#include <cinttypes>
 
 namespace openblack::audio
 {

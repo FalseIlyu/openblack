@@ -17,8 +17,10 @@ extern "C" {
 }
 
 #include "AudioDecoder.h"
+#include "Sound.h"
 
 #include <memory>
+#include <string>
 
 namespace openblack::audio
 {

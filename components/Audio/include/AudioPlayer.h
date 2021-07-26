@@ -11,6 +11,7 @@
 
 #include "AudioEmitter.h"
 #include "SoundPack.h"
+#include <glm/glm.hpp>
 
 namespace openblack::audio
 {
@@ -55,20 +56,20 @@ class MockAudioPlayer final : public AudioPlayer
 public:
 	MockAudioPlayer() { _volume = 0; }
 	void Activate() override {}
-	void CleanUpResources(std::map<AudioEmitterId, AudioEmitter>& emitters) override {}
+	void CleanUpResources(std::map<AudioEmitterId, AudioEmitter>&) override {}
 	std::string GetName() const override { return "Mock Audio Player"; }
 	void SetVolume(float volume) override { _volume = volume; }
 	void UpdateListenerState(glm::vec3, glm::vec3, glm::vec3, glm::vec3) const override {}
 	float GetVolume() const override { return _volume; }
-	void SetVolume(AudioSourceId id, float volume) override {}
-	float GetVolume(AudioSourceId id) const override { return _volume; }
+	void SetVolume(AudioSourceId, float) override {}
+	float GetVolume(AudioSourceId) const override { return _volume; }
 	void SetupEmitter(AudioEmitter&, Sound&) override {}
-	void PlayEmitter(AudioEmitter& emitter) const override {}
-	void PauseEmitter(AudioEmitter& emitter) const override {}
-	void StopEmitter(AudioEmitter& emitter) const override {}
-	void UpdateEmitterState(AudioEmitter& emitter) const override {}
-	void CleanUpResource(AudioEmitter& emitter) const override {};
-	AudioStatus GetAudioStatus(AudioSourceId id) const override { return AudioStatus::Paused; }
+	void PlayEmitter(AudioEmitter&) const override {}
+	void PauseEmitter(AudioEmitter&) const override {}
+	void StopEmitter(AudioEmitter&) const override {}
+	void UpdateEmitterState(AudioEmitter&) const override {}
+	void CleanUpResource(AudioEmitter&) const override {};
+	AudioStatus GetAudioStatus(AudioSourceId) const override { return AudioStatus::Paused; }
 	float GetAudioProgress(AudioEmitter&) const override { return 0; }
 
 private:

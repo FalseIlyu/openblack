@@ -7,10 +7,13 @@
  * openblack is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
+#include "AudioPlayer.h"
 #include "SoundHandler.h"
 #include "3D/Camera.h"
 #include "Game.h"
-#include "Math.h"
+#include "MathUtils.h"
+
+#include <glm/gtc/constants.hpp>
 
 #include <fstream>
 #include <vector>

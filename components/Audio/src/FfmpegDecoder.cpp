@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 #include "FfmpegDecoder.h"
-#include "Common/MemoryStream.h"
+#include "MemoryStream.h"
 
 #include <spdlog/spdlog.h>
 #include <array>
@@ -144,8 +144,12 @@ void FfmpegDecoder::ToPCM16(Sound& sound)
 
 			auto outBuffer = std::vector<uint8_t>(8192 * 2 * 8);
 			auto *out = outBuffer.data();
+			auto outBufferSize = static_cast<int>(outBuffer.size());
+			assert(outBufferSize == outBuffer.size());
+			int outCount = outBufferSize / (2 * frame->channels);
+			result = swr_convert(swr.get(), &out, outCount, (const uint8_t**)frame->extended_data, frame->nb_samples);
 
-			if ((result = swr_convert(swr.get(), &out, outBuffer.size() / (2 * frame->channels), (const uint8_t**)frame->extended_data, frame->nb_samples)) < 0)
+			if (result < 0)
 			{
 				throw std::runtime_error(GetErrorCode(result));
 			}
@@ -165,7 +169,7 @@ void FfmpegDecoder::ToPCM16(Sound& sound)
 	}
 
 	sound.bytes = loaded;
-	sound.lengthInSeconds = ((double)loaded.size() / 2 / codecContext->channels) / outSampleRate;
+	sound.lengthInSeconds = ((float)loaded.size() / 2 / codecContext->channels) / outSampleRate;
 
 	switch (outChannels)
 	{

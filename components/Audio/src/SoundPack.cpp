@@ -12,10 +12,9 @@
 #include <SADFile.h>
 #include <spdlog/spdlog.h>
 
-#include <Common/FileSystem.h>
-#include <Game.h>
+#include <FileSystem.h>
 
-#include "Math.h"
+#include "MathUtils.h"
 
 namespace openblack::audio
 {
@@ -23,8 +22,7 @@ namespace openblack::audio
 bool SoundPack::LoadFromFile(const fs::path& path)
 {
 	spdlog::debug("Loading Sound Pack from file: {}", path.generic_string());
-
-	_filename = Game::instance()->GetFileSystem().FindPath(path).u8string();
+	_filename = path.string();
 
 	sad::SADFile sad;
 	try
@@ -73,7 +71,8 @@ bool SoundPack::LoadFromFile(const fs::path& path)
 		auto fileName = path.generic_string();
 
 		auto pitch = Math::MapTo(sample.pitch, 0.0f, 127.0f, 0, 100);
-		auto volume = Math::MapTo(sample.volume == 0 ? 1 : sample.volume, 0.0f, 127.0f, 0, 100);
+		auto soundVolume = static_cast<float>(sample.volume == 0 ? 1.0f : sample.volume);
+		auto volume = Math::MapTo(soundVolume, .0f, 127.0f, .0f, 100.0f);
 
 		// It's either all sectors (music) or individual sounds (dialogue, fx). Files do not contain a mix
 		if (isSector)
@@ -90,7 +89,7 @@ bool SoundPack::LoadFromFile(const fs::path& path)
 				sound.sampleRate = static_cast<int>(sample.sampleRate);
 				sound.bitRate = 0;
 				sound.volume = volume;
-				sound.pitch = pitch;
+				sound.pitch = static_cast<int>(pitch);
 				sound.pitchDeviation = sample.pitchDeviation;
 				sound.bytes = std::vector<uint8_t>(soundData.begin(), soundData.end());
 				sound.channelLayout = ChannelLayout::Stereo;
@@ -126,7 +125,7 @@ bool SoundPack::LoadFromFile(const fs::path& path)
 			sound.sampleRate = static_cast<int>(sample.sampleRate);
 			sound.bitRate = 0;
 			sound.volume = volume;
-			sound.pitch = pitch;
+			sound.pitch = static_cast<int>(pitch);
 			sound.pitchDeviation = sample.pitchDeviation;
 			sound.bytes = std::vector<uint8_t>(soundData.begin(), soundData.end());
 			sound.channelLayout = ChannelLayout::Stereo;

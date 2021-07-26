@@ -8,8 +8,9 @@
  *****************************************************************************/
 
 #include "OpenAlPlayer.h"
-#include "Math.h"
+#include "MathUtils.h"
 
+#include <cassert>
 #include <random>
 #include <string>
 
@@ -70,7 +71,7 @@ void OpenAlPlayer::SetVolume(AudioSourceId id, float volume)
 	alCheckCall(alSourcef(id, AL_GAIN, volume));
 }
 
-float OpenAlPlayer::GetVolume(AudioSourceId id) const
+float OpenAlPlayer::GetVolume(AudioSourceId) const
 {
 	return _volume;
 }
@@ -91,10 +92,15 @@ void OpenAlPlayer::SetupEmitter(AudioEmitter& emitter, Sound& sound)
 	auto soundFormat = GetSoundFormat(sound);
 	alCheckCall(alGenSources(1, &emitter.audioSourceId));
 	alCheckCall(alGenBuffers(1, &emitter.audioBufferId));
-	alCheckCall(alBufferData(emitter.audioBufferId, soundFormat, soundData.data(), soundData.size(), sound.sampleRate));
+
+	auto soundDataSize = static_cast<ALsizei>(soundData.size());
+	assert(soundDataSize == soundData.size());
+
+	alCheckCall(alBufferData(emitter.audioBufferId, soundFormat, soundData.data(), soundDataSize, sound.sampleRate));
 	alCheckCall(alSourcei(emitter.audioSourceId, AL_BUFFER, emitter.audioBufferId));
 	std::uniform_int_distribution<> dist(-sound.pitchDeviation, sound.pitchDeviation);
-	auto pitch = Math::MapTo((float)(sound.pitch + dist(_rand)) * 0.001, .0f, 1.0, .5f, 2.f);
+	float variance = (sound.pitch + dist(_rand)) * 0.001f;
+	auto pitch = Math::MapTo(variance, .0f, 1.0f, .5f, 2.f);
 	alCheckCall(alSourcef(emitter.audioSourceId, AL_PITCH, pitch));
 	alCheckCall(alSourcef(emitter.audioSourceId, AL_LOOPING, emitter.loop == PlayType::Repeat));
 

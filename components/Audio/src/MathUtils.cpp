@@ -7,4 +7,13 @@
  * openblack is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-#include "AudioEmitter.h"
+#include "MathUtils.h"
+
+using namespace openblack::audio;
+
+float Math::MapTo(float val, float curMin, float curMax, float tarMin, float tarMax)
+{
+	return (val - curMin) / (curMax - curMin) * (tarMax - tarMin) + tarMin;
+}
+
+std::mt19937 Math::_random(std::random_device {}());

@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "AudioEmitter.h"
+#include <AudioEmitter.h>
 #include "Game.h"
 
 namespace openblack::audio
