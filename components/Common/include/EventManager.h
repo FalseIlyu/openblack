@@ -7,7 +7,7 @@
  * openblack is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-#include <Common/Queue.h>
+#include <Queue.h>
 #include <SDL.h>
 #include <functional>
 #include <stdexcept>

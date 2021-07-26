@@ -94,11 +94,12 @@ std::vector<std::byte> FileSystem::ReadAll(const fs::path& path)
 
 	return data;
 }
+
 std::vector<std::string> FileSystem::GetAllFilePaths(const std::string& path, const std::string& ext)
 {
 	std::vector<std::string> paths;
 
-	for (auto& entry : fs::recursive_directory_iterator(FindPath(AudioPath())))
+	for (auto& entry : fs::recursive_directory_iterator(FindPath(path)))
 	{
 		if (entry.is_directory())
 			continue;

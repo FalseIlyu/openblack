@@ -42,7 +42,7 @@ private:
 	size_t _size;
 
 public:
-	static Bitmap16B* LoadFromFile(const fs::path& path);
+	static Bitmap16B* LoadFromFile(const std::vector<std::byte>&);
 };
 
 } // namespace openblack
