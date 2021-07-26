@@ -40,9 +40,6 @@ private:
 	unsigned int _height;
 	uint16_t* _data;
 	size_t _size;
-
-public:
-	static Bitmap16B* LoadFromFile(const std::vector<std::byte>&);
 };
 
 } // namespace openblack

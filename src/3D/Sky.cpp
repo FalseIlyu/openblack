@@ -53,9 +53,9 @@ Sky::Sky()
 			auto path = filesystem.WeatherSystemPath() / filename;
 			SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "Loading sky texture: {}", path.generic_string());
 
-			Bitmap16B* bitmap = Bitmap16B::LoadFromFile(path);
-			memcpy(_bitmaps[i * 3 + j].data(), bitmap->Data(), bitmap->Size());
-			delete bitmap;
+			auto const& data = Game::instance()->GetFileSystem().ReadAll(path);
+			auto bitmap = Bitmap16B(data.data());
+			memcpy(_bitmaps[i * 3 + j].data(), bitmap.Data(), bitmap.Size());
 		}
 	}
 

@@ -29,9 +29,3 @@ Bitmap16B::~Bitmap16B()
 {
 	delete[] _data;
 }
-
-Bitmap16B* Bitmap16B::LoadFromFile(const std::vector<std::byte>& buffer)
-{
-	auto *bitmap = new Bitmap16B(buffer.data());
-	return bitmap;
-}
