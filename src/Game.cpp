@@ -17,8 +17,6 @@
 #include "3D/MeshPack.h"
 #include "3D/Sky.h"
 #include "3D/Water.h"
-#include "Common/EventManager.h"
-#include "Common/FileSystem.h"
 #include "Entities/Components/Hand.h"
 #include "Entities/Components/Mesh.h"
 #include "Entities/Components/Transform.h"
@@ -32,6 +30,9 @@
 #include "Profiler.h"
 #include "Renderer.h"
 #include "Sound/SoundHandler.h"
+
+#include <EventManager.h>
+#include <FileSystem.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp>

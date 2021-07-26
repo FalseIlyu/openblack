@@ -14,8 +14,8 @@
 #include <spdlog/spdlog.h>
 
 #include "3D/L3DMesh.h"
-#include "Common/Bitmap16B.h"
-#include "Common/FileSystem.h"
+#include <Bitmap16B.h>
+#include <FileSystem.h>
 #include "Game.h"
 #include "Graphics/Texture2D.h"
 

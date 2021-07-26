@@ -9,7 +9,7 @@
 
 #include "Water.h"
 
-#include "Common/FileSystem.h"
+#include <FileSystem.h>
 #include "Game.h"
 #include "Graphics/FrameBuffer.h"
 #include "Graphics/IndexBuffer.h"

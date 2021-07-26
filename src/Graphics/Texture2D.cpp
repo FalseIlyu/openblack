@@ -9,7 +9,7 @@
 
 #include "Texture2D.h"
 
-#include "Common/stb_image_write.h"
+#include <stb_image_write.h>
 
 #include <spdlog/spdlog.h>
 

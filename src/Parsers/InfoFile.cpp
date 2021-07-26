@@ -13,7 +13,7 @@
 
 #include <PackFile.h>
 
-#include "Common/FileSystem.h"
+#include <FileSystem.h>
 #include "Game.h"
 
 namespace openblack

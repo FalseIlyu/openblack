@@ -10,8 +10,8 @@
 #include "L3DMesh.h"
 
 #include "3D/MeshPack.h"
-#include "Common/FileSystem.h"
-#include "Common/IOStream.h"
+#include <FileSystem.h>
+#include <IOStream.h>
 #include "Game.h"
 
 #include <L3DFile.h>

@@ -13,7 +13,7 @@
 #include "Common/MeshLookup.h"
 #include "Graphics/Mesh.h"
 #include "Graphics/Texture2D.h"
-#include "Sound/Sound.h"
+#include <Sound.h>
 
 #include <memory>
 

@@ -8,10 +8,10 @@
  *****************************************************************************/
 
 #include "AnimationPack.h"
-#include "Common/FileSystem.h"
 #include "Game.h"
 #include "L3DAnim.h"
 
+#include <FileSystem.h>
 #include <PackFile.h>
 #include <spdlog/spdlog.h>
 

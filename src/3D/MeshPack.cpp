@@ -11,8 +11,8 @@
 
 #include "3D/L3DMesh.h"
 #include "AllMeshes.h"
-#include "Common/FileSystem.h"
-#include "Common/MemoryStream.h"
+#include <FileSystem.h>
+#include <MemoryStream.h>
 #include "Entities/Components/Hand.h"
 #include "Game.h"
 #include "Graphics/Texture2D.h"

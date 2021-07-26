@@ -38,7 +38,7 @@
 #include "3D/MeshPack.h"
 #include "3D/Sky.h"
 #include "3D/Water.h"
-#include "Common/FileSystem.h"
+#include <FileSystem.h>
 #include "Console.h"
 #include "Entities/Components/Transform.h"
 #include "Entities/Components/Tree.h"
@@ -50,7 +50,7 @@
 #include "Profiler.h"
 #include "Sound/AudioDebug.h"
 #include "Sound/SoundHandler.h"
-#include "Sound/SoundPack.h"
+#include <SoundPack.h>
 
 // Turn off formatting because it adds spaces which break the stringifying
 // clang-format off
