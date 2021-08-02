@@ -11,6 +11,8 @@
 #include <FileStream.h>
 #include <FileSystem.h>
 
+#include <cstring>
+
 using namespace openblack::audio;
 
 void MockAudioLoader::ToPCM16(Sound& sound)
