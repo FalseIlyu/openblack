@@ -267,7 +267,11 @@ void SADFile::ReadDataStream(std::istream& stream)
 	// Read entire file as contiguous array
 	if (stream.seekg(0, std::ios_base::end))
 	{
-		_soundBuffer.resize(stream.tellg());
+		auto pos = stream.tellg();
+		if (pos == -1) {
+			Fail("Unable to read file size");
+		}
+		_soundBuffer.resize(static_cast<size_t>(pos));
 		stream.seekg(0);
 		stream.read(reinterpret_cast<char*>(_soundBuffer.data()), _soundBuffer.size());
 	}
