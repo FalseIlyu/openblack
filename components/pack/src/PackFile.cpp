@@ -310,6 +310,11 @@ void PackFile::ExtractTexturesFromBlock()
 
 			ddsHeader.pitchOrLinearSize = ((ddsHeader.width + 3) / 4) * ((ddsHeader.height + 3) / 4) * blockSize;
 		}
+		else if (header.ddsSize - sizeof(ddsHeader) - sizeof(uint32_t) != ddsHeader.pitchOrLinearSize)
+		{
+			// TODO(bwrsandman) the extra sizeof(uint32_t) is unaccounted for
+			Fail("Size in header does not match according to DDS signature");
+		}
 
 		std::vector<uint8_t> dssTexels(ddsHeader.pitchOrLinearSize);
 		ddsStream.read(reinterpret_cast<char*>(dssTexels.data()), dssTexels.size());
