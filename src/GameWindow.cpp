@@ -54,7 +54,7 @@ GameWindow::GameWindow(const std::string& title, int width, int height, DisplayM
 
 	SDL_ShowCursor(SDL_DISABLE);
 
-	uint32_t flags = SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
+	uint32_t flags = SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_METAL | SDL_WINDOW_SHOWN;
 	if (displayMode == DisplayMode::Fullscreen)
 		flags |= SDL_WINDOW_FULLSCREEN;
 	else if (displayMode == DisplayMode::Borderless)

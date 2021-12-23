@@ -119,6 +119,7 @@ Renderer::Renderer(const GameWindow* window, bgfx::RendererType::Enum rendererTy
 	}
 	init.callback = dynamic_cast<bgfx::CallbackI*>(_bgfxCallback.get());
 
+	bgfx::renderFrame();
 	if (!bgfx::init(init))
 	{
 		throw std::runtime_error("Failed to initialize bgfx.");

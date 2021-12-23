@@ -94,7 +94,7 @@ Game::Game(Arguments&& args)
 		                                       args.displayMode);
 	}
 	_renderer = std::make_unique<Renderer>(_window.get(), args.rendererType, args.vsync);
-	_fileSystem->SetGamePath(GetGamePath());
+	_fileSystem->SetGamePath(args.gamePath);
 	_handModel = std::make_unique<L3DMesh>();
 	_handModel->LoadFromFile(_fileSystem->CreatureMeshPath() / "Hand_Boned_Base2.l3d");
 	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "The GamePath is \"{}\".", _fileSystem->GetGamePath().generic_string());
