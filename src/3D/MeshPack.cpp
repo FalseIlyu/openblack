@@ -12,13 +12,16 @@
 #include "3D/L3DMesh.h"
 #include "AllMeshes.h"
 #include "Common/FileSystem.h"
-#include "Common/MemoryStream.h"
+#include "Common/StringUtils.h"
 #include "ECS/Components/Hand.h"
 #include "Game.h"
-#include "Graphics/Texture2D.h"
+
+extern "C" {
+#include "miniz.c"
+}
+#include <spdlog/spdlog.h>
 
 #include <PackFile.h>
-#include <spdlog/spdlog.h>
 
 #include <algorithm>
 #include <stdexcept>
@@ -34,11 +37,18 @@ MeshPack::MeshPack(bool enableUnknownMeshes)
 bool MeshPack::LoadFromFile(const fs::path& path)
 {
 	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "Loading Mesh Pack from file: {}", path.generic_string());
-	pack::PackFile pack;
+	auto pathExt = string_utils::LowerCase(path.extension().string());
 
 	try
 	{
-		pack.Open(Game::instance()->GetFileSystem().FindPath(path).u8string());
+		if (pathExt == ".g3d")
+		{
+			pack::PackFile pack;
+			pack.Open(Game::instance()->GetFileSystem().FindPath(path).u8string());
+			loadTextures(pack.GetTextures());
+			loadMeshes(pack.GetMeshes());
+			return true;
+		}
 	}
 	catch (std::runtime_error& err)
 	{
@@ -46,10 +56,61 @@ bool MeshPack::LoadFromFile(const fs::path& path)
 		return false;
 	}
 
-	loadTextures(pack.GetTextures());
-	loadMeshes(pack.GetMeshes());
+	return false;
+}
 
-	return true;
+std::pair<bool, MeshId> MeshPack::LoadLooseMeshFile(const fs::path& path)
+{
+	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "Loading Mesh Pack from file: {}", path.generic_string());
+	auto pathExt = string_utils::LowerCase(path.extension().string());
+
+	if (pathExt == ".l3d")
+	{
+		auto mesh = std::make_unique<L3DMesh>();
+		mesh->LoadFromFile(path);
+		auto meshId = MeshId(_meshes.size());
+		_meshes.emplace_back(std::move(mesh));
+		return std::make_pair(true, meshId);
+	}
+	else if (pathExt == ".zzz")
+	{
+		auto stream = Game::instance()->GetFileSystem().Open(path, FileMode::Read);
+		uint32_t decompressedSize = 0;
+		stream->Read(reinterpret_cast<uint32_t*>(&decompressedSize), sizeof(decompressedSize));
+		auto buffer = std::vector<uint8_t>(stream->Size() - sizeof(decompressedSize));
+		stream->Read(reinterpret_cast<char*>(buffer.data()), buffer.size());
+		auto decompressedBuffer = std::vector<uint8_t>(decompressedSize);
+		auto r =
+		    uncompress(decompressedBuffer.data(), reinterpret_cast<mz_ulong*>(&decompressedSize), buffer.data(), buffer.size());
+
+		if (r != MZ_OK)
+			return std::make_pair(false, MeshId::Dummy);
+
+		// Load the decompressed mesh
+		auto mesh = std::make_unique<L3DMesh>();
+		mesh->LoadFromBuffer(decompressedBuffer);
+		auto meshId = MeshId(_meshes.size());
+		_meshes.emplace_back(std::move(mesh));
+		return std::make_pair(true, meshId);
+	}
+
+	return std::make_pair(false, MeshId::Dummy);
+	;
+}
+
+std::pair<bool, std::vector<MeshId>> MeshPack::LoadLooseMeshes(std::vector<std::filesystem::path>& paths)
+{
+	auto ids = std::vector<MeshId>();
+	for (auto& path : paths)
+	{
+		auto response = LoadLooseMeshFile(path);
+		if (response.first)
+		{
+			return std::make_pair(false, std::vector<MeshId>());
+		}
+	}
+
+	return std::make_pair(true, ids);
 }
 
 const L3DMesh& MeshPack::GetMesh(MeshId id) const

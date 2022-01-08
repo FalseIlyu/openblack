@@ -50,6 +50,8 @@ public:
 	MeshPack(bool enableUnknownMeshes);
 
 	bool LoadFromFile(const fs::path& path);
+	std::pair<bool, MeshId> LoadLooseMeshFile(const fs::path& path);
+	std::pair<bool, std::vector<MeshId>> LoadLooseMeshes(std::vector<std::filesystem::path>& paths);
 
 	using MeshesVec = std::vector<std::unique_ptr<L3DMesh>>;
 	using TexturesVec = std::vector<std::unique_ptr<graphics::Texture2D>>;
@@ -61,8 +63,9 @@ public:
 	[[nodiscard]] const graphics::Texture2D& GetTexture(int id) const { return *_textures.at(id); }
 
 private:
-	void loadTextures(const std::map<std::string, pack::G3DTexture>& textures);
-	void loadMeshes(const std::vector<std::vector<uint8_t>>& meshes);
+	void LoadTextures(const std::map<std::string, pack::G3DTexture>& textures);
+	void LoadMeshes(const std::vector<std::vector<uint8_t>>& meshes);
+
 
 	bool _enableUnknownMeshes;
 	MeshesVec _meshes;
