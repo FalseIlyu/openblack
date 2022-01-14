@@ -241,6 +241,8 @@ protected:
 	std::vector<Span<uint16_t>> _indexSpans;
 	std::vector<Span<L3DVertexGroup>> _vertexGroupSpans;
 	std::vector<Span<L3DBone>> _boneSpans;
+	std::vector<uint8_t> _footprintData;
+	std::vector<uint8_t> _uv2Data;
 	std::string _nameData;
 
 	/// Error handling
@@ -277,6 +279,8 @@ public:
 	[[nodiscard]] const std::vector<L3DVertexGroup>& GetLookUpTableData() const { return _vertexGroups; }
 	[[nodiscard]] const std::vector<L3DBlend>& GetBlends() const { return _blends; }
 	[[nodiscard]] const std::vector<L3DBone>& GetBones() const { return _bones; }
+	[[nodiscard]] const std::vector<uint8_t>& GetFootprintData() const { return _footprintData; }
+	[[nodiscard]] const std::vector<uint8_t>& GetUv2Data() const { return _uv2Data; }
 	[[nodiscard]] const std::string& GetNameData() const { return _nameData; }
 	[[nodiscard]] const Span<L3DPrimitiveHeader>& GetPrimitiveSpan(uint32_t submeshIndex) const
 	{
