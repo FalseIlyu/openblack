@@ -238,6 +238,7 @@ void Renderer::DrawSubMesh(const L3DMesh& mesh, const L3DSubMesh& subMesh, const
 			{
 				desc.program->SetTextureSampler("s_diffuse", 0, *texture);
 			}
+			desc.program->SetUniformValue("u_alphaThreshold", &prim.alphaCutoutThreshold);
 		}
 		else
 		{
