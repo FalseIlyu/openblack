@@ -425,6 +425,28 @@ int PrintBlendValues(openblack::l3d::L3DFile& l3d)
 	return PrintRawBytes(blendValues.data(), blendValues.size() * sizeof(blendValues[0]));
 }
 
+int PrintFootprintValues(openblack::l3d::L3DFile& l3d)
+{
+	auto& footprintValues = l3d.GetFootprintData();
+	std::printf("file: %s\n", l3d.GetFilename().c_str());
+	return PrintRawBytes(footprintValues.data(), footprintValues.size() * sizeof(footprintValues[0]));
+}
+
+int PrintUv2Values(openblack::l3d::L3DFile& l3d)
+{
+	auto& uv2Values = l3d.GetUv2Data();
+	std::printf("file: %s\n", l3d.GetFilename().c_str());
+	return PrintRawBytes(uv2Values.data(), uv2Values.size() * sizeof(uv2Values[0]));
+}
+
+int PrintNameValue(openblack::l3d::L3DFile& l3d)
+{
+	auto& nameValue = l3d.GetNameData();
+	std::printf("file: %s\n", l3d.GetFilename().c_str());
+	std::printf("name data: %s\n", nameValue.c_str());
+	return EXIT_SUCCESS;
+}
+
 struct Arguments
 {
 	enum class Mode
@@ -439,6 +461,9 @@ struct Arguments
 		Indices,
 		LookUpTables,
 		VertexBlendValues,
+		Footprint,
+		Uv2,
+		Name,
 		Write,
 		Extract,
 	};
@@ -1033,6 +1058,9 @@ bool parseOptions(int argc, char** argv, Arguments& args, int& return_code)
 		("I,indices", "Print Indices.", cxxopts::value<std::vector<std::string>>())
 		("L,look-up-tables", "Print Look Up Table Data.", cxxopts::value<std::vector<std::string>>())
 		("B,vertex-blend-values", "Print Vertex Blend Values.", cxxopts::value<std::vector<std::string>>())
+		("u,uv2-data", "Print UV2 Data..", cxxopts::value<std::vector<std::string>>())
+		("f,footprint-data", "Print Footprint Data.", cxxopts::value<std::vector<std::string>>())
+		("n,name-data", "Print Name Data.", cxxopts::value<std::vector<std::string>>())
 	;
 	options.add_options("write/extract from and to glTF format")
 		("o,output", "Output file (required).", cxxopts::value<std::string>())
@@ -1117,6 +1145,24 @@ bool parseOptions(int argc, char** argv, Arguments& args, int& return_code)
 			{
 				args.mode = Arguments::Mode::VertexBlendValues;
 				args.read.filenames = result["vertex-blend-values"].as<std::vector<std::string>>();
+				return true;
+			}
+			if (result["footprint-data"].count() > 0)
+			{
+				args.mode = Arguments::Mode::Footprint;
+				args.read.filenames = result["footprint-data"].as<std::vector<std::string>>();
+				return true;
+			}
+			if (result["uv2-data"].count() > 0)
+			{
+				args.mode = Arguments::Mode::Uv2;
+				args.read.filenames = result["uv2-data"].as<std::vector<std::string>>();
+				return true;
+			}
+			if (result["name-data"].count() > 0)
+			{
+				args.mode = Arguments::Mode::Name;
+				args.read.filenames = result["name-data"].as<std::vector<std::string>>();
 				return true;
 			}
 		}
@@ -1217,6 +1263,15 @@ int main(int argc, char* argv[])
 				break;
 			case Arguments::Mode::VertexBlendValues:
 				return_code |= PrintBlendValues(l3d);
+				break;
+			case Arguments::Mode::Footprint:
+				return_code |= PrintFootprintValues(l3d);
+				break;
+			case Arguments::Mode::Uv2:
+				return_code |= PrintUv2Values(l3d);
+				break;
+			case Arguments::Mode::Name:
+				return_code |= PrintNameValue(l3d);
 				break;
 			default:
 				return_code = EXIT_FAILURE;
