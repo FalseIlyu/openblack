@@ -45,8 +45,8 @@ bool MeshPack::LoadFromFile(const fs::path& path)
 		{
 			pack::PackFile pack;
 			pack.Open(Game::instance()->GetFileSystem().FindPath(path).u8string());
-			loadTextures(pack.GetTextures());
-			loadMeshes(pack.GetMeshes());
+			LoadTextures(pack.GetTextures());
+			LoadMeshes(pack.GetMeshes());
 			return true;
 		}
 	}
@@ -126,7 +126,7 @@ const L3DMesh& MeshPack::GetMesh(MeshId id) const
 	}
 }
 
-void MeshPack::loadTextures(const std::map<std::string, pack::G3DTexture>& textures)
+void MeshPack::LoadTextures(const std::map<std::string, pack::G3DTexture>& textures)
 {
 	// textures start at 1 - 0 would be an error texture
 	_textures.resize(static_cast<std::size_t>(textures.size() + 1));
@@ -160,7 +160,7 @@ void MeshPack::loadTextures(const std::map<std::string, pack::G3DTexture>& textu
 	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "MeshPack loaded {0} textures", textures.size());
 }
 
-void MeshPack::loadMeshes(const std::vector<std::vector<uint8_t>>& meshes)
+void MeshPack::LoadMeshes(const std::vector<std::vector<uint8_t>>& meshes)
 {
 	if (meshes.size() > MeshNames.size() && !_enableUnknownMeshes)
 	{
