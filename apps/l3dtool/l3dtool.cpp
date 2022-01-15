@@ -655,7 +655,7 @@ int WriteFile(const Arguments::Write& args)
 		{
 			auto& gltfPrimitive = gltfMesh.primitives[i];
 			auto& primitive = primitives[i];
-			primitive.material.type = 0;
+			primitive.material.type = openblack::l3d::L3DMaterial::Type::Smooth;
 			primitive.material.alphaCutoutThreshold = 0;
 			primitive.material.skinID = std::numeric_limits<uint32_t>::max(); // TODO: mesh->mMaterialIndex;
 			primitive.material.color.raw = 0x00000000;
