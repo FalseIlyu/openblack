@@ -771,6 +771,14 @@ int WriteFile(const Arguments::Write& args)
 		l3d.AddSubmesh(submesh);
 	}
 
+	auto decodedFootprint = tinygltf::base64_decode(gltf.extras.Get("footprint").Get<std::string>());
+	auto footprintData = std::vector<uint8_t>(decodedFootprint.begin(), decodedFootprint.end());
+	l3d.SetFootprintData(footprintData);
+	auto decodedUv2 = tinygltf::base64_decode(gltf.extras.Get("uv2").Get<std::string>());
+	auto uv2Data = std::vector<uint8_t>(decodedUv2.begin(), decodedUv2.end());
+	l3d.SetUv2Data(uv2Data);
+	auto decodedName = tinygltf::base64_decode(gltf.extras.Get("name").Get<std::string>());
+	l3d.SetNameData(decodedName);
 	l3d.Write(args.outFilename);
 
 	return EXIT_SUCCESS;
@@ -805,6 +813,16 @@ int ExtractFile(const Arguments::Extract& args)
 	indexBuffer.data.resize(sizeOfIndices);
 	memcpy(indexBuffer.data.data(), l3d.GetIndices().data(), sizeOfIndices);
 	gltf.buffers.push_back(indexBuffer);
+
+	// TODO(raffclar): tiny_gltf has not yet added support for serialising binary data. Using strings with base64
+	std::map<std::string, tinygltf::Value> extras;
+	extras["footprint"] =
+	    tinygltf::Value(tinygltf::base64_encode(l3d.GetFootprintData().data(), l3d.GetFootprintData().size()));
+	extras["uv2"] = tinygltf::Value(tinygltf::base64_encode(l3d.GetUv2Data().data(), l3d.GetUv2Data().size()));
+	auto& name = l3d.GetNameData();
+	auto nameData = std::vector<unsigned char>(name.begin(), name.end());
+	extras["name"] = tinygltf::Value(tinygltf::base64_encode(nameData.data(), nameData.size()));
+	gltf.extras = tinygltf::Value(extras);
 
 	// TODO: weights, skins
 
