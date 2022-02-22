@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -8,6 +8,8 @@
  *****************************************************************************/
 
 #pragma once
+
+#include <set>
 
 #include "Enums.h"
 
@@ -22,6 +24,8 @@ struct Abode
 	// by the villagers
 	uint32_t foodAmount;
 	uint32_t woodAmount;
+	/// Villager
+	std::set<entt::entity> inhabitants;
 };
 
 } // namespace openblack::ecs::components

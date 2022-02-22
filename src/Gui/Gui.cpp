@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -10,6 +10,7 @@
 #include "Gui.h"
 
 #include <cinttypes>
+#include <cmath>
 
 #include <bgfx/bgfx.h>
 #include <bgfx/embedded_shader.h>
@@ -21,6 +22,7 @@
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
+#include <SDL.h>
 #include <bx/timer.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/compatibility.hpp>
@@ -32,6 +34,7 @@
 #endif
 
 #include <3D/Camera.h>
+#include <3D/Sky.h>
 #include <Common/FileSystem.h>
 #include <ECS/Components/Transform.h>
 #include <ECS/Components/Villager.h>
@@ -703,8 +706,11 @@ bool Gui::ShowMenu(Game& game)
 
 		if (ImGui::BeginMenu("World"))
 		{
-			if (ImGui::SliderFloat("Time of Day", &config.timeOfDay, 0.0f, 1.0f, "%.3f"))
-				Game::instance()->SetTime(config.timeOfDay);
+			if (ImGui::SliderFloat("Time of Day", &config.timeOfDay, 0.0f, 24.0f, "%.3f"))
+				Game::instance()->SetTime(fmodf(config.timeOfDay, 24.0f));
+
+			ImGui::Text("Sky Type Index %f", game.GetSky().GetCurrentSkyType());
+			ImGui::SliderFloat("Sky alignment", &config.skyAlignment, -1.0f, 1.0f, "%.3f");
 
 			ImGui::EndMenu();
 		}
@@ -1014,6 +1020,10 @@ void Gui::ShowVillagerNames(const Game& game)
 		if (config.debugVillagerNames)
 		{
 			debugCallback = [&entity] {
+				if (entity.abode == entt::null)
+				{
+					ImGui::Text("Homeless");
+				}
 				ImGui::InputInt("Health", reinterpret_cast<int*>(&entity.health));
 				ImGui::InputInt("Age", reinterpret_cast<int*>(&entity.age));
 				ImGui::InputInt("Hunger", reinterpret_cast<int*>(&entity.hunger));

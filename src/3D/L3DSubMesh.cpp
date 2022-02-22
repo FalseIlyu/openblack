@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -39,7 +39,7 @@ L3DSubMesh::L3DSubMesh(L3DMesh& mesh)
 
 L3DSubMesh::~L3DSubMesh() {}
 
-void L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
+bool L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
 {
 	auto& header = l3d.GetSubmeshHeaders()[meshIndex];
 	auto primitiveSpan = l3d.GetPrimitiveSpan(meshIndex);
@@ -71,6 +71,11 @@ void L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
 		_boundingBox.minima.z = glm::min(_boundingBox.minima.z, verticesSpan[j].position.z);
 	}
 
+	if (nVertices == 0)
+	{
+		return false;
+	}
+
 	// Get vertices
 	const bgfx::Memory* verticesMem = bgfx::alloc(sizeof(EnhancedL3DVertex) * nVertices);
 	auto* verticesMemAccess = reinterpret_cast<EnhancedL3DVertex*>(verticesMem->data);
@@ -86,6 +91,11 @@ void L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
 		verticesMemAccess[i].norm.z = verticesSpan[i].normal.z;
 		verticesMemAccess[i].index.x = -1;
 		verticesMemAccess[i].index.y = -1;
+	}
+
+	if (nIndices == 0)
+	{
+		return false;
 	}
 
 	// Get Indices
@@ -112,7 +122,53 @@ void L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
 		for (uint32_t j = 0; j < primitive.numTriangles * 3; j++)
 			indices[startIndex + j] = indexSpan[startIndex + j] + startVertex;
 
-		_primitives.emplace_back(Primitive {primitive.skinID, startIndex, primitive.numTriangles * 3});
+		struct MaterialTypeLutEntry
+		{
+			bool depthWrite;
+			bool alphaTest;
+			L3DSubMesh::Primitive::BlendMode blend;
+			bool modulateAlpha;  ///< Multiply ouput alpha by a uniform
+			bool thresholdAlpha; ///< Dismiss fragments below a certain threshold
+		};
+		static const std::array<MaterialTypeLutEntry, static_cast<uint32_t>(l3d::L3DMaterial::Type::_Count)> materialTypeLut = {
+		    {
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Disabled, false, false},  // Smooth
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Standard, false, false},  // SmoothAlpha
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Disabled, false, false},  // Textured
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Standard, true, false},   // TexturedAlpha
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Standard, false, false},  // AlphaTextured
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Standard, true, false},   // AlphaTexturedAlpha
+		        {false, false, L3DSubMesh::Primitive::BlendMode::Standard, true, false},  // AlphaTexturedAlphaNz
+		        {false, false, L3DSubMesh::Primitive::BlendMode::Standard, false, false}, // SmoothAlphaNz
+		        {false, false, L3DSubMesh::Primitive::BlendMode::Standard, true, false},  // TexturedAlphaNz
+		        {true, true, L3DSubMesh::Primitive::BlendMode::Standard, false, true},    // TexturedChroma
+		        {true, true, L3DSubMesh::Primitive::BlendMode::Additive, true, true},     // AlphaTexturedAlphaAdditiveChroma
+		        {false, true, L3DSubMesh::Primitive::BlendMode::Additive, true, true},    // AlphaTexturedAlphaAdditiveChromaNz
+		        {true, false, L3DSubMesh::Primitive::BlendMode::Additive, true, false},   // AlphaTexturedAlphaAdditive
+		        {false, false, L3DSubMesh::Primitive::BlendMode::Additive, true, false},  // AlphaTexturedAlphaAdditiveNz
+		        {0, 0, L3DSubMesh::Primitive::BlendMode::Disabled, 0, 0},                 // 0xe
+		        {true, true, L3DSubMesh::Primitive::BlendMode::Standard, true, true},     // TexturedChromaAlpha
+		        {false, true, L3DSubMesh::Primitive::BlendMode::Standard, true, true},    // TexturedChromaAlphaNz
+		        {0, 0, L3DSubMesh::Primitive::BlendMode::Disabled, 0, 0},                 // 0x11
+		        {true, true, L3DSubMesh::Primitive::BlendMode::Standard, false, true},    // ChromaJustZ
+		    }};
+
+		assert(static_cast<uint32_t>(primitive.material.type) != 0xe);
+		assert(static_cast<uint32_t>(primitive.material.type) != 0x11);
+		const auto& lutEntry = materialTypeLut[static_cast<uint32_t>(primitive.material.type)];
+
+		// TODO(bwrsandman): Interpret cull mode, color byte ordering and render mode, then store in primitive
+		_primitives.emplace_back(Primitive {
+		    primitive.material.skinID,
+		    startIndex,
+		    primitive.numTriangles * 3,
+		    lutEntry.depthWrite,
+		    lutEntry.alphaTest,
+		    lutEntry.blend,
+		    lutEntry.modulateAlpha,
+		    lutEntry.thresholdAlpha,
+		    primitive.material.alphaCutoutThreshold / 255.0f,
+		});
 
 		startVertex += static_cast<uint16_t>(primitive.numVertices);
 		startIndex += static_cast<uint16_t>(primitive.numTriangles * 3);
@@ -132,6 +188,7 @@ void L3DSubMesh::Load(const l3d::L3DFile& l3d, uint32_t meshIndex)
 
 	SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "{} submesh {} with {} verts and {} indices", _l3dMesh.GetDebugName(), meshIndex,
 	                    nVertices, nIndices);
+	return true;
 }
 
 Mesh& L3DSubMesh::GetMesh() const

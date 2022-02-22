@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -23,6 +23,7 @@ class Profiler
 public:
 	enum class Stage : uint8_t
 	{
+		PhysicsUpdate,
 		SdlInput,
 		UpdateUniforms,
 		UpdateEntities,
@@ -47,6 +48,30 @@ public:
 		_count,
 	};
 
+	static constexpr std::array<std::string_view, static_cast<uint8_t>(Stage::_count)> stageNames = {
+	    "Physics Update",    //
+	    "SDL Input",         //
+	    "Update Uniforms",   //
+	    "Entities",          //
+	    "GUI Loop",          //
+	    "Game Logic",        //
+	    "Encode Draw Scene", //
+	    "Reflection Pass",   //
+	    "Draw Sky",          //
+	    "Draw Water",        //
+	    "Draw Island",       //
+	    "Draw Models",       //
+	    "Draw Debug Cross",  //
+	    "Main Pass",         //
+	    "Draw Sky",          //
+	    "Draw Water",        //
+	    "Draw Island",       //
+	    "Draw Models",       //
+	    "Draw Debug Cross",  //
+	    "Encode GUI Draw",   //
+	    "Renderer Frame",    //
+	};
+
 private:
 	struct ScopedSection
 	{
@@ -69,29 +94,6 @@ public:
 		std::chrono::system_clock::time_point _start;
 		std::chrono::system_clock::time_point _end;
 		bool _finalized = false;
-	};
-
-	static constexpr std::array<std::string_view, static_cast<uint8_t>(Stage::_count)> stageNames = {
-	    "SDL Input",         //
-	    "Update Uniforms",   //
-	    "Entities",          //
-	    "GUI Loop",          //
-	    "Game Logic",        //
-	    "Encode Draw Scene", //
-	    "Reflection Pass",   //
-	    "Draw Sky",          //
-	    "Draw Water",        //
-	    "Draw Island",       //
-	    "Draw Models",       //
-	    "Draw Debug Cross",  //
-	    "Main Pass",         //
-	    "Draw Sky",          //
-	    "Draw Water",        //
-	    "Draw Island",       //
-	    "Draw Models",       //
-	    "Draw Debug Cross",  //
-	    "Encode GUI Draw",   //
-	    "Renderer Frame",    //
 	};
 
 	struct Entry

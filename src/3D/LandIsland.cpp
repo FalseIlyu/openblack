@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -13,8 +13,10 @@
 #include "Common/FileSystem.h"
 #include "Common/IStream.h"
 #include "Common/stb_image_write.h"
+#include "Dynamics/LandBlockBulletMeshInterface.h"
 #include "Game.h"
 
+#include <BulletDynamics/Dynamics/btRigidBody.h>
 #include <spdlog/spdlog.h>
 
 #include <LNDFile.h>

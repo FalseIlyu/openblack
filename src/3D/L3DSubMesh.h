@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -35,16 +35,29 @@ class L3DSubMesh
 {
 	struct Primitive
 	{
+		enum class BlendMode : uint8_t
+		{
+			Disabled,
+			Standard, ///< src_alpha, 1 - src_alpha
+			Additive, ///< src_alpha, 1
+		};
+
 		uint32_t skinID;
 		uint32_t indicesOffset;
 		uint32_t indicesCount;
+		bool depthWrite;
+		bool alphaTest;
+		BlendMode blend;
+		bool modulateAlpha;  ///< Multiply ouput alpha by a uniform
+		bool thresholdAlpha; ///< Dismiss fragments below a certain threshold
+		float alphaCutoutThreshold;
 	};
 
 public:
 	explicit L3DSubMesh(L3DMesh& mesh);
 	~L3DSubMesh();
 
-	void Load(const l3d::L3DFile& l3d, uint32_t meshIndex);
+	bool Load(const l3d::L3DFile& l3d, uint32_t meshIndex);
 
 	[[nodiscard]] openblack::l3d::L3DSubmeshHeader::Flags GetFlags() const { return _flags; }
 	[[nodiscard]] bool isPhysics() const { return _flags.isPhysics; }

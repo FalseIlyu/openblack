@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -15,6 +15,9 @@
 #include <glm/fwd.hpp>
 
 #include <cstdint>
+
+class btBvhTriangleMeshShape;
+class btRigidBody;
 
 namespace openblack
 {
@@ -42,6 +45,11 @@ struct LandVertex
 
 class LandIsland;
 
+namespace dynamics
+{
+class LandBlockBulletMeshInterface;
+}
+
 class LandBlock
 {
 public:
@@ -53,10 +61,14 @@ public:
 	[[nodiscard]] const lnd::LNDCell* GetCells() const;
 	[[nodiscard]] glm::ivec2 GetBlockPosition() const;
 	[[nodiscard]] glm::vec4 GetMapPosition() const;
+	[[nodiscard]] std::unique_ptr<btRigidBody>& GetRigidBody() { return _rigidBody; };
 
 private:
 	std::unique_ptr<lnd::LNDBlock> _block;
 	std::unique_ptr<graphics::Mesh> _mesh;
+	std::unique_ptr<dynamics::LandBlockBulletMeshInterface> _dynamicsMeshInterface;
+	std::unique_ptr<btBvhTriangleMeshShape> _physicsMesh;
+	std::unique_ptr<btRigidBody> _rigidBody;
 
 	const bgfx::Memory* buildVertexList(LandIsland& island);
 

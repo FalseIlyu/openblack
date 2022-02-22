@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -21,6 +21,6 @@ struct RegistryContext
 {
 	std::unordered_map<components::Footpath::Id, entt::entity> footpaths;
 	std::unordered_map<components::Stream::Id, entt::entity> streams;
-	std::unordered_map<components::Town::Id, entt::entity> towns;
+	std::unordered_map<uint32_t, entt::entity> towns;
 };
 } // namespace openblack::ecs

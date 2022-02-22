@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -9,10 +9,14 @@
 
 #pragma once
 
-#include "Game.h"
 #include "Lexer.h"
 
 #include <vector>
+
+namespace openblack
+{
+class Game;
+}
 
 namespace openblack::lhscriptx
 {

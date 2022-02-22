@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -47,7 +47,7 @@ class MeshPack
 	};
 
 public:
-	MeshPack() = default;
+	MeshPack(bool enableUnknownMeshes);
 
 	bool LoadFromFile(const fs::path& path);
 
@@ -58,12 +58,14 @@ public:
 	[[nodiscard]] const TexturesVec& GetTextures() const { return _textures; }
 
 	[[nodiscard]] const L3DMesh& GetMesh(MeshId id) const;
+	[[nodiscard]] L3DMesh& GetMesh(MeshId id);
 	[[nodiscard]] const graphics::Texture2D& GetTexture(int id) const { return *_textures.at(id); }
 
 private:
 	void loadTextures(const std::map<std::string, pack::G3DTexture>& textures);
 	void loadMeshes(const std::vector<std::vector<uint8_t>>& meshes);
 
+	bool _enableUnknownMeshes;
 	MeshesVec _meshes;
 	TexturesVec _textures;
 };

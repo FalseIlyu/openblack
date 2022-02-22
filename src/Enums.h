@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -49,7 +49,7 @@ enum class DetailDistance
 	Metre100 = 655360,
 };
 
-enum class ObjectType
+enum class ObjectType : int
 {
 	Invalid = -2,
 	Any = -1,
@@ -101,7 +101,7 @@ enum class ObjectType
 	// CreatureIslesBuilding = 45, // CREATUREISLE
 };
 
-enum class VillagerJob
+enum class VillagerJob : uint32_t
 {
 	None = 0,
 	Fisherman = 1,
@@ -111,29 +111,32 @@ enum class VillagerJob
 	Leader = 5,
 	Housewife = 6,
 	Trader = 7,
+
+	_COUNT
 };
 
-enum class AbodeType
+enum class AbodeType : uint32_t
 {
-	General = 1,
-	LivingQuarters = 2,
-	Civic = 4,
-	Windmill = 10,
-	Totem = 20,
-	StoragePit = 36,
-	Creche = 68,
-	Workshop = 132,
-	Wonder = 256,
-	Graveyard = 516,
-	TownCentre = 1028,
-	Citadel = 2052,
-	FootballPitch = 4100,
-	SpellDispenser = 8196,
-	Field = 16388,
-	Any = 32767,
+	General = 1 << 0,
+	LivingQuarters = 1 << 1,
+	Civic = 1 << 2,
+	Windmill = 1 << 3 | LivingQuarters,
+	Totem = 1 << 4 | Civic,
+	StoragePit = 1 << 5 | Civic,
+	Creche = 1 << 6 | Civic,
+	Workshop = 1 << 7 | Civic,
+	Wonder = 1 << 8,
+	Graveyard = 1 << 9,
+	TownCentre = 1 << 10 | Civic,
+	Citadel = 1 << 11 | Civic,
+	FootballPitch = 1 << 12 | Civic,
+	SpellDispenser = 1 << 13 | Civic,
+	Field = 1 << 14 | Civic,
+	Any = 0x7FFF,
+	Last = 0x8000,
 };
 
-enum class LivingType
+enum class LivingType : int
 {
 	Any = -1,
 	Lion = 0,
@@ -160,7 +163,7 @@ enum class LivingType
 	Villager = 21,
 };
 
-enum class AnimalInfo
+enum class AnimalInfo : int
 {
 	None = -1,
 	Lion = 0,
@@ -194,6 +197,8 @@ enum class AnimalInfo
 	PuzzleCow = 28,
 	PuzzleTortoise = 29,
 	PuzzlePig = 30,
+
+	_COUNT = 31
 };
 
 /// Originally TribeType and VillageEthnicities
@@ -267,7 +272,7 @@ static constexpr std::array<std::string_view, static_cast<uint32_t>(AbodeNumber:
     "SpellDispenser", //
 };
 
-enum class SpellSeedType
+enum class SpellSeedType : int
 {
 	None = -1,
 	Storm = 0,
@@ -304,7 +309,7 @@ enum class SpellSeedType
 	// CreatureSpellFast       = 31, // CREATUREISLE
 };
 
-enum class GestureType
+enum class GestureType : uint32_t
 {
 	None = 0,
 	Spiral = 1,
@@ -377,7 +382,7 @@ enum class VortexType
 	Volcano = 2,
 };
 
-enum class ParticleType
+enum class ParticleType : uint32_t
 {
 	None = 0,
 	Tornado = 1,
@@ -783,7 +788,7 @@ enum class AnimatedStaticInfo : int32_t
 	// Balista           = 16, // CREATUREISLE
 };
 
-enum class MagicType
+enum class MagicType : uint32_t
 {
 	None = 0,
 	Fireball = 1,
@@ -831,7 +836,7 @@ enum class MagicType
 	// CreatureSpellFast       = 43, // CREATUREISLE
 };
 
-enum class CreatureReceiveSpellType
+enum class CreatureReceiveSpellType : uint32_t
 {
 	CreatureReceiveSpellFreeze = 0,
 	CreatureReceiveSpellSmall = 1,
@@ -913,7 +918,7 @@ enum class SoundSurfaceType
 	LooseFoliage = 8,
 };
 
-enum class Reaction
+enum class Reaction : int
 {
 	None = -1,
 	FleeFromObject = 0,
@@ -1003,7 +1008,7 @@ enum class EffectType
 	BeliefModification = 6,
 };
 
-enum class LivingStates
+enum class LivingStates : uint32_t
 {
 	LivingInvalid = 0,
 	LivingMoveToPos = 1,
@@ -1038,7 +1043,267 @@ enum class LivingStates
 	LivingFleeingLookAtObjectReaction = 30,
 };
 
-enum class AlignmentType
+enum class VillagerStates : uint32_t
+{
+	InvalidState = 0,
+	MoveToPos = 1,
+	MoveToObject = 2,
+	MoveOnStructure = 3,
+	InScript = 4,
+	InDance = 5,
+	FleeingFromObjectReaction = 6,
+	LookingAtObjectReaction = 7,
+	FollowingObjectReaction = 8,
+	InspectObjectReaction = 9,
+	Flying = 10,
+	Landed = 11,
+	LookAtFlyingObjectReaction = 12,
+	SetDying = 13,
+	Dying = 14,
+	Dead = 15,
+	Drowning = 16,
+	Downed = 17,
+	BeingEaten = 18,
+	GotoFoodReaction = 19,
+	ArrivesAtFoodReaction = 20,
+	GotoWoodReaction = 21,
+	ArrivesAtWoodReaction = 22,
+	WaitForAnimation = 23,
+	InHand = 24,
+	GotoPickupBallReaction = 25,
+	ArrivesAtPickupBallReaction = 26,
+	MoveInFlock = 27,
+	MoveAlongPath = 28,
+	MoveOnPath = 29,
+	FleeingAndLookingAtObjectReaction = 30,
+	GotoStoragePitForDropOff = 31,
+	ArrivesAtStoragePitForDropOff = 32,
+	GotoStoragePitForFood = 33,
+	ArrivesAtStoragePitForFood = 34,
+	ArrivesAtHomeWithFood = 35,
+	GoHome = 36,
+	ArrivesHome = 37,
+	AtHome = 38,
+	ArrivesAtStoragePitForBuildingMaterials = 39,
+	ArrivesAtBuildingSite = 40,
+	Building = 41,
+	GotoStoragePitForWorshipSupplies = 42,
+	ArrivesAtStoragePitForWorshipSupplies = 43,
+	GotoWorshipSiteWithSupplies = 44,
+	MoveToWorshipSiteWithSupplies = 45,
+	ArrivesAtWorshipSiteWithSupplies = 46,
+	ForesterMoveToForest = 47,
+	ForesterGotoForest = 48,
+	ForesterArrivesAtForest = 49,
+	ForesterChopsTree = 50,
+	ForesterChopsTreeForBuilding = 51,
+	ForesterFinishedForestering = 52,
+	ArrivesAtBigForest = 53,
+	ArrivesAtBigForestForBuilding = 54,
+	FishermanArrivesAtFishing = 55,
+	Fishing = 56,
+	WaitForCounter = 57,
+	GotoWorshipSiteForWorship = 58,
+	ArrivesAtWorshipSiteForWorship = 59,
+	WorshippingAtWorshipSite = 60,
+	GotoAltarForRest = 61,
+	ArrivesAtAltarForRest = 62,
+	AtAltarRest = 63,
+	AtAltarFinishedRest = 64,
+	RestartWorshippingAtWorshipSite = 65,
+	RestartWorshippingCreature = 66,
+	FarmerArrivesAtFarm = 67,
+	FarmerPlantsCrop = 68,
+	FarmerDigsUpCrop = 69,
+	MoveToFootballPitchConstruction = 70,
+	FootballWalkToPosition = 71,
+	FootballWaitForKickOff = 72,
+	FootballAttacker = 73,
+	FootballGoalie = 74,
+	FootballDefender = 75,
+	FootballWonGoal = 76,
+	FootballLostGoal = 77,
+	StartMoveToPickUpBallForDeadBall = 78,
+	ArrivedAtPickUpBallForDeadBall = 79,
+	ArrivedAtPutDownBallForDeadBallStart = 80,
+	ArrivedAtPutDownBallForDeadBallEnd = 81,
+	FootballMatchPaused = 82,
+	FootballWatchMatch = 83,
+	FootballMexicanWave = 84,
+	Created = 85,
+	ArrivesInAbodeToTrade = 86,
+	ArrivesInAbodeToPickUpExcess = 87,
+	MakeScaredStiff = 88,
+	ScaredStiff = 89,
+	WorshippingCreature = 90,
+	ShepherdLookForFlock = 91,
+	ShepherdMoveFlockToWater = 92,
+	ShepherdMoveFlockToFood = 93,
+	ShepherdMoveFlockBack = 94,
+	ShepherdDecideWhatToDoWithFlock = 95,
+	ShepherdWaitForFlock = 96,
+	ShepherdSlaughterAnimal = 97,
+	ShepherdFetchStray = 98,
+	ShepherdGotoFlock = 99,
+	HousewifeAtHome = 100,
+	HousewifeGotoStoragePit = 101,
+	HousewifeArrivesAtStoragePit = 102,
+	HousewifePickupFromStoragePit = 103,
+	HousewifeReturnHomeWithFood = 104,
+	HousewifeMakeDinner = 105,
+	HousewifeServesDinner = 106,
+	HousewifeClearsAwayDinner = 107,
+	HousewifeDoesHousework = 108,
+	HousewifeGossipsAroundStoragePit = 109,
+	HousewifeStartsGivingBirth = 110,
+	HousewifeGivingBirth = 111,
+	HousewifeGivenBirth = 112,
+	ChildAtCreche = 113,
+	ChildFollowsMother = 114,
+	ChildBecomesAdult = 115,
+	SitsDownToDinner = 116,
+	EatFood = 117,
+	EatFoodAtHome = 118,
+	GotoBedAtHome = 119,
+	SleepingAtHome = 120,
+	WakeUpAtHome = 121,
+	StartHavingSex = 122,
+	HavingSex = 123,
+	StopHavingSex = 124,
+	StartHavingSexAtHome = 125,
+	HavingSexAtHome = 126,
+	StopHavingSexAtHome = 127,
+	WaitForDinner = 128,
+	HomelessStart = 129,
+	VagrantStart = 130,
+	MornDeath = 131,
+	PerformInspectionReaction = 132,
+	ApproachObjectReaction = 133,
+	InitialiseTellOthersAboutObject = 134,
+	TellOthersAboutInterestingObject = 135,
+	ApproachVillagerToTalkTo = 136,
+	TellParticularVillagerAboutObject = 137,
+	InitialiseLookAroundForVillagerToTell = 138,
+	LookAroundForVillagerToTell = 139,
+	MoveTowardsObjectToLookAt = 140,
+	InitialiseImpressedReaction = 141,
+	PerformImpressedReaction = 142,
+	InitialiseFightReaction = 143,
+	PerformFightReaction = 144,
+	HomelessEatDinner = 145,
+	InspectCreatureReaction = 146,
+	PerformInspectCreatureReaction = 147,
+	ApproachCreatureReaction = 148,
+	InitialiseBewilderedByMagicTreeReaction = 149,
+	PerformBewilderedByMagicTreeReaction = 150,
+	TurnToFaceMagicTree = 151,
+	LookAtMagicTree = 152,
+	DanceForEditingPurposes = 153,
+	MoveToDancePos = 154,
+	InitialiseRespectCreatureReaction = 155,
+	PerformRespectCreatureReaction = 156,
+	FinishRespectCreatureReaction = 157,
+	ApproachHandReaction = 158,
+	FleeingFromCreatureReaction = 159,
+	TurnToFaceCreatureReaction = 160,
+	WatchFlyingObjectReaction = 161,
+	PointAtFlyingObjectReaction = 162,
+	DecideWhatToDo = 163,
+	InteractDecideWhatToDo = 164,
+	EatOutside = 165,
+	RunAwayFromObjectReaction = 166,
+	MoveTowardsCreatureReaction = 167,
+	AmazedByMagicShieldReaction = 168,
+	VillagerGossips = 169,
+	CheckInteractWithAnimal = 170,
+	CheckInteractWithWorshipSite = 171,
+	CheckInteractWithAbode = 172,
+	CheckInteractWithField = 173,
+	CheckInteractWithFishFarm = 174,
+	CheckInteractWithTree = 175,
+	CheckInteractWithBall = 176,
+	CheckInteractWithPot = 177,
+	CheckInteractWithFootball = 178,
+	CheckInteractWithVillager = 179,
+	CheckInteractWithMagicLiving = 180,
+	CheckInteractWithRock = 181,
+	ArrivesAtRockForWood = 182,
+	GotWoodFromRock = 183,
+	ReenterBuildingState = 184,
+	ArriveAtPushObject = 185,
+	TakeWoodFromTree = 186,
+	TakeWoodFromPot = 187,
+	TakeWoodFromTreeForBuilding = 188,
+	TakeWoodFromPotForBuilding = 189,
+	ShepherdTakeAnimalForSlaughter = 190,
+	ShepherdTakesControlOfFlock = 191,
+	ShepherdReleasesControlOfFlock = 192,
+	DanceButNotWorship = 193,
+	FaintingReaction = 194,
+	StartConfusedReaction = 195,
+	ConfusedReaction = 196,
+	AfterTapOnAbode = 197,
+	WeakOnGround = 198,
+	ScriptWanderAroundPosition = 199,
+	ScriptPlayAnim = 200,
+	GoTowardsTeleportReaction = 201,
+	TeleportReaction = 202,
+	DanceWhileReacting = 203,
+	ControlledByCreature = 204,
+	PointAtDeadPerson = 205,
+	GoTowardsDeadPerson = 206,
+	LookAtDeadPerson = 207,
+	MournDeadPerson = 208,
+	NothingToDo = 209,
+	ArrivesAtWorkshopForDropOff = 210,
+	ArrivesAtStoragePitForWorkshopMaterials = 211,
+	ShowPoisoned = 212,
+	HidingAtWorshipSite = 213,
+	CrowdReaction = 214,
+	ReactToFire = 215,
+	PutOutFireByBeating = 216,
+	PutOutFireWithWater = 217,
+	GetWaterToPutOutFire = 218,
+	OnFire = 219,
+	MoveAroundFire = 220,
+	DiscipleNothingToDo = 221,
+	FootballMoveToBall = 222,
+	ArrivesAtStoragePitForTraderPickUp = 223,
+	ArrivesAtStoragePitForTraderDropOff = 224,
+	BreederDisciple = 225,
+	MissionaryDisciple = 226,
+	ReactToBreeder = 227,
+	ShepherdCheckAnimalForSlaughter = 228,
+	InteractDecideWhatToDoForOtherVillager = 229,
+	ArtifactDance = 230,
+	FleeingFromPredatorReaction = 231,
+	WaitForWood = 232,
+	InspectObject = 233,
+	GoHomeAndChange = 234,
+	WaitForMate = 235,
+	GoAndHideInNearbyBuilding = 236,
+	LookToSeeIfItIsSafe = 237,
+	SleepInTent = 238,
+	PauseForASecond = 239,
+	PanicReaction = 240,
+	GetFoodAtWorshipSite = 241,
+	GotoCongregateInTownAfterEmergency = 242,
+	CongregateInTownAfterEmergency = 243,
+	ScriptInCrowd = 244,
+	GoAndChilloutOutsideHome = 245,
+	SitAndChillout = 246,
+	ScriptGoAndMoveAlongPath = 247,
+	GoHomeFromWorship = 248,
+	ArrivesHomeFromWorship = 249,
+	SleepInTentFromWorship = 250,
+	GoTowardsTeleportReactionQuickly = 251,
+	GoAndChilloutInTown = 252,
+	WaitForArtifactDance = 253,
+	BreederJustLanded = 254,
+	LastState = 255,
+};
+
+enum class AlignmentType : uint32_t
 {
 	AnimalNice = 0,
 	AnimalNasty = 1,
@@ -1075,7 +1340,7 @@ enum class WorshipSiteInfo
 	Tibetan = 8,
 };
 
-enum class PotInfo
+enum class PotInfo : uint32_t
 {
 	FoodPot = 0,
 	WoodPot = 1,
@@ -1096,9 +1361,11 @@ enum class PotInfo
 	TreeLogsInHand = 16,
 	WheatInHand = 17,
 	Fish = 18,
+
+	_COUNT
 };
 
-enum class PotType
+enum class PotType : uint32_t
 {
 	Pot = 0,
 	PileFood = 1,
@@ -1171,7 +1438,7 @@ enum class TreeInfo
 	_COUNT
 };
 
-enum class ResourceType
+enum class ResourceType : int
 {
 	Any = -2,
 	None = -1,
@@ -1378,14 +1645,14 @@ enum class PlaytimeInfo
 	Pfootball = 4,
 };
 
-enum class GroundInfo
+enum class GroundInfo : int
 {
 	None = -1,
 	Normal = 0,
 	Abode = 1,
 };
 
-enum class CountryList
+enum class CountryList : uint32_t
 {
 	None = 0,
 	Country1 = 1,
@@ -1396,9 +1663,11 @@ enum class CountryList
 	Country6 = 6,
 	Country7 = 7,
 	Country8 = 8,
+
+	_COUNT
 };
 
-enum class PrayerIconInfo
+enum class PrayerIconInfo : int
 {
 	None = -1,
 	Normal = 0,
@@ -1423,7 +1692,7 @@ enum class SpellCastType
 	SpellCastHandPosition = 2,
 };
 
-enum class JobActivity
+enum class JobActivity : uint32_t
 {
 	None = 0,
 	Nurture = 1,
@@ -1432,7 +1701,7 @@ enum class JobActivity
 	Execute = 4,
 };
 
-enum class JobInfo
+enum class JobInfo : uint32_t
 {
 	PoorFisherman = 0,
 	NormalFisherman = 1,
@@ -1450,9 +1719,11 @@ enum class JobInfo
 	NormalHousewife = 13,
 	NormalTrader = 14,
 	NormalNoJob = 15,
+
+	_COUNT
 };
 
-enum class EffectInfo
+enum class EffectInfo : int
 {
 	None = -1,
 	Hit = 0,
@@ -1469,7 +1740,7 @@ enum class EffectInfo
 	WeatherLightning = 11,
 };
 
-enum class SexType
+enum class SexType : int
 {
 	None = -1,
 	Male = 0,
@@ -1501,7 +1772,7 @@ enum class TownHappinessConsideration
 	NumberOfPeople = 3,
 };
 
-enum class TownDesireInfo
+enum class TownDesireInfo : int
 {
 	None = -1,
 	ForFood = 0,
@@ -1622,7 +1893,7 @@ enum class VillagerInfo
 	// Giant                   = 86, // CREATUREISLE
 };
 
-enum class VillagerBasicInfo
+enum class VillagerBasicInfo : int
 {
 	None = -1,
 	HousewifeFemale = 0,
@@ -2158,7 +2429,7 @@ enum class PlayerInfo
 	Normal = 0,
 };
 
-enum class CreatureDesires
+enum class CreatureDesires : uint32_t
 {
 	ToImpress = 0,
 	Compassion = 1,
@@ -2205,7 +2476,7 @@ enum class CreatureDesires
 	None = 42,
 };
 
-enum class SoundCollisionType
+enum class SoundCollisionType : int
 {
 	Default = 0,
 	Flesh = 1,
@@ -2423,7 +2694,7 @@ enum class TooltipsType
 	Type170 = 169,
 };
 
-enum class CarriedTreeType
+enum class CarriedTreeType : uint32_t
 {
 	None = 0,
 	Evergreen = 1,
@@ -2491,7 +2762,7 @@ enum class HelpSpritesGuidance
 	DestroyBuilding = 21,
 };
 
-enum class DykCategory
+enum class DykCategory : uint32_t
 {
 	Navigation = 0,
 	Creature = 1,
@@ -2500,7 +2771,7 @@ enum class DykCategory
 	Misc = 4,
 };
 
-enum class DeathReason
+enum class DeathReason : uint32_t
 {
 	None = 0,
 	Starving = 1,
@@ -2512,9 +2783,11 @@ enum class DeathReason
 	Sacrifice = 7,
 	Exhaustion = 8,
 	OldAge = 9,
+
+	_COUNT = 10
 };
 
-enum class ImmersionEffectType
+enum class ImmersionEffectType : int
 {
 	None = -1,
 	Fur = 0,
@@ -2569,7 +2842,7 @@ enum class ImmersionEffectType
 	// CannonFire              = 49, // CREATUREISLE
 };
 
-enum class GuidanceAlignment
+enum class GuidanceAlignment : uint32_t
 {
 	None = 0,
 	Good = 1,
@@ -2670,6 +2943,170 @@ static constexpr std::array<std::string_view, static_cast<uint8_t>(PlayerNames::
     "PLAYER_SIX",   //
     "PLAYER_SEVEN", //
     "NEUTRAL",      //
+};
+
+enum class ContainerInfoType : uint32_t
+{
+	Town = 0,
+	Prayer = 1,
+	Citadel = 2,
+	Forest = 3,
+};
+
+enum class CitadelHeartInfoType : uint32_t
+{
+	Normal = 0,
+};
+
+enum class HelpText : int
+{
+};
+
+enum class FoodType : uint32_t
+{
+	None = 0,
+	Meat = 1 << 0,
+	Vegetable = 1 << 1,
+	Graze = 1 << 2,
+	Any = Meat | Vegetable,
+	MeatVegetable = Meat | Vegetable,
+	VegetableGraze = Vegetable | Graze,
+};
+
+enum class CitadelTypes : uint32_t
+{
+	Defence = 0,
+	Civic = 1,
+	Pen = 2,
+	Worship = 3,
+};
+
+enum class HelpSystemMessageSet : uint32_t
+{
+};
+
+enum class HelpSystemCondition : uint32_t
+{
+};
+
+constexpr uint32_t MakeSpeedState(float ms)
+{
+	constexpr uint32_t ms100 = 0x10000;
+	constexpr float ms1 = static_cast<float>(ms100) * 0.01f;
+	float scaled = ms * ms1;
+	// Speed needs to be positive. Round cast to int won't work in negative.
+	return static_cast<uint32_t>(scaled + 0.5f);
+}
+
+enum class SpeedState : uint32_t
+{
+	MetresSec_0 = MakeSpeedState(0.0f),
+	MetresSec_0_1 = MakeSpeedState(0.1f),
+	MetresSec_0_25 = MakeSpeedState(0.25f),
+	MetresSec_0_5 = MakeSpeedState(0.5f),
+	MetresSec_0_75 = MakeSpeedState(0.75f),
+	MetresSec_1 = MakeSpeedState(1.0f),
+	MetresSec_1_25 = MakeSpeedState(1.25f),
+	MetresSec_1_5 = MakeSpeedState(1.5f),
+	MetresSec_1_75 = MakeSpeedState(1.75f),
+	MetresSec_2 = MakeSpeedState(2.0f),
+	MetresSec_2_25 = MakeSpeedState(2.25f),
+	MetresSec_2_5 = MakeSpeedState(2.5f),
+	MetresSec_2_75 = MakeSpeedState(2.75f),
+	MetresSec_3 = MakeSpeedState(3.0f),
+	MetresSec_4 = MakeSpeedState(4.0f),
+	MetresSec_5 = MakeSpeedState(5.0f),
+	MetresSec_6 = MakeSpeedState(6.0f),
+	MetresSec_6_5 = MakeSpeedState(6.5f),
+	MetresSec_7 = MakeSpeedState(7.0f),
+	MetresSec_8 = MakeSpeedState(8.0f),
+	MetresSec_9 = MakeSpeedState(9.0f),
+	MetresSec_10 = MakeSpeedState(10.0f),
+	MetresSec_100 = MakeSpeedState(100.0f),
+};
+
+constexpr uint32_t MakeTurnAngleState(float degrees)
+{
+	constexpr uint32_t a360 = 0x800;
+	constexpr float a1 = static_cast<float>(a360) / 360.0f;
+	float scaled = degrees * a1;
+	// Speed needs to be positive. Round cast to int won't work in negative.
+	return static_cast<uint32_t>(scaled + 0.5f);
+}
+
+enum class TurnangleStates : int
+{
+	Degrees_360 = MakeTurnAngleState(360.0f / 1.0f),
+	Degrees_180 = MakeTurnAngleState(360.0f / 2.0f),
+	Degrees_90 = MakeTurnAngleState(360.0f / 4.0f),
+	Degrees_45 = MakeTurnAngleState(360.0f / 8.0f),
+	Degrees_22_5 = MakeTurnAngleState(360.0f / 16.0f),
+	Degrees_11_25 = MakeTurnAngleState(360.0f / 32.0f),
+	Degrees_5_625 = MakeTurnAngleState(360.0f / 64.0f),
+	Degrees_2_8125 = MakeTurnAngleState(360.0f / 128.0f),
+	Degrees_1_40625 = MakeTurnAngleState(360.0f / 256.0f),
+	Degrees_6 = MakeTurnAngleState(6.0f),
+	Degrees_3 = MakeTurnAngleState(3.0f),
+};
+
+enum class CollideType : uint32_t
+{
+	Clear = 0,
+	Water = 1 << 0,
+	Land = 1 << 1,
+	Field = 1 << 2,
+	Fixed = 1 << 3,
+	Edge = 1 << 4,
+	Tree = 1 << 5,
+	Wall = 1 << 6,
+
+	// Collision and Water have same values as Villager and Animal
+	Villager = 1,
+	Airbourne = 0,
+	Animal = 1,
+	Creature = 9,
+	Ball = 8,
+};
+
+enum class TownInfo : uint32_t
+{
+	RoundVillageSmall = 0,
+	RoundVillageMedium = 1,
+	RoundVillageLarge = 2,
+	SquareVillageSmall = 3,
+	SquareVillageMedium = 4,
+	SquareVillageLarge = 5,
+	MazeVillageSmall = 6,
+	MazeVillageMedium = 7,
+	MazeVillageLarge = 8,
+	CornerVillageSmall = 9,
+	CornerVillageMedium = 10,
+	CornerVillageLarge = 11,
+	OctagonVillageSmall = 12,
+	OctagonVillageMedium = 13,
+	OctagonVillageLarge = 14,
+	SquaresVillageSmall = 15,
+	SquaresVillageMedium = 16,
+	SquaresVillageLarge = 17,
+};
+
+enum class PenInfo : uint32_t
+{
+	Feed = 0,
+	Train = 1,
+	Sleep = 2,
+	Discipline = 3,
+	Pleasure = 4,
+	Walkway = 5,
+};
+
+enum class AttackInfo : int
+{
+	None = -1,
+	HandToHand = 0,
+	Arrow = 1,
+
+	_COUNT = 2
 };
 
 } // namespace openblack

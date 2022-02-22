@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -35,7 +35,7 @@ public:
 	GameWindow(const std::string& title, int width, int height, DisplayMode displayMode);
 
 	[[nodiscard]] SDL_Window* GetHandle() const;
-	void GetNativeHandles(void*& native_window, void*& native_display) const;
+	void GetNativeHandles(void*& nativeWindow, void*& nativeDisplay) const;
 
 	[[nodiscard]] bool IsOpen() const;
 	[[nodiscard]] float GetBrightness() const;

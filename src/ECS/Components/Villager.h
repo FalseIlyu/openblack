@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -14,6 +14,8 @@
 #include <string>
 #include <string_view>
 #include <tuple>
+
+#include <entt/fwd.hpp>
 
 #include "Enums.h"
 
@@ -69,5 +71,7 @@ struct Villager
 	Tribe tribe;
 	VillagerNumber number;
 	Task task;
+	entt::entity town;
+	entt::entity abode;
 };
 } // namespace openblack::ecs::components

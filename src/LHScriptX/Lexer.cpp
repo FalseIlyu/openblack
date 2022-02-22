@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -32,6 +32,14 @@ Token Lexer::GetToken()
 		unsigned char cc = *current_;
 		switch (cc)
 		{
+		case '/':
+			// Comment syntax. Ignore the rest of the line
+			if (*(current_ + 1) == '/')
+			{
+				// Skip line
+				while (*current_ != '\n' && current_ != end_) current_++;
+			}
+			break;
 		case ' ':
 		case '\t':
 		case '\r':

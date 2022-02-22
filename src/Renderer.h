@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -64,6 +64,7 @@ constexpr std::array Shaders {
     ShaderDefinition {"Terrain", "vs_terrain", "fs_terrain"},
     ShaderDefinition {"Object", "vs_object", "fs_object"},
     ShaderDefinition {"ObjectInstanced", "vs_object_instanced", "fs_object"},
+    ShaderDefinition {"Sky", "vs_object", "fs_sky"},
     ShaderDefinition {"Water", "vs_water", "fs_water"},
 };
 
@@ -122,6 +123,8 @@ public:
 		const bgfx::DynamicVertexBufferHandle* instanceBuffer;
 		uint32_t instanceStart;
 		uint32_t instanceCount;
+		bool isSky;
+		float skyType;
 	};
 
 	Renderer() = delete;
@@ -132,7 +135,7 @@ public:
 	void LoadShaders();
 	[[nodiscard]] graphics::ShaderManager& GetShaderManager() const;
 
-	void UpdateDebugCrossUniforms(const glm::vec3& position, float scale);
+	void UpdateDebugCrossUniforms(const glm::mat4& pose);
 
 	void ConfigureView(graphics::RenderPass viewId, uint16_t width, uint16_t height) const;
 
@@ -149,6 +152,6 @@ private:
 	std::unique_ptr<BgfxCallback> _bgfxCallback;
 
 	std::unique_ptr<graphics::DebugLines> _debugCross;
-	glm::mat4 _debugCrossPosition;
+	glm::mat4 _debugCrossPose;
 };
 } // namespace openblack

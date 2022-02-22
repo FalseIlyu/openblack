@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -178,30 +178,42 @@ graphics::ShaderManager& Renderer::GetShaderManager() const
 	return *_shaderManager;
 }
 
-void Renderer::UpdateDebugCrossUniforms(const glm::vec3& position, float scale)
+void Renderer::UpdateDebugCrossUniforms(const glm::mat4& pose)
 {
-	_debugCrossPosition = glm::translate(position) * glm::scale(glm::vec3(1, 1, 1) * scale);
+	_debugCrossPose = pose;
+}
+
+const Texture2D* GetTexture(uint32_t skinID, const std::unordered_map<SkinId, std::unique_ptr<graphics::Texture2D>>& skins,
+                            const MeshPack& meshPack)
+{
+	if (skinID != 0xFFFFFFFF)
+	{
+		if (skins.find(skinID) != skins.end())
+		{
+			return skins.at(skinID).get();
+		}
+		else if (skinID < meshPack.GetTextures().size())
+		{
+			return &meshPack.GetTexture(skinID);
+		}
+		else
+		{
+			SPDLOG_LOGGER_ERROR(spdlog::get("game"), "Could not find the texture");
+		}
+	}
+	return nullptr;
 }
 
 void Renderer::DrawSubMesh(const L3DMesh& mesh, const L3DSubMesh& subMesh, const MeshPack& meshPack,
                            const L3DMeshSubmitDesc& desc, bool preserveState) const
 {
 	assert(&subMesh.GetMesh());
-	assert(!subMesh.isPhysics());
+	if (subMesh.isPhysics())
+	{
+		return;
+	}
 
 	auto const& skins = mesh.GetSkins();
-
-	auto getTexture = [&skins, &meshPack](uint32_t skinID) -> const Texture2D* {
-		if (skinID != 0xFFFFFFFF)
-		{
-			if (skins.find(skinID) != skins.end())
-				return skins.at(skinID).get();
-			else
-				return &meshPack.GetTexture(skinID);
-		}
-		return nullptr;
-	};
-
 	bool lastPreserveState = false;
 	const auto& primitives = subMesh.GetPrimitives();
 	for (auto it = primitives.begin(); it != primitives.end(); ++it)
@@ -210,8 +222,8 @@ void Renderer::DrawSubMesh(const L3DMesh& mesh, const L3DSubMesh& subMesh, const
 
 		const bool hasNext = std::next(it) != primitives.end();
 
-		const Texture2D* texture = getTexture(prim.skinID);
-		const Texture2D* nextTexture = !hasNext ? nullptr : getTexture(std::next(it)->skinID);
+		const Texture2D* texture = GetTexture(prim.skinID, skins, meshPack);
+		const Texture2D* nextTexture = !hasNext ? nullptr : GetTexture(std::next(it)->skinID, skins, meshPack);
 
 		bool primitivePreserveState = texture == nextTexture && (preserveState || hasNext);
 
@@ -225,6 +237,16 @@ void Renderer::DrawSubMesh(const L3DMesh& mesh, const L3DSubMesh& subMesh, const
 			if (texture)
 			{
 				desc.program->SetTextureSampler("s_diffuse", 0, *texture);
+			}
+			if (!desc.isSky)
+			{
+				const glm::vec4 u_skyAlphaThreshold = {
+				    desc.skyType,
+				    prim.thresholdAlpha ? prim.alphaCutoutThreshold : 0.0f,
+				    0.0f,
+				    0.0f,
+				};
+				desc.program->SetUniformValue("u_skyAlphaThreshold", &u_skyAlphaThreshold);
 			}
 		}
 		else
@@ -310,6 +332,7 @@ void Renderer::DrawScene(const MeshPack& meshPack, const DrawSceneDesc& drawDesc
 			drawPassDesc.drawDebugCross = false;
 			drawPassDesc.drawBoundingBoxes = false;
 			drawPassDesc.cullBack = true;
+
 			DrawPass(meshPack, drawPassDesc);
 		}
 	}
@@ -333,7 +356,7 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 
 	_shaderManager->SetCamera(desc.viewId, *desc.camera);
 
-	auto objectShader = _shaderManager->GetShader("Object");
+	auto skyShader = _shaderManager->GetShader("Sky");
 	auto waterShader = _shaderManager->GetShader("Water");
 	auto terrainShader = _shaderManager->GetShader("Terrain");
 	auto debugShader = _shaderManager->GetShader("DebugLine");
@@ -345,23 +368,27 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 		                                                                               : Profiler::Stage::MainPassDrawSky);
 		if (desc.drawSky)
 		{
-			auto modelMatrix = glm::mat4(1.0f);
+			const auto modelMatrix = glm::mat4(1.0f);
+			const glm::vec4 u_typeAlignment = {desc.sky.GetCurrentSkyType(), Game::instance()->GetConfig().skyAlignment + 1.0f,
+			                                   0.0f, 0.0f};
 
-			objectShader->SetTextureSampler("s_diffuse", 0, *desc.sky._texture);
+			skyShader->SetTextureSampler("s_diffuse", 0, *desc.sky._texture);
+			skyShader->SetUniformValue("u_typeAlignment", &u_typeAlignment);
 
-			L3DMeshSubmitDesc submit_desc = {};
-			submit_desc.viewId = desc.viewId;
-			submit_desc.program = objectShader;
-			submit_desc.state = BGFX_STATE_DEFAULT;
+			L3DMeshSubmitDesc submitDesc = {};
+			submitDesc.viewId = desc.viewId;
+			submitDesc.program = skyShader;
+			submitDesc.state = BGFX_STATE_DEFAULT;
 			if (!desc.cullBack)
 			{
-				submit_desc.state &= ~BGFX_STATE_CULL_MASK;
-				submit_desc.state |= BGFX_STATE_CULL_CCW;
+				submitDesc.state &= ~BGFX_STATE_CULL_MASK;
+				submitDesc.state |= BGFX_STATE_CULL_CCW;
 			}
-			submit_desc.modelMatrices = &modelMatrix;
-			submit_desc.matrixCount = 1;
+			submitDesc.modelMatrices = &modelMatrix;
+			submitDesc.matrixCount = 1;
+			submitDesc.isSky = true;
 
-			DrawMesh(*desc.sky._model, meshPack, submit_desc, 0);
+			DrawMesh(*desc.sky._model, meshPack, submitDesc, 0);
 		}
 	}
 
@@ -376,6 +403,8 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 			bgfx::setState(BGFX_STATE_DEFAULT);
 			waterShader->SetTextureSampler("s_diffuse", 0, *desc.water._texture);
 			waterShader->SetTextureSampler("s_reflection", 1, desc.water.GetFrameBuffer().GetColorAttachment());
+			const glm::vec4 u_sky = {desc.sky.GetCurrentSkyType(), 0.0f, 0.0f, 0.0f};
+			waterShader->SetUniformValue("u_sky", &u_sky); // fs
 			bgfx::submit(static_cast<bgfx::ViewId>(desc.viewId), waterShader->GetRawHandle());
 		}
 	}
@@ -390,12 +419,13 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 				terrainShader->SetTextureSampler("s0_materials", 0, desc.island.GetAlbedoArray());
 				terrainShader->SetTextureSampler("s1_bump", 1, desc.island.GetBump());
 				terrainShader->SetTextureSampler("s2_smallBump", 2, desc.island.GetSmallBump());
-				terrainShader->SetUniformValue("u_timeOfDay", &desc.timeOfDay);
-				terrainShader->SetUniformValue("u_bumpmapStrength", &desc.bumpMapStrength);
-				terrainShader->SetUniformValue("u_smallBumpmapStrength", &desc.smallBumpMapStrength);
 
-				glm::vec4 mapPosition = block.GetMapPosition();
-				terrainShader->SetUniformValue("u_blockPosition", &mapPosition);
+				// pack uniforms
+				const glm::vec4 mapPosition = block.GetMapPosition();
+				terrainShader->SetUniformValue("u_blockPosition", &mapPosition); // vs
+				const glm::vec4 u_skyAndBump = {desc.sky.GetCurrentSkyType(), desc.bumpMapStrength, desc.smallBumpMapStrength,
+				                                0.0f};
+				terrainShader->SetUniformValue("u_skyAndBump", &u_skyAndBump); // fs
 
 				// clang-format off
 				constexpr auto defaultState = 0u
@@ -450,6 +480,9 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 					submitDesc.modelMatrices = &identity;
 					submitDesc.matrixCount = 1;
 				}
+				submitDesc.isSky = false;
+				submitDesc.skyType = desc.sky.GetCurrentSkyType();
+
 				// TODO(bwrsandman): choose the correct LOD
 				DrawMesh(mesh, meshPack, submitDesc, std::numeric_limits<uint8_t>::max());
 			}
@@ -505,6 +538,8 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 			}
 			submitDesc.modelMatrices = bones.data();
 			submitDesc.matrixCount = static_cast<uint8_t>(bones.size());
+			submitDesc.isSky = false;
+			submitDesc.skyType = desc.sky.GetCurrentSkyType();
 			DrawMesh(desc.testModel, meshPack, submitDesc, 0);
 		}
 	}
@@ -515,7 +550,7 @@ void Renderer::DrawPass(const MeshPack& meshPack, const DrawSceneDesc& desc) con
 		                                                                    : Profiler::Stage::MainPassDrawDebugCross);
 		if (desc.drawDebugCross)
 		{
-			bgfx::setTransform(glm::value_ptr(_debugCrossPosition));
+			bgfx::setTransform(glm::value_ptr(_debugCrossPose));
 			_debugCross->GetMesh().GetVertexBuffer().Bind();
 			bgfx::setState(BGFX_STATE_DEFAULT | BGFX_STATE_PT_LINES);
 			bgfx::submit(static_cast<bgfx::ViewId>(desc.viewId), debugShader->GetRawHandle());

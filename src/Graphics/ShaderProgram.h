@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -39,6 +39,7 @@ public:
 	[[nodiscard]] bgfx::ProgramHandle GetRawHandle() const { return _program; }
 
 private:
+	std::string _name;
 	bgfx::ProgramHandle _program;
 	std::map<std::string, bgfx::UniformHandle> _uniforms;
 };

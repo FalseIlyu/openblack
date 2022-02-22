@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -22,9 +22,9 @@
 #include "ECS/Archetypes/HandArchetype.h"
 #include "ECS/Components/Transform.h"
 #include "ECS/Registry.h"
+#include "ECS/Systems/DynamicsSystem.h"
 #include "ECS/Systems/RenderingSystem.h"
 #include "GameWindow.h"
-#include "GitSHA1.h"
 #include "Graphics/FrameBuffer.h"
 #include "Gui/Gui.h"
 #include "LHScriptX/Script.h"
@@ -37,10 +37,12 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/euler_angles.hpp>
 #include <glm/gtx/intersect.hpp>
+#include <glm/gtx/transform.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
+#include <LHVM/LHVM.h>
 #include <Serializer/FotFile.h>
 #include <cstdint>
 #include <string>
@@ -54,7 +56,6 @@ using namespace openblack::lhscriptx;
 using namespace std::chrono_literals;
 using openblack::ecs::systems::RenderingSystem;
 
-const std::string kBuildStr(kGitSHA1Hash, 8);
 const std::string kWindowTitle = "openblack";
 
 Game* Game::sInstance = nullptr;
@@ -67,7 +68,7 @@ Game::Game(Arguments&& args)
     , _gameSpeedMultiplier(1.0f)
     , _frameCount(0)
     , _turnCount(0)
-    , _intersection()
+    , _handPose()
 {
 	std::function<std::shared_ptr<spdlog::logger>(const std::string&)> CreateLogger;
 	if (!args.logFile.empty() && args.logFile != "stdout")
@@ -91,10 +92,10 @@ Game::Game(Arguments&& args)
 	SetGamePath(args.gamePath);
 	if (args.rendererType != bgfx::RendererType::Noop)
 	{
-		_window = std::make_unique<GameWindow>(kWindowTitle + " [" + kBuildStr + "]", args.windowWidth, args.windowHeight,
-		                                       args.displayMode);
+		_window = std::make_unique<GameWindow>(kWindowTitle, args.windowWidth, args.windowHeight, args.displayMode);
 	}
 	_renderer = std::make_unique<Renderer>(_window.get(), args.rendererType, args.vsync);
+	_dynamicsSystem = std::make_unique<ecs::systems::DynamicsSystem>();
 	_fileSystem->SetGamePath(GetGamePath());
 	_handModel = std::make_unique<L3DMesh>();
 	_handModel->LoadFromFile(_fileSystem->CreatureMeshPath() / "Hand_Boned_Base2.l3d");
@@ -120,6 +121,7 @@ Game::~Game()
 	_handModel.reset();
 	_animationPack.reset();
 	_meshPack.reset();
+	_dynamicsSystem.reset();
 	_landIsland.reset();
 	_entityRegistry.reset();
 	_gui.reset();
@@ -127,6 +129,7 @@ Game::~Game()
 	_window.reset();
 	_eventManager.reset();
 	SDL_Quit(); // todo: move to GameWindow
+	spdlog::shutdown();
 }
 
 entt::entity Game::GetHand() const
@@ -137,11 +140,14 @@ entt::entity Game::GetHand() const
 bool Game::ProcessEvents(const SDL_Event& event)
 {
 	static bool leftMouseButton = false;
+	static bool middleMouseButton = false;
 
 	if ((event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) && event.button.button == SDL_BUTTON_LEFT)
 		leftMouseButton = !leftMouseButton;
+	if ((event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) && event.button.button == SDL_BUTTON_MIDDLE)
+		middleMouseButton = !middleMouseButton;
 
-	_handGripping = leftMouseButton;
+	_handGripping = middleMouseButton || leftMouseButton;
 
 	switch (event.type)
 	{
@@ -215,6 +221,16 @@ bool Game::Update()
 	    std::chrono::duration_cast<std::chrono::microseconds>(_profiler->_entries[_profiler->GetEntryIndex(0)]._frameStart -
 	                                                          _profiler->_entries[_profiler->GetEntryIndex(-1)]._frameStart);
 
+	// Physics
+	{
+		auto sdlInput = _profiler->BeginScoped(Profiler::Stage::PhysicsUpdate);
+		if (_frameCount > 0)
+		{
+			_dynamicsSystem->Update(deltaTime);
+			_dynamicsSystem->UpdatePhysicsTransforms();
+		}
+	}
+
 	// Input events
 	{
 		auto sdlInput = _profiler->BeginScoped(Profiler::Stage::SdlInput);
@@ -258,6 +274,7 @@ bool Game::Update()
 		auto profilerScopedUpdateUniforms = _profiler->BeginScoped(Profiler::Stage::UpdateUniforms);
 
 		// Update Debug Cross
+		ecs::components::Transform intersectionTransform;
 		{
 			glm::ivec2 screenSize {};
 			if (_window)
@@ -265,35 +282,49 @@ bool Game::Update()
 				_window->GetSize(screenSize.x, screenSize.y);
 			}
 
-			glm::vec3 rayOrigin, rayDirection;
-			_camera->DeprojectScreenToWorld(_mousePosition, screenSize, rayOrigin, rayDirection);
+			const auto scale = glm::vec3(50.0f, 50.0f, 50.0f);
+			if (screenSize.x > 0 && screenSize.y > 0)
+			{
+				glm::vec3 rayOrigin, rayDirection;
+				_camera->DeprojectScreenToWorld(_mousePosition, screenSize, rayOrigin, rayDirection);
 
-			float intersectDistance = 0.0f;
-			bool intersects = glm::intersectRayPlane(rayOrigin, rayDirection, glm::vec3(0.0f, 0.0f, 0.0f), // plane origin
-			                                         glm::vec3(0.0f, 1.0f, 0.0f),                          // plane normal
-			                                         intersectDistance);
-
-			if (intersects)
-				_intersection = rayOrigin + rayDirection * intersectDistance;
-
-			_intersection.y = _landIsland->GetHeightAt(glm::vec2(_intersection.x, _intersection.z));
-
-			_renderer->UpdateDebugCrossUniforms(_intersection, 50.0f);
+				if (auto hit = _dynamicsSystem->RayCastClosestHit(rayOrigin, rayDirection, 1e10f))
+				{
+					intersectionTransform = hit->first;
+				}
+				else // For the water
+				{
+					float intersectDistance = 0.0f;
+					const auto plane_origin = glm::vec3(0.0f, 0.0f, 0.0f);
+					const auto plane_normal = glm::vec3(0.0f, 1.0f, 0.0f);
+					if (glm::intersectRayPlane(rayOrigin, rayDirection, plane_origin, plane_normal, intersectDistance))
+					{
+						intersectionTransform.position = rayOrigin + rayDirection * intersectDistance;
+						intersectionTransform.rotation = glm::mat3(1.0f);
+					}
+				}
+			}
+			intersectionTransform.scale = scale;
+			_handPose = glm::mat4(1.0f);
+			_handPose = glm::translate(_handPose, intersectionTransform.position);
+			_handPose *= glm::mat4(intersectionTransform.rotation);
+			_handPose = glm::scale(_handPose, intersectionTransform.scale);
+			_renderer->UpdateDebugCrossUniforms(_handPose);
 		}
 
 		// Update Hand
 		if (!_handGripping)
 		{
+			const glm::vec3 handOffset(0, 1.5f, 0);
 			const glm::mat4 modelRotationCorrection = glm::eulerAngleX(glm::radians(90.0f));
 			auto& handTransform = _entityRegistry->Get<ecs::components::Transform>(_handEntity);
-			handTransform.position = _intersection;
+			// TODO: move using velocity rather than snapping hand to intersectionTransform
+			handTransform.position = intersectionTransform.position;
 			auto cameraRotation = _camera->GetRotation();
-
-			auto handHeight = GetLandIsland().GetHeightAt(glm::vec2(handTransform.position.x, handTransform.position.z)) + 4.0f;
-
 			handTransform.rotation = glm::eulerAngleY(glm::radians(-cameraRotation.y)) * modelRotationCorrection;
-			handTransform.position = glm::vec3(handTransform.position.x, handHeight, handTransform.position.z);
-			RenderingSystem::instance().SetDirty();
+			handTransform.rotation = intersectionTransform.rotation * handTransform.rotation;
+			handTransform.position += intersectionTransform.rotation * handOffset;
+			_entityRegistry->SetDirty();
 		}
 
 		// Update Entities
@@ -322,7 +353,8 @@ bool Game::Run()
 	_camera->SetPosition(glm::vec3(1441.56f, 24.764f, 2081.76f));
 	_camera->SetRotation(glm::vec3(0.0f, -45.0f, 0.0f));
 
-	_meshPack = std::make_unique<MeshPack>();
+	auto enableUnknownMeshes = false;
+	_meshPack = std::make_unique<MeshPack>(enableUnknownMeshes);
 	if (!_meshPack->LoadFromFile(_fileSystem->DataPath() / "AllMeshes.g3d"))
 	{
 		return false;
@@ -360,6 +392,7 @@ bool Game::Run()
 		return false;
 	}
 	LoadMap(_fileSystem->ScriptsPath() / "Land1.txt");
+	_dynamicsSystem->RegisterRigidBodies();
 
 	auto challengePath = _fileSystem->QuestsPath() / "challenge.chl";
 	if (_fileSystem->Exists(challengePath))
@@ -386,6 +419,8 @@ bool Game::Run()
 		_water->GetFrameBuffer().GetSize(waterWidth, waterHeight);
 		_renderer->ConfigureView(graphics::RenderPass::Reflection, waterWidth, waterHeight);
 	}
+
+	Game::SetTime(_config.timeOfDay);
 
 	_frameCount = 0;
 	auto last_time = std::chrono::high_resolution_clock::now();
@@ -450,12 +485,13 @@ void Game::LoadMap(const fs::path& path)
 	auto data = _fileSystem->ReadAll(path);
 	std::string source(reinterpret_cast<const char*>(data.data()), data.size());
 
+	_dynamicsSystem->Reset();
 	// Reset everything. Deletes all entities and their components
 	_entityRegistry->Reset();
 
 	// We need a hand for the player
 	_handEntity = ecs::archetypes::HandArchetype::Create(glm::vec3(0.0f), glm::half_pi<float>(), 0.0f, glm::half_pi<float>(),
-	                                                     0.02f, false);
+	                                                     0.01f, false);
 
 	Script script(this);
 	script.Load(source);
@@ -495,6 +531,8 @@ void Game::LoadLandscape(const fs::path& path)
 
 	_landIsland = std::make_unique<LandIsland>();
 	_landIsland->LoadFromFile(fixedName.u8string());
+
+	_dynamicsSystem->RegisterIslandRigidBodies(*_landIsland);
 }
 
 bool Game::LoadVariables()
@@ -505,30 +543,6 @@ bool Game::LoadVariables()
 	{
 		return false;
 	}
-
-	for ([[maybe_unused]] const auto& m : _infoConstants.magic)
-	{
-		SPDLOG_LOGGER_DEBUG(spdlog::get("game"), "MAGIC_TYPE {}, PerceivedPower={}", m.typeEnum, m.perceivedPower);
-	}
-
-	// GMagicInfo: 0x48 bytes // DETAIL_MAGIC_GENERAL_INFO
-	// 10
-
-	// GMagicHealInfo: 0x48, 0x8 bytes // DETAIL_MAGIC_HEAL_INFO
-	// GMagicTeleportInfo: 0x48, 0x8 bytes // DETAIL_MAGIC_TELEPORT_INFO
-
-	// DETAIL_MAGIC_GENERAL_INFO
-	// DETAIL_MAGIC_HEAL_INFO
-	// DETAIL_MAGIC_TELEPORT_INFO
-	// DETAIL_MAGIC_FOREST_INFO
-	// DETAIL_MAGIC_FOOD_INFO
-	// DETAIL_MAGIC_STORM_AND_TORNADO_INFO
-	// DETAIL_MAGIC_SHIELD_ONE_INFO
-	// DETAIL_MAGIC_WOOD_INFO
-	// DETAIL_MAGIC_WATER_INFO
-	// DETAIL_MAGIC_FLOCK_FLYING_INFO
-	// DETAIL_MAGIC_FLOCK_GROUND_INFO
-	// DETAIL_MAGIC_CREATURE_SPELL_INFO
 
 	return true;
 }

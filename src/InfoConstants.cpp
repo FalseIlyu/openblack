@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -41,7 +41,7 @@ AbodeInfo GAbodeInfo::Find(const std::string& name)
 	for (size_t i = 0; i < constants.abode.size(); ++i)
 	{
 		auto tribeName = TribeStrs[static_cast<uint8_t>(constants.abode[i].tribeType)];
-		auto abodeName = std::string(constants.abode[i].name.data());
+		auto abodeName = std::string(constants.abode[i].debugString.data());
 		if (std::string(tribeName.data()) + "_" + abodeName == name)
 		{
 			return static_cast<AbodeInfo>(i);
@@ -79,7 +79,7 @@ FeatureInfo GFeatureInfo::Find(const std::string& name)
 	auto& constants = Game::instance()->GetInfoConstants();
 	for (size_t i = 0; i < constants.feature.size(); ++i)
 	{
-		if (name == constants.feature[i].description.data())
+		if (name == constants.feature[i].debugString.data())
 		{
 			return static_cast<FeatureInfo>(i);
 		}
@@ -92,7 +92,7 @@ AnimatedStaticInfo GAnimatedStaticInfo::Find(const std::string& name)
 	auto& constants = Game::instance()->GetInfoConstants();
 	for (size_t i = 0; i < constants.animatedStatic.size(); ++i)
 	{
-		if (name == constants.animatedStatic[i].description.data())
+		if (name == constants.animatedStatic[i].debugString.data())
 		{
 			return static_cast<AnimatedStaticInfo>(i);
 		}

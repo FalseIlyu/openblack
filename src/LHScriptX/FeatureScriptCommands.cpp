@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -20,10 +20,12 @@
 #include "ECS/Archetypes/AbodeArchetype.h"
 #include "ECS/Archetypes/AnimatedStaticArchetype.h"
 #include "ECS/Archetypes/BigForestArchetype.h"
+#include "ECS/Archetypes/BonfireArchetype.h"
 #include "ECS/Archetypes/FeatureArchetype.h"
 #include "ECS/Archetypes/FieldArchetype.h"
 #include "ECS/Archetypes/MobileObjectArchetype.h"
 #include "ECS/Archetypes/MobileStaticArchetype.h"
+#include "ECS/Archetypes/StreetLanternArchetype.h"
 #include "ECS/Archetypes/TownArchetype.h"
 #include "ECS/Archetypes/TreeArchetype.h"
 #include "ECS/Archetypes/VillagerArchetype.h"
@@ -83,7 +85,8 @@ std::tuple<Tribe, VillagerNumber> GetVillagerTribeAndNumber(const std::string& v
 
 } // namespace
 
-const std::array<const ScriptCommandSignature, 105> FeatureScriptCommands::Signatures = {{
+const std::array<const ScriptCommandSignature, 106> FeatureScriptCommands::Signatures = {{
+    CREATE_COMMAND_BINDING("SET_A_TOWNS_INFLUENCE_MULTIPLIER", SetATownInfluenceMultiplier),
     CREATE_COMMAND_BINDING("CREATE_MIST", CreateMist),
     CREATE_COMMAND_BINDING("CREATE_PATH", CreatePath),
     CREATE_COMMAND_BINDING("CREATE_TOWN", CreateTown),
@@ -201,6 +204,12 @@ inline glm::vec3 GetSize(int size)
 	return glm::vec3(size, size, size) * 0.001f;
 }
 
+void FeatureScriptCommands::SetATownInfluenceMultiplier(int32_t townId, float multiplier)
+{
+	SPDLOG_LOGGER_ERROR(spdlog::get("scripting"), "LHScriptX Function {}(townId={}, multiplier={}) not implemented.", __func__,
+	                    townId, multiplier);
+}
+
 void FeatureScriptCommands::CreateMist(glm::vec3 position, float param_2, int32_t param_3, float param_4, float param_5)
 {
 	SPDLOG_LOGGER_ERROR(spdlog::get("scripting"), "LHScriptX: {}:{}: Function {}({}, {}, {}, {}, {}) not implemented.",
@@ -216,8 +225,8 @@ void FeatureScriptCommands::CreatePath(int32_t param_1, int32_t param_2, int32_t
 void FeatureScriptCommands::CreateTown(int32_t townId, glm::vec3 position, const std::string& playerOwner,
                                        [[maybe_unused]] int32_t, const std::string& tribeType)
 {
-	spdlog::get("scripting")
-	    ->debug(R"(LHScriptX: Creating town {} for "{}" with tribe type "{}".)", townId, playerOwner, tribeType);
+	SPDLOG_LOGGER_DEBUG(spdlog::get("scripting"), R"(LHScriptX: Creating town {} for "{}" with tribe type "{}".)", townId,
+	                    playerOwner, tribeType);
 
 	PlayerNames player;
 	try
@@ -726,16 +735,22 @@ void FeatureScriptCommands::MultiplayerDebug(int32_t, int32_t)
 	// __func__);
 }
 
-void FeatureScriptCommands::CreateStreetLantern([[maybe_unused]] glm::vec3 position, int32_t)
+void FeatureScriptCommands::CreateStreetLantern([[maybe_unused]] glm::vec3 position, int32_t type)
 {
-	// SPDLOG_LOGGER_ERROR(spdlog::get("scripting"), "LHScriptX: {}:{}: Function {} not implemented.", __FILE__, __LINE__,
-	// __func__);
+	// In the retail game, any value other than 7 creates a bonfire
+	if (type == 7)
+	{
+		StreetLanternArchetype::Create(position);
+	}
+	else
+	{
+		BonfireArchetype::Create(position);
+	}
 }
 
 void FeatureScriptCommands::CreateStreetLight([[maybe_unused]] glm::vec3 position)
 {
-	// SPDLOG_LOGGER_ERROR(spdlog::get("scripting"), "LHScriptX: {}:{}: Function {} not implemented.", __FILE__, __LINE__,
-	// __func__);
+	StreetLanternArchetype::Create(position);
 }
 
 void FeatureScriptCommands::SetLandNumber(int32_t number)

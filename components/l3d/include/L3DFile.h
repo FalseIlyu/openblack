@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -173,12 +173,52 @@ struct L3DBone
 };
 static_assert(sizeof(L3DBone) == 3 * sizeof(uint32_t) + 9 * sizeof(float) + sizeof(L3DPoint));
 
+struct L3DMaterial
+{
+	enum class Type : uint32_t
+	{
+		Smooth = 0x0,
+		SmoothAlpha = 0x1,
+		Textured = 0x2,
+		TexturedAlpha = 0x3,
+		AlphaTextured = 0x4,
+		AlphaTexturedAlpha = 0x5,
+		AlphaTexturedAlphaNz = 0x6,
+		SmoothAlphaNz = 0x7,
+		TexturedAlphaNz = 0x8,
+		TexturedChroma = 0x9,
+		AlphaTexturedAlphaAdditiveChroma = 0xa,
+		AlphaTexturedAlphaAdditiveChromaNz = 0xb,
+		AlphaTexturedAlphaAdditive = 0xc,
+		AlphaTexturedAlphaAdditiveNz = 0xd,
+		TexturedChromaAlpha = 0xf,
+		TexturedChromaAlphaNz = 0x10,
+		ChromaJustZ = 0x12,
+
+		_Count,
+	};
+	struct BGRA8
+	{
+		uint8_t b;
+		uint8_t g;
+		uint8_t r;
+		uint8_t a;
+	};
+	Type type;
+	uint8_t alphaCutoutThreshold;
+	uint8_t cullMode;
+	uint32_t skinID;
+	union
+	{
+		BGRA8 bgra;
+		uint32_t raw;
+	} color;
+};
+static_assert(sizeof(L3DMaterial) == 4 * sizeof(uint32_t));
+
 struct L3DPrimitiveHeader
 {
-	uint32_t unknown_1;
-	uint32_t unknown_2;
-	uint32_t skinID;
-	uint32_t unknown_3;
+	L3DMaterial material;
 	uint32_t numVertices;
 	uint32_t verticesOffset;
 	uint32_t numTriangles;

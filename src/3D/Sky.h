@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -34,20 +34,38 @@ public:
 	~Sky() = default;
 
 	void SetDayNightTimes(float nightFull, float duskStart, float duskEnd, float dayFull);
-
-	void Interpolate555Texture(uint16_t* bitmap, uint16_t*, uint16_t*, float);
-
-	void CalculateTextures();
+	/// Time between 0 and 24 in hours
 	void SetTime(float time);
-
-	float TimeOfDay;
+	/// Return index in times as a float for interpolation between adjacent times
+	/// Will use _nightFullTime, _duskStartTime, _duskEndTime and _dayFullTime to determine value
+	/// 0 -> Night (min value)
+	/// 1 -> Dawn/Dusk
+	/// 2 -> Day (max value)
+	float GetCurrentSkyType() const;
 
 private:
 	friend class Renderer;
+
+	static constexpr std::array<std::string_view, 3> _alignments = {
+	    "evil",
+	    "Ntrl",
+	    "good",
+	};
+	static constexpr std::array<std::string_view, 3> _times = {
+	    "night",
+	    "dusk",
+	    "day",
+	};
+	static constexpr std::array<uint16_t, 3> _textureResolution = {
+	    256,
+	    256,
+	    static_cast<uint16_t>(_alignments.size() * _times.size()),
+	};
+
 	std::unique_ptr<L3DMesh> _model;
 	std::unique_ptr<graphics::Texture2D> _texture; // TODO(bwrsandman): put in a resource manager and store look-up
 
-	std::array<std::array<uint16_t, 256 * 256>, 9> _bitmaps;
+	std::array<uint16_t, _textureResolution[0] * _textureResolution[1] * _textureResolution[2]> _bitmaps;
 
 	float _timeOfDay;
 	float _nightFullTime;

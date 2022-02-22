@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -31,7 +31,7 @@ entt::entity TreeArchetype::Create([[maybe_unused]] uint32_t forestId, const glm
 
 	registry.Assign<Transform>(entity, position, glm::eulerAngleY(-yAngleRadians), glm::vec3(scale));
 	registry.Assign<Tree>(entity, type, maxSize);
-	registry.Assign<Mesh>(entity, info.meshId, static_cast<int8_t>(0), static_cast<int8_t>(-1));
+	registry.Assign<Mesh>(entity, info.normal, static_cast<int8_t>(0), static_cast<int8_t>(-1));
 
 	return entity;
 }

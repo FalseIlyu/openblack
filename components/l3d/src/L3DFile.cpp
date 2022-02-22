@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -84,10 +84,12 @@
  * ------------------------ start of primitive block ---------------------------
  *
  * - 48 bytes header * total primitives, each record containing 12 ints
- *         unknown 1
- *         unknown 2
+ *         material type - 32 bit rendering method to be used
+ *         alpha cutout threshold - 8 bit alpha value threshold to dismiss
+ *         cull mode - 8 bit culling method
+ *         unused 16 bits
  *         skin id: id of the skin to use (see above)
- *         unknown 3
+ *         color - 32 bit color in BGRA8 format
  *         vertex count: count of the vertices in vertex block (see below)
  *         vertex start offset: offset in vertex block (see below)
  *         triangle count: count of the triangles in triangle block

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -9,6 +9,7 @@
 
 #include "TownArchetype.h"
 
+#include "ECS/Components/Town.h"
 #include "ECS/Components/Transform.h"
 #include "ECS/Registry.h"
 #include "Game.h"
@@ -24,7 +25,7 @@ entt::entity TownArchetype::Create(int id, const glm::vec3& position, [[maybe_un
 
 	// const auto& info = Game::instance()->GetInfoConstants().town;
 
-	registry.Assign<Town>(entity, id);
+	registry.Assign<Town>(entity, static_cast<uint32_t>(id));
 	registry.Assign<Tribe>(entity, tribe);
 	registry.Assign<Transform>(entity, position, glm::mat3(1.0f), glm::vec3(1.0f));
 	auto& registryContext = registry.Context();

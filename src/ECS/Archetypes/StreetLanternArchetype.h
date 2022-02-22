@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -9,9 +9,17 @@
 
 #pragma once
 
-#ifndef GIT_SHA1
-#define GIT_SHA1 "UNDEFINED_GIT_SHA1"
-#warning "Git sha-1 undefined. Make sure to set it properly"
-#endif
+#include <entt/fwd.hpp>
+#include <glm/fwd.hpp>
 
-static const char* kGitSHA1Hash = GIT_SHA1;
+#include "Enums.h"
+
+namespace openblack::ecs::archetypes
+{
+class StreetLanternArchetype
+{
+public:
+	static entt::entity Create(const glm::vec3& position);
+	StreetLanternArchetype() = delete;
+};
+} // namespace openblack::ecs::archetypes

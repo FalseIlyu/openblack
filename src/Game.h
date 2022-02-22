@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -21,16 +21,15 @@ namespace fs = std::experimental::filesystem;
 #include <string>
 #include <vector>
 
-#include <SDL.h>
 #include <bgfx/bgfx.h>
 #include <entt/entity/fwd.hpp>
 #include <glm/glm.hpp>
 #include <spdlog/common.h>
 
-#include <LHVM/LHVM.h>
-
 #include "GameWindow.h"
 #include "InfoConstants.h"
+
+typedef union SDL_Event SDL_Event;
 
 namespace openblack
 {
@@ -53,11 +52,20 @@ namespace gui
 class Gui;
 }
 
+namespace LHVM
+{
+class LHVM;
+}
+
 namespace ecs
 {
 namespace components
 {
 struct Transform;
+}
+namespace systems
+{
+class DynamicsSystem;
 }
 class Registry;
 } // namespace ecs
@@ -123,7 +131,8 @@ public:
 		bool drawFootpaths {false};
 		bool drawStreams {false};
 
-		float timeOfDay {1.0f};
+		float timeOfDay {12.0f};
+		float skyAlignment {0.0f};
 		float bumpMapStrength {1.0f};
 		float smallBumpMapStrength {1.0f};
 
@@ -158,6 +167,7 @@ public:
 	Camera& GetCamera() { return *_camera; }
 	[[nodiscard]] Profiler& GetProfiler() const { return *_profiler; }
 	[[nodiscard]] Renderer& GetRenderer() const { return *_renderer; }
+	const ecs::systems::DynamicsSystem& GetDynamicsSystem() const { return *_dynamicsSystem; }
 	[[nodiscard]] Camera& GetCamera() const { return *_camera; }
 	[[nodiscard]] Sky& GetSky() const { return *_sky; }
 	[[nodiscard]] Water& GetWater() const { return *_water; }
@@ -189,6 +199,7 @@ private:
 
 	std::unique_ptr<GameWindow> _window;
 	std::unique_ptr<Renderer> _renderer;
+	std::unique_ptr<ecs::systems::DynamicsSystem> _dynamicsSystem;
 	std::unique_ptr<gui::Gui> _gui;
 	std::unique_ptr<Camera> _camera;
 	std::unique_ptr<Profiler> _profiler;
@@ -219,7 +230,7 @@ private:
 	uint16_t _turnCount;
 
 	glm::ivec2 _mousePosition;
-	glm::vec3 _intersection;
+	glm::mat4 _handPose;
 
 	entt::entity _handEntity;
 	bool _handGripping;

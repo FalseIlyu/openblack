@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -20,6 +20,11 @@
 
 namespace openblack
 {
+
+namespace ecs::systems
+{
+class DynamicsSystem;
+}
 
 namespace lnd
 {
@@ -50,8 +55,9 @@ private:
 	std::vector<LandBlock> _landBlocks;
 	std::vector<lnd::LNDCountry> _countries;
 
-	// Renderer
+	// Renderer, Dynamics
 public:
+	[[nodiscard]] std::vector<LandBlock>& GetBlocks() { return _landBlocks; }
 	[[nodiscard]] const std::vector<LandBlock>& GetBlocks() const { return _landBlocks; }
 	[[nodiscard]] const std::vector<lnd::LNDCountry>& GetCountries() const { return _countries; }
 	[[nodiscard]] const graphics::Texture2D& GetAlbedoArray() const { return *_materialArray; }

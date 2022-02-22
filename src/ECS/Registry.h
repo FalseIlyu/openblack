@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -50,7 +50,7 @@ public:
 	template <typename Component>
 	size_t Size()
 	{
-		return _registry.size<Component>();
+		return _registry.storage<Component>().size();
 	}
 	template <typename... Components>
 	decltype(auto) AllOf(entt::entity entity) const

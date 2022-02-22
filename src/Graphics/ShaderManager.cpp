@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2018-2021 openblack developers
+ * Copyright (c) 2018-2022 openblack developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/openblack/openblack
@@ -24,6 +24,8 @@
 #include "ShaderIncluder.h"
 #define SHADER_NAME fs_object
 #include "ShaderIncluder.h"
+#define SHADER_NAME fs_sky
+#include "ShaderIncluder.h"
 
 #define SHADER_NAME vs_terrain
 #include "ShaderIncluder.h"
@@ -42,17 +44,15 @@
 namespace openblack::graphics
 {
 
-const bgfx::EmbeddedShader s_embeddedShaders[] = {BGFX_EMBEDDED_SHADER(vs_line),    BGFX_EMBEDDED_SHADER(vs_line_instanced),
-                                                  BGFX_EMBEDDED_SHADER(fs_line),
-
-                                                  BGFX_EMBEDDED_SHADER(vs_object),  BGFX_EMBEDDED_SHADER(vs_object_instanced),
-                                                  BGFX_EMBEDDED_SHADER(fs_object),
-
-                                                  BGFX_EMBEDDED_SHADER(vs_terrain), BGFX_EMBEDDED_SHADER(fs_terrain),
-
-                                                  BGFX_EMBEDDED_SHADER(vs_water),   BGFX_EMBEDDED_SHADER(fs_water),
-
-                                                  BGFX_EMBEDDED_SHADER_END()};
+const bgfx::EmbeddedShader s_embeddedShaders[] = {
+    BGFX_EMBEDDED_SHADER(vs_line),    BGFX_EMBEDDED_SHADER(vs_line_instanced),   //
+    BGFX_EMBEDDED_SHADER(fs_line),                                               //
+    BGFX_EMBEDDED_SHADER(vs_object),  BGFX_EMBEDDED_SHADER(vs_object_instanced), //
+    BGFX_EMBEDDED_SHADER(fs_object),  BGFX_EMBEDDED_SHADER(fs_sky),              //
+    BGFX_EMBEDDED_SHADER(vs_terrain), BGFX_EMBEDDED_SHADER(fs_terrain),          //
+    BGFX_EMBEDDED_SHADER(vs_water),   BGFX_EMBEDDED_SHADER(fs_water),            //
+    BGFX_EMBEDDED_SHADER_END()                                                   //
+};
 
 ShaderManager::~ShaderManager()
 {
