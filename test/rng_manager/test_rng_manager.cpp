@@ -15,7 +15,7 @@
 #include <thread>
 #include <vector>
 
-#define N_TEST 100
+#define N_TEST 1000000
 #define TEST_SEED 15000
 #define N_THREAD 10
 
@@ -50,8 +50,6 @@ void randomThread(int totalIteration, int& counter, std::vector<uint16_t>& resul
         uint16_t random = rngmanager.nextInt();
         {
             std::lock_guard<std::mutex> locked(lock);
-            std::cout << counter << ": ";
-            std::cout << random << std::endl;
             result[counter] = random;
             counter++;
         }
@@ -90,5 +88,9 @@ TEST(RngManager, debug_predictable_multi)
         t ->join();
     }
 
+    // Can't guarentee the order of writing in sndResult
+    // so we just look if they have the same numbers
+    std::sort(fstResult.begin(), fstResult.end());
+    std::sort(sndResult.begin(), sndResult.end());
     ASSERT_TRUE(fstResult==sndResult);
 }
