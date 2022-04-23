@@ -10,6 +10,7 @@
 #include <gtest/gtest.h>
 
 #include <Game.h>
+#include <Resources/RNGManager.h>
 
 TEST(GameInitialize, initialize_only)
 {
@@ -36,6 +37,8 @@ TEST(GameInitialize, run_0_frames)
 	    .logFile = "stdout",
 	};
 	std::fill_n(args.logLevels.begin(), args.logLevels.size(), spdlog::level::debug);
+	openblack::resources::RNGManager& rngmanager = openblack::resources::RNGManager::GetInstance();
+	ASSERT_TRUE(rngmanager.SetDebugMode(true, 15000));
 	auto game = std::make_unique<openblack::Game>(std::move(args));
 	ASSERT_TRUE(game->Initialize());
 	ASSERT_TRUE(game->Run());
