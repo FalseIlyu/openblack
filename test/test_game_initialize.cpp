@@ -22,6 +22,8 @@ TEST(GameInitialize, initialize_only)
 	    .logFile = "stdout",
 	};
 	std::fill_n(args.logLevels.begin(), args.logLevels.size(), spdlog::level::debug);
+	openblack::resources::RNGManager& rngmanager = openblack::resources::RNGManager::GetInstance();
+	ASSERT_TRUE(rngmanager.SetDebugMode(true, 15000));
 	auto game = std::make_unique<openblack::Game>(std::move(args));
 	ASSERT_TRUE(game->Initialize());
 	game.reset();
