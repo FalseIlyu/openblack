@@ -1,6 +1,10 @@
 file(GLOB_RECURSE OPENBLACK_SOURCES "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
-list(REMOVE_ITEM OPENBLACK_SOURCES main.cpp)
+list(REMOVE_ITEM OPENBLACK_SOURCES "${CMAKE_CURRENT_LIST_DIR}/main.cpp")
 file(GLOB_RECURSE OPENBLACK_HEADERS "${CMAKE_CURRENT_LIST_DIR}/*.h")
+if (APPLE)
+  file(GLOB_RECURSE OPENBLACK_OBJC_SOURCES "${CMAKE_CURRENT_LIST_DIR}/*.mm")
+  list(APPEND OPENBLACK_SOURCES "${OPENBLACK_OBJC_SOURCES}")
+endif()
 
 set(OPENBLACK_RC ${CMAKE_SOURCE_DIR}/assets/resource/icon/openblack.rc)
 
@@ -60,7 +64,14 @@ list(APPEND OPENBLACK_SHADERS ${OPENBLACK_VERTEX_SHADERS})
 list(APPEND OPENBLACK_SHADERS ${OPENBLACK_FRAGMENT_SHADERS})
 list(APPEND OPENBLACK_SHADERS ${OPENBLACK_VARYING_DEF_FILE})
 
-add_library(openblack_lib STATIC)
+if(ANDROID)
+  add_library(openblack_lib SHARED)
+  set_target_properties(openblack_lib PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+else()
+  add_library(openblack_lib STATIC)
+endif()
+
 target_sources(openblack_lib
   PRIVATE
       ${OPENBLACK_SOURCES}
@@ -101,14 +112,28 @@ target_link_libraries(
     LinearMath
     minizip::minizip
   PUBLIC
-    SDL2::SDL2
     spdlog::spdlog
 )
-if(UNIX)
+
+if(ANDROID)
+  target_link_libraries(openblack_lib PRIVATE EGL)
+elseif (UNIX)
   find_library(WAYLAND wayland-egl)
   if(WAYLAND)
     target_link_libraries(openblack_lib PRIVATE ${WAYLAND})
   endif()
+endif()
+
+if(VCPKG_TARGET_ANDROID)
+  # openblack_lib need to forward the JNI exports from SDL2 so the Activity can start main
+  target_link_libraries(openblack_lib
+    PUBLIC
+          -Wl,--whole-archive
+          SDL2::SDL2
+          -Wl,--no-whole-archive
+    )
+else()
+  target_link_libraries(openblack_lib PUBLIC SDL2::SDL2)
 endif()
 
 target_compile_definitions(openblack_lib
@@ -187,8 +212,11 @@ foreach(SHADER ${OPENBLACK_SHADERS})
   source_group("Shaders" FILES "${SHADER}")
 endforeach()
 
-add_executable(openblack main.cpp)
-target_link_libraries(openblack PRIVATE openblack_lib)
+if (ANDROID)
+  add_library(openblack ALIAS openblack_lib)
+else()
+  add_executable(openblack main.cpp)
+  target_link_libraries(openblack PRIVATE openblack_lib)
 
 # Installation configuration
 install(TARGETS openblack RUNTIME DESTINATION bin)
@@ -202,4 +230,6 @@ if(UNIX)
       DESTINATION "share/icons/hicolor/${RES}x${RES}/apps"
       RENAME "openblack.png")
   endforeach()
+endif()
+
 endif()

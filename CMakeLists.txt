@@ -1,6 +1,13 @@
-cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
+
+# VCPKG has an imperfect android implementation.
+# NDK must be in env and vcpkg_android.cmake selects architecture.
+if (VCPKG_TARGET_ANDROID)
+  set(ENV{ANDROID_NDK_HOME} ${ANDROID_NDK_HOME})
+  include(vcpkg_android)
+endif()
 
 # On Visual Studio generators default to using vcpkg as the most newbie friendly option
 if (CMAKE_GENERATOR MATCHES "^Visual Studio")
@@ -13,7 +20,7 @@ endif()
 # If using vcpkg and not manually specified the toolchain then set it for them
 if (OPENBLACK_USE_VCPKG AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake
-    CACHE STRING "Default to vcpkg toolchain file")
+      CACHE STRING "Default to vcpkg toolchain file")
 endif()
 
 project(openblack)
@@ -102,11 +109,17 @@ add_subdirectory(apps/packtool)
 add_subdirectory(apps/lndtool)
 add_subdirectory(apps/anmtool)
 add_subdirectory(apps/morphtool)
+
 if(NOT CMAKE_CROSSCOMPILING)  # Requires python and running compiled apps
-  add_subdirectory(ci/mock)
+  add_subdirectory(test/mock)
+endif()
+
+find_package(GTest CONFIG)
+if(GTest_FOUND AND NOT CMAKE_CROSSCOMPILING)
+  enable_testing()
+  add_subdirectory(test)
 endif()
 
 # Set openblack project as default startup project in Visual Studio
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT
-                                                            openblack)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT openblack)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)

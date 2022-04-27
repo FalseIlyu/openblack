@@ -144,11 +144,6 @@ Renderer::Renderer(const GameWindow* window, bgfx::RendererType::Enum rendererTy
 	init.resolution.reset = _bgfxReset;
 	init.callback = dynamic_cast<bgfx::CallbackI*>(_bgfxCallback.get());
 
-#ifdef __APPLE__
-	// Metal: There's some data structures that are malloc'd and initialised with this call that init relies upon.
-	bgfx::renderFrame();
-#endif
-
 	if (!bgfx::init(init))
 	{
 		throw std::runtime_error("Failed to initialize bgfx.");
@@ -428,8 +423,11 @@ void Renderer::DrawPass(const DrawSceneDesc& desc) const
 			mesh->GetIndexBuffer().Bind(mesh->GetIndexBuffer().GetCount(), 0);
 			mesh->GetVertexBuffer().Bind();
 			bgfx::setState(BGFX_STATE_DEFAULT);
-			waterShader->SetTextureSampler("s_diffuse", 0, *desc.water._texture);
-			waterShader->SetTextureSampler("s_reflection", 1, desc.water.GetFrameBuffer().GetColorAttachment());
+			auto diffuse = Locator::resources::ref().GetTextures().Handle(Water::DiffuseTextureId);
+			auto alpha = Locator::resources::ref().GetTextures().Handle(Water::AlphaTextureId);
+			waterShader->SetTextureSampler("s_diffuse", 0, *diffuse);
+			waterShader->SetTextureSampler("s_alpha", 1, *alpha);
+			waterShader->SetTextureSampler("s_reflection", 2, desc.water.GetFrameBuffer().GetColorAttachment());
 			const glm::vec4 u_sky = {desc.sky.GetCurrentSkyType(), 0.0f, 0.0f, 0.0f};
 			waterShader->SetUniformValue("u_sky", &u_sky); // fs
 			bgfx::submit(static_cast<bgfx::ViewId>(desc.viewId), waterShader->GetRawHandle());
@@ -443,9 +441,11 @@ void Renderer::DrawPass(const DrawSceneDesc& desc) const
 		{
 			for (auto& block : desc.island.GetBlocks())
 			{
+				auto texture = Locator::resources::ref().GetTextures().Handle(LandIsland::SmallBumpTextureId);
+
 				terrainShader->SetTextureSampler("s0_materials", 0, desc.island.GetAlbedoArray());
 				terrainShader->SetTextureSampler("s1_bump", 1, desc.island.GetBump());
-				terrainShader->SetTextureSampler("s2_smallBump", 2, desc.island.GetSmallBump());
+				terrainShader->SetTextureSampler("s2_smallBump", 2, *texture);
 
 				// pack uniforms
 				const glm::vec4 mapPosition = block.GetMapPosition();

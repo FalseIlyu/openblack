@@ -45,6 +45,7 @@
 #include <glm/gtx/euler_angles.hpp>
 #include <glm/gtx/intersect.hpp>
 #include <glm/gtx/transform.hpp>
+#include <spdlog/sinks/android_sink.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
@@ -81,13 +82,22 @@ Game::Game(Arguments&& args)
     , _handPose()
 {
 	std::function<std::shared_ptr<spdlog::logger>(const std::string&)> CreateLogger;
-	if (!args.logFile.empty() && args.logFile != "stdout")
+#ifdef __ANDROID__
+	if (!args.logFile.empty() && args.logFile == "logcat")
 	{
-		CreateLogger = [&args](const std::string& name) { return spdlog::basic_logger_mt(name, args.logFile); };
+		CreateLogger = [](const std::string& name) { return spdlog::android_logger_mt(name, "spdlog-android"); };
 	}
 	else
+#endif // __ANDROID__
 	{
-		CreateLogger = [](const std::string& name) { return spdlog::stdout_color_mt(name); };
+		if (!args.logFile.empty() && args.logFile != "stdout")
+		{
+			CreateLogger = [&args](const std::string& name) { return spdlog::basic_logger_mt(name, args.logFile); };
+		}
+		else
+		{
+			CreateLogger = [](const std::string& name) { return spdlog::stdout_color_mt(name); };
+		}
 	}
 	for (size_t i = 0; i < LoggingSubsystemStrs.size(); ++i)
 	{
@@ -405,7 +415,7 @@ bool Game::Update()
 	return _config.numFramesToSimulate == 0 || _frameCount < _config.numFramesToSimulate;
 }
 
-bool Game::Run()
+bool Game::Initialize()
 {
 	Locator::resources::set<resources::Resources>();
 	Locator::rng::set<RNGManager>();
@@ -468,8 +478,10 @@ bool Game::Run()
 	_camera->SetPosition(glm::vec3(1441.56f, 24.764f, 2081.76f));
 	_camera->SetRotation(glm::vec3(0.0f, -45.0f, 0.0f));
 
-	_sky = std::make_unique<Sky>();
-	_water = std::make_unique<Water>();
+	if (!LoadVariables())
+	{
+		return false;
+	}
 
 	for (const auto& f : std::filesystem::directory_iterator {_fileSystem->FindPath(_fileSystem->TexturePath())})
 	{
@@ -486,12 +498,17 @@ bool Game::Run()
 			}
 		}
 	}
+
+	_sky = std::make_unique<Sky>();
+	_water = std::make_unique<Water>();
+
 	CameraBookmarkSystem::instance().Initialize();
 
-	if (!LoadVariables())
-	{
-		return false;
-	}
+	return true;
+}
+
+bool Game::Run()
+{
 	LoadMap(_fileSystem->ScriptsPath() / "Land1.txt");
 	_dynamicsSystem->RegisterRigidBodies();
 
