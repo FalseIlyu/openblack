@@ -9,8 +9,8 @@
 
 #pragma once
 
-#include "Resources/Resources.h"
 #include "Common/RNGManager.h"
+#include "Resources/Resources.h"
 
 #include <entt/locator/locator.hpp>
 
