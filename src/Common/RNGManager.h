@@ -9,37 +9,17 @@
 
 #pragma once
 
-#include <mutex>
-#include <random>
+#include "rng.h"
 
 namespace openblack
 {
-class RNGManager
+class RNGManager final: public RNGInterface<std::mt19937>
 {
 public:
 	RNGManager();
-	static RNGManager& instance();
-	template <typename T, typename E = typename std::enable_if<std::is_arithmetic_v<T>>::type>
-	T NextValue(T min, T max)
-	{
-		using dist_t =
-		    std::conditional_t<std::is_integral_v<T>, std::uniform_int_distribution<T>, std::uniform_real_distribution<T>>;
-		dist_t dist(min, max);
-		if (_debugRng)
-		{
-			std::lock_guard<std::mutex> safe_lock(_generatorLock);
-			return dist(_generator);
-		}
-		thread_local std::mt19937 generator;
-		return dist(generator);
-	}
 	bool SetDebugMode(bool is_debug, int seed);
 	RNGManager(const RNGManager&) = delete;
 	RNGManager& operator=(const RNGManager&) = delete;
 
-private:
-	std::mt19937 _generator;
-	std::mutex _generatorLock;
-	bool _debugRng;
 };
 } // namespace openblack
