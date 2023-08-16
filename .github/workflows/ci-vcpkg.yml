@@ -49,7 +49,7 @@ jobs:
         if: matrix.cc == 'clang' || startsWith(matrix.os, 'macos')
         with:
           repo: 'aras-p/ClangBuildAnalyzer'
-          file: ${{ startsWith(matrix.os, 'ubuntu') && 'ClangBuildAnalyzer-linux' || startsWith(matrix.os, 'windows') && 'ClangBuildAnalyzer-windows.exe' || startsWith(matrix.os, 'macos') && 'ClangBuildAnalyzer-mac' }}
+          file: ${{ startsWith(matrix.os, 'ubuntu') && 'ClangBuildAnalyzer-linux' || startsWith(matrix.os, 'windows') && 'ClangBuildAnalyzer.exe' || startsWith(matrix.os, 'macos') && 'ClangBuildAnalyzer-mac' }}
 
       - name: Install MacOS dependencies
         run: |
