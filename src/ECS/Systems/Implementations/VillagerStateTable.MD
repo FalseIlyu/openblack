@@ -1,2057 +1,1335 @@
-|State| State Table |
-|----|-------------|
-|`MOVE_TO_POS`| |
-|`MOVE_TO_OBJECT`||
-|`MOVE_ON_STRUCTURE`||
-|`IN_SCRIPT`||
-|`IN_DANCE`||
-|`FLEEING_FROM_OBJECT_REACTION`||
-|`LOOKING_AT_OBJECT_REACTION`||
-|`FOLLOWING_OBJECT_REACTION`||
-|`INSPECT_OBJECT_REACTION`||
-|`FLYING`||
-|`LANDED`||
-|`LOOK_AT_FLYING_OBJECT_REACTION`||
-|`SET_DYING`||
-|`DYING`||
-|`DEAD`||
-|`DROWNING`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-|`MOVE_TO_OBJECT`||
-
-
-Original to build as a table
-````C
-const static std::array<VillagerStateTableEntry, static_cast<size_t>(VillagerStates::_COUNT)> k_VillagerStateTable = {
-   /* MOVE_TO_POS */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0110
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* MOVE_TO_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0110
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* MOVE_ON_STRUCTURE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* IN_SCRIPT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5AFEB0
-	   .exitState = k_TodoEntry.exitState,   // sub_5B01C0
-	   .saveState = k_TodoEntry.saveState,   // sub_755260
-	   .loadState = k_TodoEntry.loadState,   // sub_755370
-   },
-   /* IN_DANCE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5B0070
-	   .exitState = k_TodoEntry.exitState,   // sub_5B0250
-	   .saveState = k_TodoEntry.saveState,   // sub_754AC0
-	   .loadState = k_TodoEntry.loadState,   // sub_754B60
-	   .field0x60 = k_TodoEntry.field0x60,   // sub_423850
-   },
-   /* FLEEING_FROM_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* LOOKING_AT_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FOLLOWING_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* INSPECT_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FLYING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5AFEA0
-	   .saveState = k_TodoEntry.saveState, // sub_5AC9A0
-	   .loadState = k_TodoEntry.loadState, // sub_5AC9B0
-	   .field0x60 = k_TodoEntry.field0x60, // sub_4237F0
-   },
-   /* LANDED */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5AFF50
-	   .saveState = k_TodoEntry.saveState, // sub_756570
-	   .loadState = k_TodoEntry.loadState, // sub_756580
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423730
-   },
-   /* LOOK_AT_FLYING_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423AD0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* SET_DYING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_754CC0
-	   .loadState = k_TodoEntry.loadState, // sub_754D20
-   },
-   /* DYING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_754CC0
-	   .loadState = k_TodoEntry.loadState, // sub_754D20
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423770
-   },
-   /* DEAD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768640
-	   .saveState = k_TodoEntry.saveState, // sub_754CC0
-	   .loadState = k_TodoEntry.loadState, // sub_754D20
-	   .field0x60 = k_TodoEntry.field0x60, // sub_4237A0
-   },
-   /* DROWNING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_767410
-	   .exitState = k_TodoEntry.exitState,   // sub_767420
-   },
-   /* DOWNED */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* BEING_EATEN */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B01A0
-   },
-   /* GOTO_FOOD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* ARRIVES_AT_FOOD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424370
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GOTO_WOOD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* ARRIVES_AT_WOOD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424370
-	   .validate = k_TodoEntry.validate,
-   },
-   /* WAIT_FOR_ANIMATION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_5AC9C0
-	   .loadState = k_TodoEntry.loadState, // sub_5AC9D0
-	   .field0x50 = Field0x50Default,
-   },
-   /* IN_HAND */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5AFF10
-	   .exitState = k_TodoEntry.exitState,   // sub_5AFE10
-	   .saveState = k_TodoEntry.saveState,   // sub_754D80
-	   .loadState = k_TodoEntry.loadState,   // sub_754DE0
-   },
-   /* GOTO_PICKUP_BALL_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* ARRIVES_AT_PICKUP_BALL_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* MOVE_IN_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* MOVE_ALONG_PATH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5AFEB0
-	   .exitState = k_TodoEntry.exitState,   // sub_5B01C0
-	   .saveState = k_TodoEntry.saveState,   // sub_755B20
-	   .loadState = k_TodoEntry.loadState,   // sub_755B50
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* MOVE_ON_PATH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5AFFC0
-	   .exitState = k_TodoEntry.exitState,   // sub_5B0030
-	   .saveState = k_TodoEntry.saveState,   // sub_755B20
-	   .loadState = k_TodoEntry.loadState,   // sub_755B50
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* FLEEING_AND_LOOKING_AT_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GOTO_STORAGE_PIT_FOR_DROP_OFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* GOTO_STORAGE_PIT_FOR_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_HOME_WITH_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* GO_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_BUILDING_MATERIALS */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_BUILDING_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-   },
-   /* BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423E20
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4243E0
-   },
-   /* GOTO_STORAGE_PIT_FOR_WORSHIP_SUPPLIES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C120
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_WORSHIP_SUPPLIES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C120
-	   .field0x50 = Field0x50Default,
-   },
-   /* GOTO_WORSHIP_SITE_WITH_SUPPLIES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C120
-	   .field0x50 = Field0x50Default,
-   },
-   /* MOVE_TO_WORSHIP_SITE_WITH_SUPPLIES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C120
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C120
-	   .field0x50 = Field0x50Default,
-   },
-   /* FORESTER_MOVE_TO_FOREST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_75FE20
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FORESTER_GOTO_FOREST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_75FE20
-	   .field0x50 = Field0x50Default,
-   },
-   /* FORESTER_ARRIVES_AT_FOREST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_75FE20
-	   .field0x50 = Field0x50Default,
-   },
-   /* FORESTER_CHOPS_TREE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_75FE20
-	   .saveState = k_TodoEntry.saveState, // sub_755AE0
-	   .loadState = k_TodoEntry.loadState, // sub_755B00
-	   .field0x50 = Field0x50Default,
-   },
-   /* FORESTER_CHOPS_TREE_FOR_BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* FORESTER_FINISHED_FORESTERING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_75FE20
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_BIG_FOREST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_BIG_FOREST_FOR_BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-   },
-   /* FISHERMAN_ARRIVES_AT_FISHING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75B820
-	   .exitState = k_TodoEntry.exitState,   // sub_75B880
-	   .saveState = k_TodoEntry.saveState,   // sub_754E40
-	   .loadState = k_TodoEntry.loadState,   // sub_754E60
-	   .field0x50 = Field0x50Default,
-   },
-   /* FISHING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75B820
-	   .exitState = k_TodoEntry.exitState,   // sub_75B880
-	   .saveState = k_TodoEntry.saveState,   // sub_754E40
-	   .loadState = k_TodoEntry.loadState,   // sub_754E60
-	   .field0x50 = Field0x50Default,
-   },
-   /* WAIT_FOR_COUNTER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* GOTO_WORSHIP_SITE_FOR_WORSHIP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C170
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C170
-	   .field0x50 = Field0x50Default,
-   },
-   /* WORSHIPPING_AT_WORSHIP_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C1F0
-	   .saveState = k_TodoEntry.saveState, // sub_754C00
-	   .loadState = k_TodoEntry.loadState, // sub_754C60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* GOTO_ALTAR_FOR_REST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_ALTAR_FOR_REST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* AT_ALTAR_REST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424350
-   },
-   /* AT_ALTAR_FINISHED_REST */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* RESTART_WORSHIPPING_AT_WORSHIP_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C280
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* RESTART_WORSHIPPING_CREATURE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* FARMER_ARRIVES_AT_FARM */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75A250
-	   .exitState = k_TodoEntry.exitState,   // sub_75A2A0
-	   .saveState = k_TodoEntry.saveState,   // sub_754E80
-	   .loadState = k_TodoEntry.loadState,   // sub_754EF0
-	   .field0x50 = Field0x50Default,
-   },
-   /* FARMER_PLANTS_CROP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75A250
-	   .exitState = k_TodoEntry.exitState,   // sub_75A2A0
-	   .saveState = k_TodoEntry.saveState,   // sub_754E80
-	   .loadState = k_TodoEntry.loadState,   // sub_754EF0
-	   .field0x50 = Field0x50Default,
-   },
-   /* FARMER_DIGS_UP_CROP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75A250
-	   .exitState = k_TodoEntry.exitState,   // sub_75A2A0
-	   .saveState = k_TodoEntry.saveState,   // sub_754E80
-	   .loadState = k_TodoEntry.loadState,   // sub_754EF0
-	   .field0x50 = Field0x50Default,
-   },
-   /* MOVE_TO_FOOTBALL_PITCH_CONSTRUCTION */
-   k_SimpleEntry,
-   /* FOOTBALL_WALK_TO_POSITION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FOOTBALL_WAIT_FOR_KICK_OFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423BD0
-   },
-   /* FOOTBALL_ATTACKER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423C60
-   },
-   /* FOOTBALL_GOALIE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423C50
-   },
-   /* FOOTBALL_GOALIE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423C70
-   },
-   /* FOOTBALL_WON_GOAL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* FOOTBALL_LOST_GOAL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* START_MOVE_TO_PICK_UP_BALL_FOR_DEAD_BALL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* ARRIVED_AT_PICK_UP_BALL_FOR_DEAD_BALL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVED_AT_PUT_DOWN_BALL_FOR_DEAD_BALL_START */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVED_AT_PUT_DOWN_BALL_FOR_DEAD_BALL_END */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* FOOTBALL_MATCH_PAUSED */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423D20
-   },
-   /* FOOTBALL_WATCH_MATCH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423C80
-   },
-   /* FOOTBALL_MEXICAN_WAVE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_763280
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-   },
-   /* CREATED */
-   VillagerStateTableEntry {
-	   .state = &VillagerCreated,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_IN_ABODE_TO_TRADE */
-   k_SimpleEntry,
-   /* ARRIVES_IN_ABODE_TO_PICK_UP_EXCESS */
-   k_SimpleEntry,
-   /* MAKE_SCARED_STIFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* SCARED_STIFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* WORSHIPPING_CREATURE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_7527E0
-	   .saveState = k_TodoEntry.saveState, // sub_754AC0
-	   .loadState = k_TodoEntry.loadState, // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* SHEPHERD_LOOK_FOR_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_MOVE_FLOCK_TO_WATER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* SHEPHERD_MOVE_FLOCK_TO_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* SHEPHERD_MOVE_FLOCK_BACK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* SHEPHERD_DECIDE_WHAT_TO_DO_WITH_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_WAIT_FOR_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_SLAUGHTER_ANIMAL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_FETCH_STRAY */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_GOTO_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-   },
-   /* HOUSEWIFE_GOTO_STORAGE_PIT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_ARRIVES_AT_STORAGE_PIT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_PICKUP_FROM_STORAGE_PIT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_RETURN_HOME_WITH_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_MAKE_DINNER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_SERVES_DINNER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_CLEARS_AWAY_DINNER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_DOES_HOUSEWORK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_GOSSIPS_AROUND_STORAGE_PIT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* HOUSEWIFE_STARTS_GIVING_BIRTH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* HOUSEWIFE_GIVING_BIRTH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* HOUSEWIFE_GIVEN_BIRTH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* CHILD_AT_CRECHE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHILD_FOLLOWS_MOTHER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHILD_BECOMES_ADULT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* SITS_DOWN_TO_DINNER */
-   k_SimpleEntry,
-   /* EAT_FOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* EAT_FOOD_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-   },
-   /* GOTO_BED_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-   },
-   /* SLEEPING_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-   },
-   /* WAKE_UP_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* START_HAVING_SEX */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_76ACE0
-	   .exitState = k_TodoEntry.exitState,   // sub_76AD80
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate, // Avalidate_2fun0
-   },
-   /* HAVING_SEX */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_76ACE0
-	   .exitState = k_TodoEntry.exitState,   // sub_76AD80
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_4237D0
-   },
-   /* STOP_HAVING_SEX */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_76ACE0
-	   .exitState = k_TodoEntry.exitState,   // sub_76AD80
-	   .field0x50 = Field0x50Default,
-   },
-   /* START_HAVING_SEX_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* HAVING_SEX_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* STOP_HAVING_SEX_AT_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* WAIT_FOR_DINNER */
-   k_SimpleEntry,
-   /* HOMELESS_START */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* VAGRANT_START */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* MORN_DEATH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424300
-   },
-   /* PERFORM_INSPECTION_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-   },
-   /* APPROACH_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* INITIALISE_TELL_OTHERS_ABOUT_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* TELL_OTHERS_ABOUT_INTERESTING_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* APPROACH_VILLAGER_TO_TALK_TO */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* TELL_PARTICULAR_VILLAGER_ABOUT_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* INITIALISE_LOOK_AROUND_FOR_VILLAGER_TO_TELL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* LOOK_AROUND_FOR_VILLAGER_TO_TELL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* MOVE_TOWARDS_OBJECT_TO_LOOK_AT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* INITIALISE_IMPRESSED_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PERFORM_IMPRESSED_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424350
-	   .validate = k_TodoEntry.validate,
-   },
-   /* INITIALISE_FIGHT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PERFORM_FIGHT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423540
-	   .validate = k_TodoEntry.validate,
-   },
-   /* HOMELESS_EAT_DINNER */
-   k_SimpleEntry,
-   /* INSPECT_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423EB0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PERFORM_INSPECT_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423EB0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* APPROACH_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755B80
-	   .loadState = k_TodoEntry.loadState, // sub_755C20
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423EB0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* INITIALISE_BEWILDERED_BY_MAGIC_TREE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755CC0
-	   .loadState = k_TodoEntry.loadState, // sub_755D60
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PERFORM_BEWILDERED_BY_MAGIC_TREE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755CC0
-	   .loadState = k_TodoEntry.loadState, // sub_755D60
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* TURN_TO_FACE_MAGIC_TREE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* LOOK_AT_MAGIC_TREE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423A80
-	   .validate = k_TodoEntry.validate,
-   },
-   /* DANCE_FOR_EDITING_PURPOSES */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_7527E0
-	   .saveState = k_TodoEntry.saveState, // sub_754AC0
-	   .loadState = k_TodoEntry.loadState, // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* MOVE_TO_DANCE_POS */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_754AC0
-	   .loadState = k_TodoEntry.loadState, // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* INITIALISE_RESPECT_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423F60
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PERFORM_RESPECT_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423F60
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FINISH_RESPECT_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423F60
-	   .validate = k_TodoEntry.validate,
-   },
-   /* APPROACH_HAND_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* FLEEING_FROM_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* TURN_TO_FACE_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423EB0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* WATCH_FLYING_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423AD0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* POINT_AT_FLYING_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423FD0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* DECIDE_WHAT_TO_DO */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* INTERACT_DECIDE_WHAT_TO_DO */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* EAT_OUTSIDE */
-   k_SimpleEntry,
-   /* RUN_AWAY_FROM_OBJECT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* MOVE_TOWARDS_CREATURE_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* AMAZED_BY_MAGIC_SHIELD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755F40
-	   .loadState = k_TodoEntry.loadState, // sub_755FA0
-	   .field0x60 = k_TodoEntry.field0x60, // sub_4240C0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* VILLAGER_GOSSIPS */
-   k_SimpleEntry,
-   /* CHECK_INTERACT_WITH_ANIMAL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_WORSHIP_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_ABODE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_FIELD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_FISH_FARM */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_TREE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_BALL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_POT */
-   k_SimpleEntry,
-   /* CHECK_INTERACT_WITH_FOOTBALL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_VILLAGER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_MAGIC_LIVING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* CHECK_INTERACT_WITH_ROCK */
-   k_SimpleEntry,
-   /* ARRIVES_AT_ROCK_FOR_WOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* GOT_WOOD_FROM_ROCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* REENTER_BUILDING_STATE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVE_AT_PUSH_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_7558E0
-	   .loadState = k_TodoEntry.loadState, // sub_755980
-	   .field0x50 = Field0x50Default,
-   },
-   /* TAKE_WOOD_FROM_TREE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* TAKE_WOOD_FROM_POT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* TAKE_WOOD_FROM_TREE_FOR_BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* TAKE_WOOD_FROM_POT_FOR_BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_759750
-	   .exitState = k_TodoEntry.exitState,   // sub_7597B0
-	   .saveState = k_TodoEntry.saveState,   // sub_754A00
-	   .loadState = k_TodoEntry.loadState,   // sub_754A60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, //&loc_423AC0
-   },
-   /* SHEPHERD_TAKE_ANIMAL_FOR_SLAUGHTER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_TAKES_CONTROL_OF_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHEPHERD_RELEASES_CONTROL_OF_FLOCK */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .field0x50 = Field0x50Default,
-   },
-   /* DANCE_BUT_NOT_WORSHIP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_7527E0
-	   .saveState = k_TodoEntry.saveState, // sub_754AC0
-	   .loadState = k_TodoEntry.loadState, // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* FAINTING_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* START_CONFUSED_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* CONFUSED_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* AFTER_TAP_ON_ABODE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_424050
-   },
-   /* WEAK_ON_GROUND */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5AFFA0
-   },
-   /* SCRIPT_WANDER_AROUND_POSITION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5B00D0
-	   .exitState = k_TodoEntry.exitState,   // sub_5B0180
-	   .saveState = k_TodoEntry.saveState,   // sub_755470
-	   .loadState = k_TodoEntry.loadState,   // sub_755580
-   },
-   /* SCRIPT_PLAY_ANIM */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5B0220
-	   .exitState = k_TodoEntry.exitState,   // sub_5AFE00
-	   .saveState = k_TodoEntry.saveState,   // sub_755470
-	   .loadState = k_TodoEntry.loadState,   // sub_755580
-	   .field0x60 = k_TodoEntry.field0x60,   // sub_768A00
-   },
-   /* GO_TOWARDS_TELEPORT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_766390
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* TELEPORT_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_766390
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* DANCE_WHILE_REACTING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-	   .validate = k_TodoEntry.validate,
-   },
-   /* CONTROLLED_BY_CREATURE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_759A90
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423FA0
-   },
-   /* POINT_AT_DEAD_PERSON */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GO_TOWARDS_DEAD_PERSON */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* LOOK_AT_DEAD_PERSON */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* MOURN_DEAD_PERSON */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState,                     // sub_5B0100
-	   .saveState = k_TodoEntry.saveState,                     // sub_7558C0
-	   .loadState = k_TodoEntry.loadState,                     // sub_7558D0
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424300
-	   .validate = k_TodoEntry.validate,
-   },
-   /* NOTHING_TO_DO */
-   k_SimpleEntry,
-   /* ARRIVES_AT_WORKSHOP_FOR_DROP_OFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_WORKSHOP_MATERIALS */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* SHOW_POISONED */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* HIDING_AT_WORSHIP_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C1F0
-	   .saveState = k_TodoEntry.saveState, // sub_754C00
-	   .loadState = k_TodoEntry.loadState, // sub_754C60
-   },
-   /* CROWD_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* REACT_TO_FIRE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PUT_OUT_FIRE_BY_BEATING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75ADC0
-	   .exitState = k_TodoEntry.exitState,   // sub_75AE80
-	   .saveState = k_TodoEntry.saveState,   // sub_755680
-	   .loadState = k_TodoEntry.loadState,   // sub_7556F0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* PUT_OUT_FIRE_WITH_WATER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75ADC0
-	   .exitState = k_TodoEntry.exitState,   // sub_75AE80
-	   .saveState = k_TodoEntry.saveState,   // sub_755680
-	   .loadState = k_TodoEntry.loadState,   // sub_7556F0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GET_WATER_TO_PUT_OUT_FIRE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75ADC0
-	   .exitState = k_TodoEntry.exitState,   // sub_75AE80
-	   .saveState = k_TodoEntry.saveState,   // sub_755680
-	   .loadState = k_TodoEntry.loadState,   // sub_7556F0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* ON_FIRE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75AF30
-	   .exitState = k_TodoEntry.exitState,   // sub_75AF80
-	   .saveState = k_TodoEntry.saveState,   // sub_755680
-	   .loadState = k_TodoEntry.loadState,   // sub_7556F0
-   },
-   /* MOVE_AROUND_FIRE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_75ADC0
-	   .exitState = k_TodoEntry.exitState,   // sub_75AE80
-	   .saveState = k_TodoEntry.saveState,   // sub_755680
-	   .loadState = k_TodoEntry.loadState,   // sub_7556F0
-	   .field0x50 = k_TodoEntry.field0x50,   // afield0x50_1fun
-	   .validate = k_TodoEntry.validate,
-   },
-   /* DISCIPLE_NOTHING_TO_DO */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_754140
-	   .saveState = k_TodoEntry.saveState,   // sub_755760
-	   .loadState = k_TodoEntry.loadState,   // sub_755780
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424350
-   },
-   /* FOOTBALL_MOVE_TO_BALL */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0110
-	   .saveState = k_TodoEntry.saveState, // sub_754F60
-	   .loadState = k_TodoEntry.loadState, // sub_755040
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_TRADER_PICK_UP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_7557A0
-	   .loadState = k_TodoEntry.loadState, // sub_755810
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_STORAGE_PIT_FOR_TRADER_DROP_OFF */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_7557A0
-	   .loadState = k_TodoEntry.loadState, // sub_755810
-	   .field0x50 = Field0x50Default,
-   },
-   /* BREEDER_DISCIPLE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_76A2A0
-	   .exitState = k_TodoEntry.exitState,   // sub_76A2D0
-	   .saveState = k_TodoEntry.saveState,   // sub_755A20
-	   .loadState = k_TodoEntry.loadState,   // sub_755A80
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate, // Avalidate_2fun0
-   },
-   /* MISSIONARY_DISCIPLE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* REACT_TO_BREEDER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* SHEPHERD_CHECK_ANIMAL_FOR_SLAUGHTER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_768F50
-	   .saveState = k_TodoEntry.saveState, // sub_755120
-	   .loadState = k_TodoEntry.loadState, // sub_7551C0
-	   .field0x50 = Field0x50Default,
-   },
-   /* INTERACT_DECIDE_WHAT_TO_DO_FOR_OTHER_VILLAGER */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARTIFACT_DANCE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_7527E0
-	   .saveState = k_TodoEntry.saveState, // sub_754AC0
-	   .loadState = k_TodoEntry.loadState, // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* FLEEING_FROM_PREDATOR_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_423400
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4242B0
-	   .validate = k_TodoEntry.validate,
-   },
-   /* WAIT_FOR_WOOD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* INSPECT_OBJECT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_755880
-	   .loadState = k_TodoEntry.loadState, // sub_7558A0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GO_HOME_AND_CHANGE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761980
-	   .field0x50 = Field0x50Default,
-   },
-   /* WAIT_FOR_MATE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* GO_AND_HIDE_IN_NEARBY_BUILDING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755E00
-	   .loadState = k_TodoEntry.loadState, // sub_755EA0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* LOOK_TO_SEE_IF_IT_IS_SAFE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_5B0100
-	   .saveState = k_TodoEntry.saveState, // sub_755E00
-	   .loadState = k_TodoEntry.loadState, // sub_755EA0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* SLEEP_IN_TENT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424290
-   },
-   /* PAUSE_FOR_A_SECOND */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_424080
-   },
-   /* PANIC_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   },
-   /* GET_FOOD_AT_WORSHIP_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_76C280
-	   .saveState = k_TodoEntry.saveState, // sub_754C00
-	   .loadState = k_TodoEntry.loadState, // sub_754C60
-	   .field0x50 = Field0x50Default,
-   },
-   /* GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* CONGREGATE_IN_TOWN_AFTER_EMERGENCY */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_424100
-   },
-   /* SCRIPT_IN_CROWD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .saveState = k_TodoEntry.saveState, // sub_755470
-	   .loadState = k_TodoEntry.loadState, // sub_755580
-	   .field0x60 = k_TodoEntry.field0x60, // sub_4241B0
-   },
-   /* GO_AND_CHILLOUT_OUTSIDE_HOME */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* SIT_AND_CHILLOUT */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState,                   // sub_76B570
-	   .field0x60 = k_TodoEntry.field0x60,                     // sub_424210
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_4243A0
-   },
-   /* SCRIPT_GO_AND_MOVE_ALONG_PATH */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_5AFEB0
-	   .exitState = k_TodoEntry.exitState,   // sub_5B01C0
-   },
-   /* RESTART_MEETING */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* GOTO_ABODE_BURNING_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_761B40
-	   .field0x50 = Field0x50Default,
-   },
-   /* ARRIVES_AT_ABODE_BURNING_REACTION */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-	   .transitionAnimation = k_TodoEntry.transitionAnimation, // sub_424290
-   },
-   /* REPAIRS_ABODE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .exitState = k_TodoEntry.exitState, // sub_766390
-	   .saveState = k_TodoEntry.saveState, // sub_7558C0
-	   .loadState = k_TodoEntry.loadState, // sub_7558D0
-	   .field0x50 = Field0x50Default,
-	   .validate = k_TodoEntry.validate,
-   },
-   /* ARRIVES_AT_SCAFFOLD_FOR_PICKUP */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-   },
-   /* ARRIVES_AT_BUILDING_SITE_WITH_SCAFFOLD */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .entryState = k_TodoEntry.entryState, // sub_761800
-	   .exitState = k_TodoEntry.exitState,   // sub_7527E0
-	   .saveState = k_TodoEntry.saveState,   // sub_754AC0
-	   .loadState = k_TodoEntry.loadState,   // sub_754B60
-	   .field0x50 = Field0x50Default,
-	   .field0x60 = k_TodoEntry.field0x60, // sub_423850
-   },
-   /* MOVE_SCAFFOLD_TO_BUILDING_SITE */
-   VillagerStateTableEntry {
-	   .state = k_TodoEntry.state,
-	   .field0x50 = Field0x50Default,
-   }};
-````
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Original Game State Callbacks</th>
+    </tr>
+  </thead>
+<tbody>
+<tr><td><code>INVALID_STATE</code></td><td><pre><code>	k_VillagerStateTable[0].state = VillagerInvalidState,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TO_POS</code></td><td><pre><code>	.state = VillagerMoveToPos,
+	k_VillagerStateTable[1].exitState = k_TodoEntry.exitState //sub_5B0110,
+	k_VillagerStateTable[1].field0x50 = Field0x50Default,
+	k_VillagerStateTable[1].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[1].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[1].validate = Avalidate_nullfun,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TO_OBJECT</code></td><td><pre><code>	.state = VillagerMoveToObject,
+	k_VillagerStateTable[2].exitState = k_TodoEntry.exitState //sub_5B0110,
+	k_VillagerStateTable[2].field0x50 = Field0x50Default,
+	k_VillagerStateTable[2].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[2].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[2].validate = Avalidate_fun1,
+</code></pre></td></tr>
+<tr><td><code>MOVE_ON_STRUCTURE</code></td><td><pre><code>	.state = VillagerMoveOnStructure,
+	k_VillagerStateTable[3].field0x50 = Field0x50Default,
+	k_VillagerStateTable[3].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[3].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[3].validate = Avalidate_fun2,
+</code></pre></td></tr>
+<tr><td><code>IN_SCRIPT</code></td><td><pre><code>	.state = VillagerInScript,
+	k_VillagerStateTable[4].entryState = k_TodoEntry.entryState //sub_5AFEB0,
+	k_VillagerStateTable[4].exitState = k_TodoEntry.exitState //sub_5B01C0,
+	k_VillagerStateTable[4].saveState = k_TodoEntry.saveState //sub_755260,
+	k_VillagerStateTable[4].loadState = k_TodoEntry.loadState //sub_755370,
+</code></pre></td></tr>
+<tr><td><code>IN_DANCE</code></td><td><pre><code>	.state = VillagerInDance,
+	k_VillagerStateTable[5].entryState = k_TodoEntry.entryState //sub_5B0070,
+	k_VillagerStateTable[5].exitState = k_TodoEntry.exitState //sub_5B0250,
+	k_VillagerStateTable[5].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[5].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[5].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>FLEEING_FROM_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerFleeingFromObjectReaction,
+	k_VillagerStateTable[6].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[6].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[6].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[6].field0x50 = Field0x50Default,
+	k_VillagerStateTable[6].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[6].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[6].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>LOOKING_AT_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerLookingAtObjectReaction,
+	k_VillagerStateTable[7].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[7].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[7].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[7].field0x50 = Field0x50Default,
+	k_VillagerStateTable[7].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>FOLLOWING_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerFollowingObjectReaction,
+	k_VillagerStateTable[8].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[8].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[8].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[8].field0x50 = Field0x50Default,
+	k_VillagerStateTable[8].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>INSPECT_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerInspectObjectReaction,
+	k_VillagerStateTable[9].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[9].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[9].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[9].field0x50 = Field0x50Default,
+	k_VillagerStateTable[9].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>FLYING</code></td><td><pre><code>	.state = VillagerFlying,
+	k_VillagerStateTable[10].exitState = k_TodoEntry.exitState //sub_5AFEA0,
+	k_VillagerStateTable[10].saveState = k_TodoEntry.saveState //sub_5AC9A0,
+	k_VillagerStateTable[10].loadState = k_TodoEntry.loadState //sub_5AC9B0,
+	k_VillagerStateTable[10].field0x60 = k_TodoEntry.field0x60 //sub_4237F0,
+</code></pre></td></tr>
+<tr><td><code>LANDED</code></td><td><pre><code>	.state = VillagerLanded,
+	k_VillagerStateTable[11].exitState = k_TodoEntry.exitState //sub_5AFF50,
+	k_VillagerStateTable[11].saveState = k_TodoEntry.saveState //sub_756570,
+	k_VillagerStateTable[11].loadState = k_TodoEntry.loadState //sub_756580,
+	k_VillagerStateTable[11].field0x60 = k_TodoEntry.field0x60 //sub_423730,
+</code></pre></td></tr>
+<tr><td><code>LOOK_AT_FLYING_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerLookAtFlyingObjectReaction,
+	k_VillagerStateTable[12].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[12].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[12].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[12].field0x50 = Field0x50Default,
+	k_VillagerStateTable[12].field0x60 = k_TodoEntry.field0x60 //sub_423AD0,
+	k_VillagerStateTable[12].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>SET_DYING</code></td><td><pre><code>	.state = VillagerSetDying,
+	k_VillagerStateTable[13].saveState = k_TodoEntry.saveState //sub_754CC0,
+	k_VillagerStateTable[13].loadState = k_TodoEntry.loadState //sub_754D20,
+</code></pre></td></tr>
+<tr><td><code>DYING</code></td><td><pre><code>	.state = VillagerDying,
+	k_VillagerStateTable[14].saveState = k_TodoEntry.saveState //sub_754CC0,
+	k_VillagerStateTable[14].loadState = k_TodoEntry.loadState //sub_754D20,
+	k_VillagerStateTable[14].field0x60 = k_TodoEntry.field0x60 //sub_423770,
+</code></pre></td></tr>
+<tr><td><code>DEAD</code></td><td><pre><code>	.state = VillagerDead,
+	k_VillagerStateTable[15].exitState = k_TodoEntry.exitState //sub_768640,
+	k_VillagerStateTable[15].saveState = k_TodoEntry.saveState //sub_754CC0,
+	k_VillagerStateTable[15].loadState = k_TodoEntry.loadState //sub_754D20,
+	k_VillagerStateTable[15].field0x60 = k_TodoEntry.field0x60 //sub_4237A0,
+</code></pre></td></tr>
+<tr><td><code>DROWNING</code></td><td><pre><code>	.state = VillagerDrowning,
+	k_VillagerStateTable[16].entryState = k_TodoEntry.entryState //sub_767410,
+	k_VillagerStateTable[16].exitState = k_TodoEntry.exitState //sub_767420,
+</code></pre></td></tr>
+<tr><td><code>DOWNED</code></td><td><pre><code>	.state = VillagerDowned,
+</code></pre></td></tr>
+<tr><td><code>BEING_EATEN</code></td><td><pre><code>	.state = VillagerBeingEaten,
+	k_VillagerStateTable[18].exitState = k_TodoEntry.exitState //sub_5B01A0,
+</code></pre></td></tr>
+<tr><td><code>GOTO_FOOD_REACTION</code></td><td><pre><code>	.state = VillagerGotoFoodReaction,
+	k_VillagerStateTable[19].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[19].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[19].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[19].field0x50 = Field0x50Default,
+	k_VillagerStateTable[19].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_FOOD_REACTION</code></td><td><pre><code>	.state = VillagerArrivesAtFoodReaction,
+	k_VillagerStateTable[20].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[20].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[20].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[20].field0x50 = Field0x50Default,
+	k_VillagerStateTable[20].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424370,
+	k_VillagerStateTable[20].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>GOTO_WOOD_REACTION</code></td><td><pre><code>	.state = VillagerGotoWoodReaction,
+	k_VillagerStateTable[21].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[21].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[21].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[21].field0x50 = Field0x50Default,
+	k_VillagerStateTable[21].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_WOOD_REACTION</code></td><td><pre><code>	.state = VillagerArrivesAtWoodReaction,
+	k_VillagerStateTable[22].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[22].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[22].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[22].field0x50 = Field0x50Default,
+	k_VillagerStateTable[22].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424370,
+	k_VillagerStateTable[22].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>WAIT_FOR_ANIMATION</code></td><td><pre><code>	.state = VillagerWaitForAnimation,
+	k_VillagerStateTable[23].saveState = k_TodoEntry.saveState //sub_5AC9C0,
+	k_VillagerStateTable[23].loadState = k_TodoEntry.loadState //sub_5AC9D0,
+	k_VillagerStateTable[23].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>IN_HAND</code></td><td><pre><code>	.state = VillagerInHand,
+	k_VillagerStateTable[24].entryState = k_TodoEntry.entryState //sub_5AFF10,
+	k_VillagerStateTable[24].exitState = k_TodoEntry.exitState //sub_5AFE10,
+	k_VillagerStateTable[24].saveState = k_TodoEntry.saveState //sub_754D80,
+	k_VillagerStateTable[24].loadState = k_TodoEntry.loadState //sub_754DE0,
+</code></pre></td></tr>
+<tr><td><code>GOTO_PICKUP_BALL_REACTION</code></td><td><pre><code>	.state = VillagerGotoPickupBallReaction,
+	k_VillagerStateTable[25].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[25].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[25].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[25].field0x50 = Field0x50Default,
+	k_VillagerStateTable[25].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_PICKUP_BALL_REACTION</code></td><td><pre><code>	.state = VillagerArrivesAtPickupBallReaction,
+	k_VillagerStateTable[26].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[26].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[26].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[26].field0x50 = Field0x50Default,
+	k_VillagerStateTable[26].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>MOVE_IN_FLOCK</code></td><td><pre><code>	.state = VillagerMoveInFlock,
+	k_VillagerStateTable[27].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MOVE_ALONG_PATH</code></td><td><pre><code>	.state = VillagerMoveAlongPath,
+	k_VillagerStateTable[28].entryState = k_TodoEntry.entryState //sub_5AFEB0,
+	k_VillagerStateTable[28].exitState = k_TodoEntry.exitState //sub_5B01C0,
+	k_VillagerStateTable[28].saveState = k_TodoEntry.saveState //sub_755B20,
+	k_VillagerStateTable[28].loadState = k_TodoEntry.loadState //sub_755B50,
+	k_VillagerStateTable[28].field0x50 = Field0x50Default,
+	k_VillagerStateTable[28].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[28].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>MOVE_ON_PATH</code></td><td><pre><code>	.state = VillagerMoveOnPath,
+	k_VillagerStateTable[29].entryState = k_TodoEntry.entryState //sub_5AFFC0,
+	k_VillagerStateTable[29].exitState = k_TodoEntry.exitState //sub_5B0030,
+	k_VillagerStateTable[29].saveState = k_TodoEntry.saveState //sub_755B20,
+	k_VillagerStateTable[29].loadState = k_TodoEntry.loadState //sub_755B50,
+	k_VillagerStateTable[29].field0x50 = Field0x50Default,
+	k_VillagerStateTable[29].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[29].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>FLEEING_AND_LOOKING_AT_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerFleeingAndLookingAtObjectReaction,
+	k_VillagerStateTable[30].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[30].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[30].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[30].field0x50 = Field0x50Default,
+	k_VillagerStateTable[30].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>GOTO_STORAGE_PIT_FOR_DROP_OFF</code></td><td><pre><code>	.state = VillagerGotoStoragePitForDropOff,
+	k_VillagerStateTable[31].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForDropOff,
+	k_VillagerStateTable[32].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GOTO_STORAGE_PIT_FOR_FOOD</code></td><td><pre><code>	.state = VillagerGotoStoragePitForFood,
+	k_VillagerStateTable[33].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_FOOD</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForFood,
+	k_VillagerStateTable[34].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_HOME_WITH_FOOD</code></td><td><pre><code>	.state = VillagerArrivesAtHomeWithFood,
+	k_VillagerStateTable[35].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[35].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GO_HOME</code></td><td><pre><code>	.state = VillagerGoHome,
+	k_VillagerStateTable[36].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[36].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_HOME</code></td><td><pre><code>	.state = VillagerArrivesHome,
+	k_VillagerStateTable[37].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[37].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>AT_HOME</code></td><td><pre><code>	.state = VillagerAtHome,
+	k_VillagerStateTable[38].exitState = k_TodoEntry.exitState //sub_761B40,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_BUILDING_MATERIALS</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForBuildingMaterials,
+	k_VillagerStateTable[39].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[39].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[39].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[39].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[39].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_BUILDING_SITE</code></td><td><pre><code>	.state = VillagerArrivesAtBuildingSite,
+	k_VillagerStateTable[40].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[40].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[40].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[40].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[40].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>BUILDING</code></td><td><pre><code>	.state = VillagerBuilding,
+	k_VillagerStateTable[41].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[41].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[41].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[41].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[41].field0x50 = Field0x50Default,
+	k_VillagerStateTable[41].field0x60 = k_TodoEntry.field0x60 //sub_423E20,
+	k_VillagerStateTable[41].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4243E0,
+</code></pre></td></tr>
+<tr><td><code>GOTO_STORAGE_PIT_FOR_WORSHIP_SUPPLIES</code></td><td><pre><code>	.state = VillagerGotoStoragePitForWorshipSupplies,
+	k_VillagerStateTable[42].exitState = k_TodoEntry.exitState //sub_76C120,
+	k_VillagerStateTable[42].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_WORSHIP_SUPPLIES</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForWorshipSupplies,
+	k_VillagerStateTable[43].exitState = k_TodoEntry.exitState //sub_76C120,
+	k_VillagerStateTable[43].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GOTO_WORSHIP_SITE_WITH_SUPPLIES</code></td><td><pre><code>	.state = VillagerGotoWorshipSiteWithSupplies,
+	k_VillagerStateTable[44].exitState = k_TodoEntry.exitState //sub_76C120,
+	k_VillagerStateTable[44].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TO_WORSHIP_SITE_WITH_SUPPLIES</code></td><td><pre><code>	.state = VillagerMoveToWorshipSiteWithSupplies,
+	k_VillagerStateTable[45].exitState = k_TodoEntry.exitState //sub_76C120,
+	k_VillagerStateTable[45].field0x50 = Field0x50Default,
+	k_VillagerStateTable[45].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[45].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES</code></td><td><pre><code>	.state = VillagerArrivesAtWorshipSiteWithSupplies,
+	k_VillagerStateTable[46].exitState = k_TodoEntry.exitState //sub_76C120,
+	k_VillagerStateTable[46].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_MOVE_TO_FOREST</code></td><td><pre><code>	.state = VillagerForesterMoveToForest,
+	k_VillagerStateTable[47].exitState = k_TodoEntry.exitState //sub_75FE20,
+	k_VillagerStateTable[47].field0x50 = Field0x50Default,
+	k_VillagerStateTable[47].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[47].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[47].validate = Avalidate_nullfun,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_GOTO_FOREST</code></td><td><pre><code>	.state = VillagerForesterGotoForest,
+	k_VillagerStateTable[48].exitState = k_TodoEntry.exitState //sub_75FE20,
+	k_VillagerStateTable[48].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_ARRIVES_AT_FOREST</code></td><td><pre><code>	.state = VillagerForesterArrivesAtForest,
+	k_VillagerStateTable[49].exitState = k_TodoEntry.exitState //sub_75FE20,
+	k_VillagerStateTable[49].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_CHOPS_TREE</code></td><td><pre><code>	.state = VillagerForesterChopsTree,
+	k_VillagerStateTable[50].exitState = k_TodoEntry.exitState //sub_75FE20,
+	k_VillagerStateTable[50].saveState = k_TodoEntry.saveState //sub_755AE0,
+	k_VillagerStateTable[50].loadState = k_TodoEntry.loadState //sub_755B00,
+	k_VillagerStateTable[50].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_CHOPS_TREE_FOR_BUILDING</code></td><td><pre><code>	.state = VillagerForesterChopsTreeForBuilding,
+	k_VillagerStateTable[51].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[51].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[51].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[51].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[51].field0x50 = Field0x50Default,
+	k_VillagerStateTable[51].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>FORESTER_FINISHED_FORESTERING</code></td><td><pre><code>	.state = VillagerForesterFinishedForestering,
+	k_VillagerStateTable[52].exitState = k_TodoEntry.exitState //sub_75FE20,
+	k_VillagerStateTable[52].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_BIG_FOREST</code></td><td><pre><code>	.state = VillagerArrivesAtBigForest,
+	k_VillagerStateTable[53].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_BIG_FOREST_FOR_BUILDING</code></td><td><pre><code>	.state = VillagerArrivesAtBigForestForBuilding,
+	k_VillagerStateTable[54].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[54].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[54].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[54].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[54].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FISHERMAN_ARRIVES_AT_FISHING</code></td><td><pre><code>	.state = VillagerFishermanArrivesAtFishing,
+	k_VillagerStateTable[55].entryState = k_TodoEntry.entryState //sub_75B820,
+	k_VillagerStateTable[55].exitState = k_TodoEntry.exitState //sub_75B880,
+	k_VillagerStateTable[55].saveState = k_TodoEntry.saveState //sub_754E40,
+	k_VillagerStateTable[55].loadState = k_TodoEntry.loadState //sub_754E60,
+	k_VillagerStateTable[55].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FISHING</code></td><td><pre><code>	.state = VillagerFishing,
+	k_VillagerStateTable[56].entryState = k_TodoEntry.entryState //sub_75B820,
+	k_VillagerStateTable[56].exitState = k_TodoEntry.exitState //sub_75B880,
+	k_VillagerStateTable[56].saveState = k_TodoEntry.saveState //sub_754E40,
+	k_VillagerStateTable[56].loadState = k_TodoEntry.loadState //sub_754E60,
+	k_VillagerStateTable[56].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>WAIT_FOR_COUNTER</code></td><td><pre><code>	.state = VillagerWaitForCounter,
+	k_VillagerStateTable[57].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GOTO_WORSHIP_SITE_FOR_WORSHIP</code></td><td><pre><code>	.state = VillagerGotoWorshipSiteForWorship,
+	k_VillagerStateTable[58].exitState = k_TodoEntry.exitState //sub_76C170,
+	k_VillagerStateTable[58].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP</code></td><td><pre><code>	.state = VillagerArrivesAtWorshipSiteForWorship,
+	k_VillagerStateTable[59].exitState = k_TodoEntry.exitState //sub_76C170,
+	k_VillagerStateTable[59].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>WORSHIPPING_AT_WORSHIP_SITE</code></td><td><pre><code>	.state = VillagerWorshippingAtWorshipSite,
+	k_VillagerStateTable[60].exitState = k_TodoEntry.exitState //sub_76C1F0,
+	k_VillagerStateTable[60].saveState = k_TodoEntry.saveState //sub_754C00,
+	k_VillagerStateTable[60].loadState = k_TodoEntry.loadState //sub_754C60,
+	k_VillagerStateTable[60].field0x50 = Field0x50Default,
+	k_VillagerStateTable[60].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>GOTO_ALTAR_FOR_REST</code></td><td><pre><code>	.state = VillagerGotoAltarForRest,
+	k_VillagerStateTable[61].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_ALTAR_FOR_REST</code></td><td><pre><code>	.state = VillagerArrivesAtAltarForRest,
+	k_VillagerStateTable[62].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>AT_ALTAR_REST</code></td><td><pre><code>	.state = VillagerAtAltarRest,
+	k_VillagerStateTable[63].field0x50 = Field0x50Default,
+	k_VillagerStateTable[63].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424350,
+</code></pre></td></tr>
+<tr><td><code>AT_ALTAR_FINISHED_REST</code></td><td><pre><code>	.state = VillagerAtAltarFinishedRest,
+	k_VillagerStateTable[64].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>RESTART_WORSHIPPING_AT_WORSHIP_SITE</code></td><td><pre><code>	.state = VillagerRestartWorshippingAtWorshipSite,
+	k_VillagerStateTable[65].exitState = k_TodoEntry.exitState //sub_76C280,
+	k_VillagerStateTable[65].field0x50 = Field0x50Default,
+	k_VillagerStateTable[65].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>RESTART_WORSHIPPING_CREATURE</code></td><td><pre><code>	.state = VillagerRestartWorshippingCreature,
+	k_VillagerStateTable[66].field0x50 = Field0x50Default,
+	k_VillagerStateTable[66].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>FARMER_ARRIVES_AT_FARM</code></td><td><pre><code>	.state = VillagerFarmerArrivesAtFarm,
+	k_VillagerStateTable[67].entryState = k_TodoEntry.entryState //sub_75A250,
+	k_VillagerStateTable[67].exitState = k_TodoEntry.exitState //sub_75A2A0,
+	k_VillagerStateTable[67].saveState = k_TodoEntry.saveState //sub_754E80,
+	k_VillagerStateTable[67].loadState = k_TodoEntry.loadState //sub_754EF0,
+	k_VillagerStateTable[67].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FARMER_PLANTS_CROP</code></td><td><pre><code>	.state = VillagerFarmerPlantsCrop,
+	k_VillagerStateTable[68].entryState = k_TodoEntry.entryState //sub_75A250,
+	k_VillagerStateTable[68].exitState = k_TodoEntry.exitState //sub_75A2A0,
+	k_VillagerStateTable[68].saveState = k_TodoEntry.saveState //sub_754E80,
+	k_VillagerStateTable[68].loadState = k_TodoEntry.loadState //sub_754EF0,
+	k_VillagerStateTable[68].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FARMER_DIGS_UP_CROP</code></td><td><pre><code>	.state = VillagerFarmerDigsUpCrop,
+	k_VillagerStateTable[69].entryState = k_TodoEntry.entryState //sub_75A250,
+	k_VillagerStateTable[69].exitState = k_TodoEntry.exitState //sub_75A2A0,
+	k_VillagerStateTable[69].saveState = k_TodoEntry.saveState //sub_754E80,
+	k_VillagerStateTable[69].loadState = k_TodoEntry.loadState //sub_754EF0,
+	k_VillagerStateTable[69].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TO_FOOTBALL_PITCH_CONSTRUCTION</code></td><td><pre><code>	.state = VillagerMoveToFootballPitchConstruction,
+	k_VillagerStateTable[70].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_WALK_TO_POSITION</code></td><td><pre><code>	.state = VillagerFootballWalkToPosition,
+	k_VillagerStateTable[71].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[71].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[71].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[71].field0x50 = Field0x50Default,
+	k_VillagerStateTable[71].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[71].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[71].validate = Avalidate_nullfun,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_WAIT_FOR_KICK_OFF</code></td><td><pre><code>	.state = VillagerFootballWaitForKickOff,
+	k_VillagerStateTable[72].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[72].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[72].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[72].field0x50 = Field0x50Default,
+	k_VillagerStateTable[72].field0x60 = k_TodoEntry.field0x60 //sub_423BD0,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_ATTACKER</code></td><td><pre><code>	.state = VillagerFootballAttacker,
+	k_VillagerStateTable[73].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[73].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[73].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[73].field0x50 = Field0x50Default,
+	k_VillagerStateTable[73].field0x60 = k_TodoEntry.field0x60 //sub_423C60,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_GOALIE</code></td><td><pre><code>	.state = VillagerFootballGoalie,
+	k_VillagerStateTable[74].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[74].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[74].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[74].field0x50 = Field0x50Default,
+	k_VillagerStateTable[74].field0x60 = k_TodoEntry.field0x60 //sub_423C50,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_GOALIE</code></td><td><pre><code>	.state = VillagerFootballDefender,
+	k_VillagerStateTable[75].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[75].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[75].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[75].field0x50 = Field0x50Default,
+	k_VillagerStateTable[75].field0x60 = k_TodoEntry.field0x60 //sub_423C70,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_WON_GOAL</code></td><td><pre><code>	.state = VillagerFootballWonGoal,
+	k_VillagerStateTable[76].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[76].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[76].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[76].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_LOST_GOAL</code></td><td><pre><code>	.state = VillagerFootballLostGoal,
+	k_VillagerStateTable[77].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[77].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[77].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[77].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>START_MOVE_TO_PICK_UP_BALL_FOR_DEAD_BALL</code></td><td><pre><code>	.state = VillagerStartMoveToPickUpBallForDeadBall,
+	k_VillagerStateTable[78].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[78].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[78].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[78].field0x50 = Field0x50Default,
+	k_VillagerStateTable[78].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[78].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>ARRIVED_AT_PICK_UP_BALL_FOR_DEAD_BALL</code></td><td><pre><code>	.state = VillagerArrivedAtPickUpBallForDeadBall,
+	k_VillagerStateTable[79].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[79].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[79].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[79].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVED_AT_PUT_DOWN_BALL_FOR_DEAD_BALL_START</code></td><td><pre><code>	.state = VillagerArrivedAtPutDownBallForDeadBallStart,
+	k_VillagerStateTable[80].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[80].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[80].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[80].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVED_AT_PUT_DOWN_BALL_FOR_DEAD_BALL_END</code></td><td><pre><code>	.state = VillagerArrivedAtPutDownBallForDeadBallEnd,
+	k_VillagerStateTable[81].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[81].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[81].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[81].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_MATCH_PAUSED</code></td><td><pre><code>	.state = VillagerFootballMatchPaused,
+	k_VillagerStateTable[82].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[82].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[82].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[82].field0x50 = Field0x50Default,
+	k_VillagerStateTable[82].field0x60 = k_TodoEntry.field0x60 //sub_423D20,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_WATCH_MATCH</code></td><td><pre><code>	.state = VillagerFootballWatchMatch,
+	k_VillagerStateTable[83].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[83].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[83].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[83].field0x50 = Field0x50Default,
+	k_VillagerStateTable[83].field0x60 = k_TodoEntry.field0x60 //sub_423C80,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_MEXICAN_WAVE</code></td><td><pre><code>	.state = VillagerFootballMexicanWave,
+	k_VillagerStateTable[84].exitState = k_TodoEntry.exitState //sub_763280,
+	k_VillagerStateTable[84].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[84].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[84].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CREATED</code></td><td><pre><code>	.state = VillagerCreated,
+	k_VillagerStateTable[85].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_IN_ABODE_TO_TRADE</code></td><td><pre><code>	.state = VillagerArrivesInAbodeToTrade,
+	k_VillagerStateTable[86].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_IN_ABODE_TO_PICK_UP_EXCESS</code></td><td><pre><code>	.state = VillagerArrivesInAbodeToPickUpExcess,
+	k_VillagerStateTable[87].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MAKE_SCARED_STIFF</code></td><td><pre><code>	.state = VillagerMakeScaredStiff,
+</code></pre></td></tr>
+<tr><td><code>SCARED_STIFF</code></td><td><pre><code>	.state = VillagerScaredStiff,
+</code></pre></td></tr>
+<tr><td><code>WORSHIPPING_CREATURE</code></td><td><pre><code>	.state = VillagerWorshippingCreature,
+	k_VillagerStateTable[90].exitState = k_TodoEntry.exitState //sub_7527E0,
+	k_VillagerStateTable[90].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[90].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[90].field0x50 = Field0x50Default,
+	k_VillagerStateTable[90].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_LOOK_FOR_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdLookForFlock,
+	k_VillagerStateTable[91].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[91].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[91].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[91].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_MOVE_FLOCK_TO_WATER</code></td><td><pre><code>	.state = VillagerShepherdMoveFlockToWater,
+	k_VillagerStateTable[92].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[92].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[92].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[92].field0x50 = Field0x50Default,
+	k_VillagerStateTable[92].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[92].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_MOVE_FLOCK_TO_FOOD</code></td><td><pre><code>	.state = VillagerShepherdMoveFlockToFood,
+	k_VillagerStateTable[93].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[93].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[93].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[93].field0x50 = Field0x50Default,
+	k_VillagerStateTable[93].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[93].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_MOVE_FLOCK_BACK</code></td><td><pre><code>	.state = VillagerShepherdMoveFlockBack,
+	k_VillagerStateTable[94].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[94].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[94].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[94].field0x50 = Field0x50Default,
+	k_VillagerStateTable[94].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[94].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_DECIDE_WHAT_TO_DO_WITH_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdDecideWhatToDoWithFlock,
+	k_VillagerStateTable[95].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[95].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[95].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[95].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_WAIT_FOR_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdWaitForFlock,
+	k_VillagerStateTable[96].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[96].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[96].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[96].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_SLAUGHTER_ANIMAL</code></td><td><pre><code>	.state = VillagerShepherdSlaughterAnimal,
+	k_VillagerStateTable[97].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[97].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[97].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[97].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_FETCH_STRAY</code></td><td><pre><code>	.state = VillagerShepherdFetchStray,
+	k_VillagerStateTable[98].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[98].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[98].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[98].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_GOTO_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdGotoFlock,
+	k_VillagerStateTable[99].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[99].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[99].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[99].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_AT_HOME</code></td><td><pre><code>	.state = VillagerHousewifeAtHome,
+	k_VillagerStateTable[100].exitState = k_TodoEntry.exitState //sub_761B40,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_GOTO_STORAGE_PIT</code></td><td><pre><code>	.state = VillagerHousewifeGotoStoragePit,
+	k_VillagerStateTable[101].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_ARRIVES_AT_STORAGE_PIT</code></td><td><pre><code>	.state = VillagerHousewifeArrivesAtStoragePit,
+	k_VillagerStateTable[102].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_PICKUP_FROM_STORAGE_PIT</code></td><td><pre><code>	.state = VillagerHousewifePickupFromStoragePit,
+	k_VillagerStateTable[103].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_RETURN_HOME_WITH_FOOD</code></td><td><pre><code>	.state = VillagerHousewifeReturnHomeWithFood,
+	k_VillagerStateTable[104].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_MAKE_DINNER</code></td><td><pre><code>	.state = VillagerHousewifeMakeDinner,
+	k_VillagerStateTable[105].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_SERVES_DINNER</code></td><td><pre><code>	.state = VillagerHousewifeServesDinner,
+	k_VillagerStateTable[106].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_CLEARS_AWAY_DINNER</code></td><td><pre><code>	.state = VillagerHousewifeClearsAwayDinner,
+	k_VillagerStateTable[107].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_DOES_HOUSEWORK</code></td><td><pre><code>	.state = VillagerHousewifeDoesHousework,
+	k_VillagerStateTable[108].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_GOSSIPS_AROUND_STORAGE_PIT</code></td><td><pre><code>	.state = VillagerHousewifeGossipsAroundStoragePit,
+	k_VillagerStateTable[109].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_STARTS_GIVING_BIRTH</code></td><td><pre><code>	.state = VillagerHousewifeStartsGivingBirth,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_GIVING_BIRTH</code></td><td><pre><code>	.state = VillagerHousewifeGivingBirth,
+</code></pre></td></tr>
+<tr><td><code>HOUSEWIFE_GIVEN_BIRTH</code></td><td><pre><code>	.state = VillagerHousewifeGivenBirth,
+</code></pre></td></tr>
+<tr><td><code>CHILD_AT_CRECHE</code></td><td><pre><code>	.state = VillagerChildAtCreche,
+	k_VillagerStateTable[113].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHILD_FOLLOWS_MOTHER</code></td><td><pre><code>	.state = VillagerChildFollowsMother,
+	k_VillagerStateTable[114].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHILD_BECOMES_ADULT</code></td><td><pre><code>	.state = VillagerChildBecomesAdult,
+	k_VillagerStateTable[115].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SITS_DOWN_TO_DINNER</code></td><td><pre><code>	.state = VillagerSitsDownToDinner,
+	k_VillagerStateTable[116].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>EAT_FOOD</code></td><td><pre><code>	.state = VillagerEatFood,
+	k_VillagerStateTable[117].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>EAT_FOOD_AT_HOME</code></td><td><pre><code>	.state = VillagerEatFoodAtHome,
+	k_VillagerStateTable[118].exitState = k_TodoEntry.exitState //sub_761B40,
+</code></pre></td></tr>
+<tr><td><code>GOTO_BED_AT_HOME</code></td><td><pre><code>	.state = VillagerGotoBedAtHome,
+	k_VillagerStateTable[119].exitState = k_TodoEntry.exitState //sub_761B40,
+</code></pre></td></tr>
+<tr><td><code>SLEEPING_AT_HOME</code></td><td><pre><code>	.state = VillagerSleepingAtHome,
+	k_VillagerStateTable[120].exitState = k_TodoEntry.exitState //sub_761B40,
+</code></pre></td></tr>
+<tr><td><code>WAKE_UP_AT_HOME</code></td><td><pre><code>	.state = VillagerWakeUpAtHome,
+	k_VillagerStateTable[121].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[121].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>START_HAVING_SEX</code></td><td><pre><code>	.state = VillagerStartHavingSex,
+	k_VillagerStateTable[122].entryState = k_TodoEntry.entryState //sub_76ACE0,
+	k_VillagerStateTable[122].exitState = k_TodoEntry.exitState //sub_76AD80,
+	k_VillagerStateTable[122].field0x50 = Field0x50Default,
+	k_VillagerStateTable[122]Avalidate_2fun0,
+</code></pre></td></tr>
+<tr><td><code>HAVING_SEX</code></td><td><pre><code>	.state = VillagerHavingSex,
+	k_VillagerStateTable[123].entryState = k_TodoEntry.entryState //sub_76ACE0,
+	k_VillagerStateTable[123].exitState = k_TodoEntry.exitState //sub_76AD80,
+	k_VillagerStateTable[123].field0x50 = Field0x50Default,
+	k_VillagerStateTable[123].field0x60 = k_TodoEntry.field0x60 //sub_4237D0,
+</code></pre></td></tr>
+<tr><td><code>STOP_HAVING_SEX</code></td><td><pre><code>	.state = VillagerStopHavingSex,
+	k_VillagerStateTable[124].entryState = k_TodoEntry.entryState //sub_76ACE0,
+	k_VillagerStateTable[124].exitState = k_TodoEntry.exitState //sub_76AD80,
+	k_VillagerStateTable[124].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>START_HAVING_SEX_AT_HOME</code></td><td><pre><code>	.state = VillagerStartHavingSexAtHome,
+	k_VillagerStateTable[125].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[125].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HAVING_SEX_AT_HOME</code></td><td><pre><code>	.state = VillagerHavingSexAtHome,
+	k_VillagerStateTable[126].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[126].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>STOP_HAVING_SEX_AT_HOME</code></td><td><pre><code>	.state = VillagerStopHavingSexAtHome,
+	k_VillagerStateTable[127].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[127].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>WAIT_FOR_DINNER</code></td><td><pre><code>	.state = VillagerWaitForDinner,
+	k_VillagerStateTable[128].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>HOMELESS_START</code></td><td><pre><code>	.state = VillagerHomelessStart,
+	k_VillagerStateTable[129].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>VAGRANT_START</code></td><td><pre><code>	.state = VillagerVagrantStart,
+	k_VillagerStateTable[130].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MORN_DEATH</code></td><td><pre><code>	.state = VillagerMornDeath,
+	k_VillagerStateTable[131].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424300,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_INSPECTION_REACTION</code></td><td><pre><code>	.state = VillagerPerformInspectionReaction,
+	k_VillagerStateTable[132].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[132].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[132].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>APPROACH_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerApproachObjectReaction,
+	k_VillagerStateTable[133].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[133].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[133].field0x50 = Field0x50Default,
+	k_VillagerStateTable[133].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[133].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_TELL_OTHERS_ABOUT_OBJECT</code></td><td><pre><code>	.state = VillagerInitialiseTellOthersAboutObject,
+	k_VillagerStateTable[134].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>TELL_OTHERS_ABOUT_INTERESTING_OBJECT</code></td><td><pre><code>	.state = VillagerTellOthersAboutInterestingObject,
+	k_VillagerStateTable[135].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>APPROACH_VILLAGER_TO_TALK_TO</code></td><td><pre><code>	.state = VillagerApproachVillagerToTalkTo,
+	k_VillagerStateTable[136].field0x50 = Field0x50Default,
+	k_VillagerStateTable[136].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[136].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>TELL_PARTICULAR_VILLAGER_ABOUT_OBJECT</code></td><td><pre><code>	.state = VillagerTellParticularVillagerAboutObject,
+	k_VillagerStateTable[137].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_LOOK_AROUND_FOR_VILLAGER_TO_TELL</code></td><td><pre><code>	.state = VillagerInitialiseLookAroundForVillagerToTell,
+	k_VillagerStateTable[138].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>LOOK_AROUND_FOR_VILLAGER_TO_TELL</code></td><td><pre><code>	.state = VillagerLookAroundForVillagerToTell,
+	k_VillagerStateTable[139].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TOWARDS_OBJECT_TO_LOOK_AT</code></td><td><pre><code>	.state = VillagerMoveTowardsObjectToLookAt,
+	k_VillagerStateTable[140].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[140].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[140].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[140].field0x50 = Field0x50Default,
+	k_VillagerStateTable[140].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[140].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[140].validate = Avalidate_2fun1,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_IMPRESSED_REACTION</code></td><td><pre><code>	.state = VillagerInitialiseImpressedReaction,
+	k_VillagerStateTable[141].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[141].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[141].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[141].field0x50 = Field0x50Default,
+	k_VillagerStateTable[141].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_IMPRESSED_REACTION</code></td><td><pre><code>	.state = VillagerPerformImpressedReaction,
+	k_VillagerStateTable[142].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[142].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[142].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[142].field0x50 = Field0x50Default,
+	k_VillagerStateTable[142].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424350,
+	k_VillagerStateTable[142].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_FIGHT_REACTION</code></td><td><pre><code>	.state = VillagerInitialiseFightReaction,
+	k_VillagerStateTable[143].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[143].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[143].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[143].field0x50 = Field0x50Default,
+	k_VillagerStateTable[143].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_FIGHT_REACTION</code></td><td><pre><code>	.state = VillagerPerformFightReaction,
+	k_VillagerStateTable[144].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[144].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[144].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[144].field0x50 = Field0x50Default,
+	k_VillagerStateTable[144].field0x60 = k_TodoEntry.field0x60 //sub_423540,
+	k_VillagerStateTable[144].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>HOMELESS_EAT_DINNER</code></td><td><pre><code>	.state = VillagerHomelessEatDinner,
+	k_VillagerStateTable[145].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>INSPECT_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerInspectCreatureReaction,
+	k_VillagerStateTable[146].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[146].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[146].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[146].field0x50 = Field0x50Default,
+	k_VillagerStateTable[146].field0x60 = k_TodoEntry.field0x60 //sub_423EB0,
+	k_VillagerStateTable[146].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_INSPECT_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerPerformInspectCreatureReaction,
+	k_VillagerStateTable[147].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[147].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[147].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[147].field0x50 = Field0x50Default,
+	k_VillagerStateTable[147].field0x60 = k_TodoEntry.field0x60 //sub_423EB0,
+	k_VillagerStateTable[147].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>APPROACH_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerApproachCreatureReaction,
+	k_VillagerStateTable[148].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[148].saveState = k_TodoEntry.saveState //sub_755B80,
+	k_VillagerStateTable[148].loadState = k_TodoEntry.loadState //sub_755C20,
+	k_VillagerStateTable[148].field0x50 = Field0x50Default,
+	k_VillagerStateTable[148].field0x60 = k_TodoEntry.field0x60 //sub_423EB0,
+	k_VillagerStateTable[148].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_BEWILDERED_BY_MAGIC_TREE_REACTION</code></td><td><pre><code>	.state = VillagerInitialiseBewilderedByMagicTreeReaction,
+	k_VillagerStateTable[149].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[149].saveState = k_TodoEntry.saveState //sub_755CC0,
+	k_VillagerStateTable[149].loadState = k_TodoEntry.loadState //sub_755D60,
+	k_VillagerStateTable[149].field0x50 = Field0x50Default,
+	k_VillagerStateTable[149].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_BEWILDERED_BY_MAGIC_TREE_REACTION</code></td><td><pre><code>	.state = VillagerPerformBewilderedByMagicTreeReaction,
+	k_VillagerStateTable[150].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[150].saveState = k_TodoEntry.saveState //sub_755CC0,
+	k_VillagerStateTable[150].loadState = k_TodoEntry.loadState //sub_755D60,
+	k_VillagerStateTable[150].field0x50 = Field0x50Default,
+	k_VillagerStateTable[150].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>TURN_TO_FACE_MAGIC_TREE</code></td><td><pre><code>	.state = VillagerTurnToFaceMagicTree,
+	k_VillagerStateTable[151].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[151].field0x50 = Field0x50Default,
+	k_VillagerStateTable[151].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>LOOK_AT_MAGIC_TREE</code></td><td><pre><code>	.state = VillagerLookAtMagicTree,
+	k_VillagerStateTable[152].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[152].field0x50 = Field0x50Default,
+	k_VillagerStateTable[152].field0x60 = k_TodoEntry.field0x60 //sub_423A80,
+	k_VillagerStateTable[152].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>DANCE_FOR_EDITING_PURPOSES</code></td><td><pre><code>	.state = VillagerDanceForEditingPurposes,
+	k_VillagerStateTable[153].exitState = k_TodoEntry.exitState //sub_7527E0,
+	k_VillagerStateTable[153].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[153].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[153].field0x50 = Field0x50Default,
+	k_VillagerStateTable[153].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TO_DANCE_POS</code></td><td><pre><code>	.state = VillagerMoveToDancePos,
+	k_VillagerStateTable[154].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[154].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[154].field0x50 = Field0x50Default,
+	k_VillagerStateTable[154].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[154].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[154].validate = Avalidate_nullfun,
+</code></pre></td></tr>
+<tr><td><code>INITIALISE_RESPECT_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerInitialiseRespectCreatureReaction,
+	k_VillagerStateTable[155].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[155].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[155].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[155].field0x50 = Field0x50Default,
+	k_VillagerStateTable[155].field0x60 = k_TodoEntry.field0x60 //sub_423F60,
+	k_VillagerStateTable[155].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PERFORM_RESPECT_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerPerformRespectCreatureReaction,
+	k_VillagerStateTable[156].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[156].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[156].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[156].field0x50 = Field0x50Default,
+	k_VillagerStateTable[156].field0x60 = k_TodoEntry.field0x60 //sub_423F60,
+	k_VillagerStateTable[156].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>FINISH_RESPECT_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerFinishRespectCreatureReaction,
+	k_VillagerStateTable[157].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[157].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[157].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[157].field0x50 = Field0x50Default,
+	k_VillagerStateTable[157].field0x60 = k_TodoEntry.field0x60 //sub_423F60,
+	k_VillagerStateTable[157].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>APPROACH_HAND_REACTION</code></td><td><pre><code>	.state = VillagerApproachHandReaction,
+	k_VillagerStateTable[158].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[158].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[158].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[158].field0x50 = Field0x50Default,
+	k_VillagerStateTable[158].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>FLEEING_FROM_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerFleeingFromCreatureReaction,
+	k_VillagerStateTable[159].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[159].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[159].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[159].field0x50 = Field0x50Default,
+	k_VillagerStateTable[159].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>TURN_TO_FACE_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerTurnToFaceCreatureReaction,
+	k_VillagerStateTable[160].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[160].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[160].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[160].field0x50 = Field0x50Default,
+	k_VillagerStateTable[160].field0x60 = k_TodoEntry.field0x60 //sub_423EB0,
+	k_VillagerStateTable[160].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>WATCH_FLYING_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerWatchFlyingObjectReaction,
+	k_VillagerStateTable[161].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[161].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[161].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[161].field0x50 = Field0x50Default,
+	k_VillagerStateTable[161].field0x60 = k_TodoEntry.field0x60 //sub_423AD0,
+	k_VillagerStateTable[161].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>POINT_AT_FLYING_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerPointAtFlyingObjectReaction,
+	k_VillagerStateTable[162].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[162].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[162].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[162].field0x50 = Field0x50Default,
+	k_VillagerStateTable[162].field0x60 = k_TodoEntry.field0x60 //sub_423FD0,
+	k_VillagerStateTable[162].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>DECIDE_WHAT_TO_DO</code></td><td><pre><code>	.state = VillagerDecideWhatToDo,
+	k_VillagerStateTable[163].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>INTERACT_DECIDE_WHAT_TO_DO</code></td><td><pre><code>	.state = VillagerInteractDecideWhatToDo,
+	k_VillagerStateTable[164].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>EAT_OUTSIDE</code></td><td><pre><code>	.state = VillagerEatOutside,
+	k_VillagerStateTable[165].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>RUN_AWAY_FROM_OBJECT_REACTION</code></td><td><pre><code>	.state = VillagerRunAwayFromObjectReaction,
+	k_VillagerStateTable[166].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[166].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[166].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[166].field0x50 = Field0x50Default,
+	k_VillagerStateTable[166].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>MOVE_TOWARDS_CREATURE_REACTION</code></td><td><pre><code>	.state = VillagerMoveTowardsCreatureReaction,
+	k_VillagerStateTable[167].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[167].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[167].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[167].field0x50 = Field0x50Default,
+	k_VillagerStateTable[167].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[167].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[167].validate = Avalidate_2fun1,
+</code></pre></td></tr>
+<tr><td><code>AMAZED_BY_MAGIC_SHIELD_REACTION</code></td><td><pre><code>	.state = VillagerAmazedByMagicShieldReaction,
+	k_VillagerStateTable[168].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[168].saveState = k_TodoEntry.saveState //sub_755F40,
+	k_VillagerStateTable[168].loadState = k_TodoEntry.loadState //sub_755FA0,
+	k_VillagerStateTable[168].field0x60 = k_TodoEntry.field0x60 //sub_4240C0,
+	k_VillagerStateTable[168].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>VILLAGER_GOSSIPS</code></td><td><pre><code>	.state = VillagerVillagerGossips,
+	k_VillagerStateTable[169].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_ANIMAL</code></td><td><pre><code>	.state = VillagerCheckInteractWithAnimal,
+	k_VillagerStateTable[170].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_WORSHIP_SITE</code></td><td><pre><code>	.state = VillagerCheckInteractWithWorshipSite,
+	k_VillagerStateTable[171].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_ABODE</code></td><td><pre><code>	.state = VillagerCheckInteractWithAbode,
+	k_VillagerStateTable[172].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_FIELD</code></td><td><pre><code>	.state = VillagerCheckInteractWithField,
+	k_VillagerStateTable[173].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_FISH_FARM</code></td><td><pre><code>	.state = VillagerCheckInteractWithFishFarm,
+	k_VillagerStateTable[174].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_TREE</code></td><td><pre><code>	.state = VillagerCheckInteractWithTree,
+	k_VillagerStateTable[175].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_BALL</code></td><td><pre><code>	.state = VillagerCheckInteractWithBall,
+	k_VillagerStateTable[176].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_POT</code></td><td><pre><code>	.state = VillagerCheckInteractWithPot,
+	k_VillagerStateTable[177].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_FOOTBALL</code></td><td><pre><code>	.state = VillagerCheckInteractWithFootball,
+	k_VillagerStateTable[178].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_VILLAGER</code></td><td><pre><code>	.state = VillagerCheckInteractWithVillager,
+	k_VillagerStateTable[179].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_MAGIC_LIVING</code></td><td><pre><code>	.state = VillagerCheckInteractWithMagicLiving,
+	k_VillagerStateTable[180].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>CHECK_INTERACT_WITH_ROCK</code></td><td><pre><code>	.state = VillagerCheckInteractWithRock,
+	k_VillagerStateTable[181].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_ROCK_FOR_WOOD</code></td><td><pre><code>	.state = VillagerArrivesAtRockForWood,
+	k_VillagerStateTable[182].field0x50 = Field0x50Default,
+	k_VillagerStateTable[182].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>GOT_WOOD_FROM_ROCK</code></td><td><pre><code>	.state = VillagerGotWoodFromRock,
+	k_VillagerStateTable[183].field0x50 = Field0x50Default,
+	k_VillagerStateTable[183].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>REENTER_BUILDING_STATE</code></td><td><pre><code>	.state = VillagerReenterBuildingState,
+	k_VillagerStateTable[184].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[184].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[184].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[184].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[184].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVE_AT_PUSH_OBJECT</code></td><td><pre><code>	.state = VillagerArriveAtPushObject,
+	k_VillagerStateTable[185].saveState = k_TodoEntry.saveState //sub_7558E0,
+	k_VillagerStateTable[185].loadState = k_TodoEntry.loadState //sub_755980,
+	k_VillagerStateTable[185].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>TAKE_WOOD_FROM_TREE</code></td><td><pre><code>	.state = VillagerTakeWoodFromTree,
+	k_VillagerStateTable[186].field0x50 = Field0x50Default,
+	k_VillagerStateTable[186].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>TAKE_WOOD_FROM_POT</code></td><td><pre><code>	.state = VillagerTakeWoodFromPot,
+	k_VillagerStateTable[187].field0x50 = Field0x50Default,
+	k_VillagerStateTable[187].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>TAKE_WOOD_FROM_TREE_FOR_BUILDING</code></td><td><pre><code>	.state = VillagerTakeWoodFromTreeForBuilding,
+	k_VillagerStateTable[188].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[188].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[188].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[188].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[188].field0x50 = Field0x50Default,
+	k_VillagerStateTable[188].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>TAKE_WOOD_FROM_POT_FOR_BUILDING</code></td><td><pre><code>	.state = VillagerTakeWoodFromPotForBuilding,
+	k_VillagerStateTable[189].entryState = k_TodoEntry.entryState //sub_759750,
+	k_VillagerStateTable[189].exitState = k_TodoEntry.exitState //sub_7597B0,
+	k_VillagerStateTable[189].saveState = k_TodoEntry.saveState //sub_754A00,
+	k_VillagerStateTable[189].loadState = k_TodoEntry.loadState //sub_754A60,
+	k_VillagerStateTable[189].field0x50 = Field0x50Default,
+	k_VillagerStateTable[189].field0x60 = &loc_423AC0,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_TAKE_ANIMAL_FOR_SLAUGHTER</code></td><td><pre><code>	.state = VillagerShepherdTakeAnimalForSlaughter,
+	k_VillagerStateTable[190].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[190].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_TAKES_CONTROL_OF_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdTakesControlOfFlock,
+	k_VillagerStateTable[191].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[191].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_RELEASES_CONTROL_OF_FLOCK</code></td><td><pre><code>	.state = VillagerShepherdReleasesControlOfFlock,
+	k_VillagerStateTable[192].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[192].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>DANCE_BUT_NOT_WORSHIP</code></td><td><pre><code>	.state = VillagerDanceButNotWorship,
+	k_VillagerStateTable[193].exitState = k_TodoEntry.exitState //sub_7527E0,
+	k_VillagerStateTable[193].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[193].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[193].field0x50 = Field0x50Default,
+	k_VillagerStateTable[193].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>FAINTING_REACTION</code></td><td><pre><code>	.state = VillagerFaintingReaction,
+	k_VillagerStateTable[194].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[194].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[194].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[194].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>START_CONFUSED_REACTION</code></td><td><pre><code>	.state = VillagerStartConfusedReaction,
+	k_VillagerStateTable[195].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[195].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[195].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[195].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>CONFUSED_REACTION</code></td><td><pre><code>	.state = VillagerConfusedReaction,
+	k_VillagerStateTable[196].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[196].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[196].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[196].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>AFTER_TAP_ON_ABODE</code></td><td><pre><code>	.state = VillagerAfterTapOnAbode,
+	k_VillagerStateTable[197].field0x50 = Field0x50Default,
+	k_VillagerStateTable[197].field0x60 = k_TodoEntry.field0x60 //sub_424050,
+</code></pre></td></tr>
+<tr><td><code>WEAK_ON_GROUND</code></td><td><pre><code>	.state = VillagerWeakOnGround,
+	k_VillagerStateTable[198].exitState = k_TodoEntry.exitState //sub_5AFFA0,
+</code></pre></td></tr>
+<tr><td><code>SCRIPT_WANDER_AROUND_POSITION</code></td><td><pre><code>	.state = VillagerScriptWanderAroundPosition,
+	k_VillagerStateTable[199].entryState = k_TodoEntry.entryState //sub_5B00D0,
+	k_VillagerStateTable[199].exitState = k_TodoEntry.exitState //sub_5B0180,
+	k_VillagerStateTable[199].saveState = k_TodoEntry.saveState //sub_755470,
+	k_VillagerStateTable[199].loadState = k_TodoEntry.loadState //sub_755580,
+</code></pre></td></tr>
+<tr><td><code>SCRIPT_PLAY_ANIM</code></td><td><pre><code>	.state = VillagerScriptPlayAnim,
+	k_VillagerStateTable[200].entryState = k_TodoEntry.entryState //sub_5B0220,
+	k_VillagerStateTable[200].exitState = k_TodoEntry.exitState //sub_5AFE00,
+	k_VillagerStateTable[200].saveState = k_TodoEntry.saveState //sub_755470,
+	k_VillagerStateTable[200].loadState = k_TodoEntry.loadState //sub_755580,
+	k_VillagerStateTable[200].field0x60 = k_TodoEntry.field0x60 //sub_768A00,
+</code></pre></td></tr>
+<tr><td><code>GO_TOWARDS_TELEPORT_REACTION</code></td><td><pre><code>	.state = VillagerGoTowardsTeleportReaction,
+	k_VillagerStateTable[201].exitState = k_TodoEntry.exitState //sub_766390,
+	k_VillagerStateTable[201].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[201].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[201].field0x50 = Field0x50Default,
+	k_VillagerStateTable[201].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>TELEPORT_REACTION</code></td><td><pre><code>	.state = VillagerTeleportReaction,
+	k_VillagerStateTable[202].exitState = k_TodoEntry.exitState //sub_766390,
+	k_VillagerStateTable[202].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[202].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[202].field0x50 = Field0x50Default,
+	k_VillagerStateTable[202].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>DANCE_WHILE_REACTING</code></td><td><pre><code>	.state = VillagerDanceWhileReacting,
+	k_VillagerStateTable[203].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[203].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[203].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[203].field0x50 = Field0x50Default,
+	k_VillagerStateTable[203].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+	k_VillagerStateTable[203].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>CONTROLLED_BY_CREATURE</code></td><td><pre><code>	.state = VillagerControlledByCreature,
+	k_VillagerStateTable[204].exitState = k_TodoEntry.exitState //sub_759A90,
+	k_VillagerStateTable[204].field0x50 = Field0x50Default,
+	k_VillagerStateTable[204].field0x60 = k_TodoEntry.field0x60 //sub_423FA0,
+</code></pre></td></tr>
+<tr><td><code>POINT_AT_DEAD_PERSON</code></td><td><pre><code>	.state = VillagerPointAtDeadPerson,
+	k_VillagerStateTable[205].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[205].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[205].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[205].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>GO_TOWARDS_DEAD_PERSON</code></td><td><pre><code>	.state = VillagerGoTowardsDeadPerson,
+	k_VillagerStateTable[206].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[206].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[206].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[206].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>LOOK_AT_DEAD_PERSON</code></td><td><pre><code>	.state = VillagerLookAtDeadPerson,
+	k_VillagerStateTable[207].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[207].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[207].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[207].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>MOURN_DEAD_PERSON</code></td><td><pre><code>	.state = VillagerMournDeadPerson,
+	k_VillagerStateTable[208].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[208].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[208].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[208].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424300,
+	k_VillagerStateTable[208].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>NOTHING_TO_DO</code></td><td><pre><code>	.state = VillagerNothingToDo,
+	k_VillagerStateTable[209].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_WORKSHOP_FOR_DROP_OFF</code></td><td><pre><code>	.state = VillagerArrivesAtWorkshopForDropOff,
+	k_VillagerStateTable[210].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_WORKSHOP_MATERIALS</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForWorkshopMaterials,
+	k_VillagerStateTable[211].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>SHOW_POISONED</code></td><td><pre><code>	.state = VillagerShowPoisoned,
+</code></pre></td></tr>
+<tr><td><code>HIDING_AT_WORSHIP_SITE</code></td><td><pre><code>	.state = VillagerHidingAtWorshipSite,
+	k_VillagerStateTable[213].exitState = k_TodoEntry.exitState //sub_76C1F0,
+	k_VillagerStateTable[213].saveState = k_TodoEntry.saveState //sub_754C00,
+	k_VillagerStateTable[213].loadState = k_TodoEntry.loadState //sub_754C60,
+</code></pre></td></tr>
+<tr><td><code>CROWD_REACTION</code></td><td><pre><code>	.state = VillagerCrowdReaction,
+	k_VillagerStateTable[214].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[214].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[214].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[214].field0x50 = Field0x50Default,
+	k_VillagerStateTable[214].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>REACT_TO_FIRE</code></td><td><pre><code>	.state = VillagerReactToFire,
+	k_VillagerStateTable[215].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[215].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[215].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[215].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PUT_OUT_FIRE_BY_BEATING</code></td><td><pre><code>	.state = VillagerPutOutFireByBeating,
+	k_VillagerStateTable[216].entryState = k_TodoEntry.entryState //sub_75ADC0,
+	k_VillagerStateTable[216].exitState = k_TodoEntry.exitState //sub_75AE80,
+	k_VillagerStateTable[216].saveState = k_TodoEntry.saveState //sub_755680,
+	k_VillagerStateTable[216].loadState = k_TodoEntry.loadState //sub_7556F0,
+	k_VillagerStateTable[216].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>PUT_OUT_FIRE_WITH_WATER</code></td><td><pre><code>	.state = VillagerPutOutFireWithWater,
+	k_VillagerStateTable[217].entryState = k_TodoEntry.entryState //sub_75ADC0,
+	k_VillagerStateTable[217].exitState = k_TodoEntry.exitState //sub_75AE80,
+	k_VillagerStateTable[217].saveState = k_TodoEntry.saveState //sub_755680,
+	k_VillagerStateTable[217].loadState = k_TodoEntry.loadState //sub_7556F0,
+	k_VillagerStateTable[217].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>GET_WATER_TO_PUT_OUT_FIRE</code></td><td><pre><code>	.state = VillagerGetWaterToPutOutFire,
+	k_VillagerStateTable[218].entryState = k_TodoEntry.entryState //sub_75ADC0,
+	k_VillagerStateTable[218].exitState = k_TodoEntry.exitState //sub_75AE80,
+	k_VillagerStateTable[218].saveState = k_TodoEntry.saveState //sub_755680,
+	k_VillagerStateTable[218].loadState = k_TodoEntry.loadState //sub_7556F0,
+	k_VillagerStateTable[218].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>ON_FIRE</code></td><td><pre><code>	.state = VillagerOnFire,
+	k_VillagerStateTable[219].entryState = k_TodoEntry.entryState //sub_75AF30,
+	k_VillagerStateTable[219].exitState = k_TodoEntry.exitState //sub_75AF80,
+	k_VillagerStateTable[219].saveState = k_TodoEntry.saveState //sub_755680,
+	k_VillagerStateTable[219].loadState = k_TodoEntry.loadState //sub_7556F0,
+</code></pre></td></tr>
+<tr><td><code>MOVE_AROUND_FIRE</code></td><td><pre><code>	.state = VillagerMoveAroundFire,
+	k_VillagerStateTable[220].entryState = k_TodoEntry.entryState //sub_75ADC0,
+	k_VillagerStateTable[220].exitState = k_TodoEntry.exitState //sub_75AE80,
+	k_VillagerStateTable[220].saveState = k_TodoEntry.saveState //sub_755680,
+	k_VillagerStateTable[220].loadState = k_TodoEntry.loadState //sub_7556F0,
+	k_VillagerStateTable[220].field0x50 = afield0x50_1fun,
+	k_VillagerStateTable[220].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>DISCIPLE_NOTHING_TO_DO</code></td><td><pre><code>	.state = VillagerDiscipleNothingToDo,
+	k_VillagerStateTable[221].entryState = k_TodoEntry.entryState //sub_754140,
+	k_VillagerStateTable[221].saveState = k_TodoEntry.saveState //sub_755760,
+	k_VillagerStateTable[221].loadState = k_TodoEntry.loadState //sub_755780,
+	k_VillagerStateTable[221].field0x50 = Field0x50Default,
+	k_VillagerStateTable[221].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424350,
+</code></pre></td></tr>
+<tr><td><code>FOOTBALL_MOVE_TO_BALL</code></td><td><pre><code>	.state = VillagerFootballMoveToBall,
+	k_VillagerStateTable[222].exitState = k_TodoEntry.exitState //sub_5B0110,
+	k_VillagerStateTable[222].saveState = k_TodoEntry.saveState //sub_754F60,
+	k_VillagerStateTable[222].loadState = k_TodoEntry.loadState //sub_755040,
+	k_VillagerStateTable[222].field0x50 = Field0x50Default,
+	k_VillagerStateTable[222].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[222].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_TRADER_PICK_UP</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForTraderPickUp,
+	k_VillagerStateTable[223].saveState = k_TodoEntry.saveState //sub_7557A0,
+	k_VillagerStateTable[223].loadState = k_TodoEntry.loadState //sub_755810,
+	k_VillagerStateTable[223].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_STORAGE_PIT_FOR_TRADER_DROP_OFF</code></td><td><pre><code>	.state = VillagerArrivesAtStoragePitForTraderDropOff,
+	k_VillagerStateTable[224].saveState = k_TodoEntry.saveState //sub_7557A0,
+	k_VillagerStateTable[224].loadState = k_TodoEntry.loadState //sub_755810,
+	k_VillagerStateTable[224].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>BREEDER_DISCIPLE</code></td><td><pre><code>	.state = VillagerBreederDisciple,
+	k_VillagerStateTable[225].entryState = k_TodoEntry.entryState //sub_76A2A0,
+	k_VillagerStateTable[225].exitState = k_TodoEntry.exitState //sub_76A2D0,
+	k_VillagerStateTable[225].saveState = k_TodoEntry.saveState //sub_755A20,
+	k_VillagerStateTable[225].loadState = k_TodoEntry.loadState //sub_755A80,
+	k_VillagerStateTable[225].field0x50 = Field0x50Default,
+	k_VillagerStateTable[225]Avalidate_2fun0,
+</code></pre></td></tr>
+<tr><td><code>MISSIONARY_DISCIPLE</code></td><td><pre><code>	.state = VillagerMissionaryDisciple,
+	k_VillagerStateTable[226].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>REACT_TO_BREEDER</code></td><td><pre><code>	.state = VillagerReactToBreeder,
+	k_VillagerStateTable[227].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[227].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[227].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[227].field0x50 = Field0x50Default,
+	k_VillagerStateTable[227].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>SHEPHERD_CHECK_ANIMAL_FOR_SLAUGHTER</code></td><td><pre><code>	.state = VillagerShepherdCheckAnimalForSlaughter,
+	k_VillagerStateTable[228].exitState = k_TodoEntry.exitState //sub_768F50,
+	k_VillagerStateTable[228].saveState = k_TodoEntry.saveState //sub_755120,
+	k_VillagerStateTable[228].loadState = k_TodoEntry.loadState //sub_7551C0,
+	k_VillagerStateTable[228].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>INTERACT_DECIDE_WHAT_TO_DO_FOR_OTHER_VILLAGER</code></td><td><pre><code>	.state = VillagerInteractDecideWhatToDoForOtherVillager,
+	k_VillagerStateTable[229].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARTIFACT_DANCE</code></td><td><pre><code>	.state = VillagerArtifactDance,
+	k_VillagerStateTable[230].exitState = k_TodoEntry.exitState //sub_7527E0,
+	k_VillagerStateTable[230].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[230].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[230].field0x50 = Field0x50Default,
+	k_VillagerStateTable[230].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>FLEEING_FROM_PREDATOR_REACTION</code></td><td><pre><code>	.state = VillagerFleeingFromPredatorReaction,
+	k_VillagerStateTable[231].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[231].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[231].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[231].field0x50 = Field0x50Default,
+	k_VillagerStateTable[231].field0x60 = k_TodoEntry.field0x60 //sub_423400,
+	k_VillagerStateTable[231].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4242B0,
+	k_VillagerStateTable[231].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>WAIT_FOR_WOOD</code></td><td><pre><code>	.state = VillagerWaitForWood,
+	k_VillagerStateTable[232].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>INSPECT_OBJECT</code></td><td><pre><code>	.state = VillagerInspectObject,
+	k_VillagerStateTable[233].saveState = k_TodoEntry.saveState //sub_755880,
+	k_VillagerStateTable[233].loadState = k_TodoEntry.loadState //sub_7558A0,
+	k_VillagerStateTable[233].field0x50 = Field0x50Default,
+	k_VillagerStateTable[233].validate = Avalidate_fun0,
+</code></pre></td></tr>
+<tr><td><code>GO_HOME_AND_CHANGE</code></td><td><pre><code>	.state = VillagerGoHomeAndChange,
+	k_VillagerStateTable[234].exitState = k_TodoEntry.exitState //sub_761980,
+	k_VillagerStateTable[234].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>WAIT_FOR_MATE</code></td><td><pre><code>	.state = VillagerWaitForMate,
+	k_VillagerStateTable[235].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[235].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[235].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[235].field0x50 = Field0x50Default,
+	k_VillagerStateTable[235].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>GO_AND_HIDE_IN_NEARBY_BUILDING</code></td><td><pre><code>	.state = VillagerGoAndHideInNearbyBuilding,
+	k_VillagerStateTable[236].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[236].saveState = k_TodoEntry.saveState //sub_755E00,
+	k_VillagerStateTable[236].loadState = k_TodoEntry.loadState //sub_755EA0,
+	k_VillagerStateTable[236].field0x50 = Field0x50Default,
+	k_VillagerStateTable[236].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>LOOK_TO_SEE_IF_IT_IS_SAFE</code></td><td><pre><code>	.state = VillagerLookToSeeIfItIsSafe,
+	k_VillagerStateTable[237].exitState = k_TodoEntry.exitState //sub_5B0100,
+	k_VillagerStateTable[237].saveState = k_TodoEntry.saveState //sub_755E00,
+	k_VillagerStateTable[237].loadState = k_TodoEntry.loadState //sub_755EA0,
+	k_VillagerStateTable[237].field0x50 = Field0x50Default,
+	k_VillagerStateTable[237].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>SLEEP_IN_TENT</code></td><td><pre><code>	.state = VillagerSleepInTent,
+	k_VillagerStateTable[238].field0x50 = Field0x50Default,
+	k_VillagerStateTable[238].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424290,
+</code></pre></td></tr>
+<tr><td><code>PAUSE_FOR_A_SECOND</code></td><td><pre><code>	.state = VillagerPauseForASecond,
+	k_VillagerStateTable[239].field0x50 = Field0x50Default,
+	k_VillagerStateTable[239].field0x60 = k_TodoEntry.field0x60 //sub_424080,
+</code></pre></td></tr>
+<tr><td><code>PANIC_REACTION</code></td><td><pre><code>	.state = VillagerPanicReaction,
+	k_VillagerStateTable[240].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GET_FOOD_AT_WORSHIP_SITE</code></td><td><pre><code>	.state = VillagerGetFoodAtWorshipSite,
+	k_VillagerStateTable[241].exitState = k_TodoEntry.exitState //sub_76C280,
+	k_VillagerStateTable[241].saveState = k_TodoEntry.saveState //sub_754C00,
+	k_VillagerStateTable[241].loadState = k_TodoEntry.loadState //sub_754C60,
+	k_VillagerStateTable[241].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY</code></td><td><pre><code>	.state = VillagerGotoCongregateInTownAfterEmergency,
+</code></pre></td></tr>
+<tr><td><code>CONGREGATE_IN_TOWN_AFTER_EMERGENCY</code></td><td><pre><code>	.state = VillagerCongregateInTownAfterEmergency,
+	k_VillagerStateTable[243].field0x60 = k_TodoEntry.field0x60 //sub_424100,
+</code></pre></td></tr>
+<tr><td><code>SCRIPT_IN_CROWD</code></td><td><pre><code>	.state = VillagerScriptInCrowd,
+	k_VillagerStateTable[244].saveState = k_TodoEntry.saveState //sub_755470,
+	k_VillagerStateTable[244].loadState = k_TodoEntry.loadState //sub_755580,
+	k_VillagerStateTable[244].field0x60 = k_TodoEntry.field0x60 //sub_4241B0,
+</code></pre></td></tr>
+<tr><td><code>GO_AND_CHILLOUT_OUTSIDE_HOME</code></td><td><pre><code>	.state = VillagerGoAndChilloutOutsideHome,
+</code></pre></td></tr>
+<tr><td><code>SIT_AND_CHILLOUT</code></td><td><pre><code>	.state = VillagerSitAndChillout,
+	k_VillagerStateTable[246].entryState = k_TodoEntry.entryState //sub_76B570,
+	k_VillagerStateTable[246].field0x60 = k_TodoEntry.field0x60 //sub_424210,
+	k_VillagerStateTable[246].transitionAnimation = k_TodoEntry.transitionAnimation //sub_4243A0,
+</code></pre></td></tr>
+<tr><td><code>SCRIPT_GO_AND_MOVE_ALONG_PATH</code></td><td><pre><code>	.state = VillagerScriptGoAndMoveAlongPath,
+	k_VillagerStateTable[247].entryState = k_TodoEntry.entryState //sub_5AFEB0,
+	k_VillagerStateTable[247].exitState = k_TodoEntry.exitState //sub_5B01C0,
+</code></pre></td></tr>
+<tr><td><code>RESTART_MEETING</code></td><td><pre><code>	.state = VillagerGoHomeFromWorship,
+	k_VillagerStateTable[248].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[248].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>GOTO_ABODE_BURNING_REACTION</code></td><td><pre><code>	.state = VillagerArrivesHomeFromWorship,
+	k_VillagerStateTable[249].exitState = k_TodoEntry.exitState //sub_761B40,
+	k_VillagerStateTable[249].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_ABODE_BURNING_REACTION</code></td><td><pre><code>	.state = VillagerSleepInTentFromWorship,
+	k_VillagerStateTable[250].field0x50 = Field0x50Default,
+	k_VillagerStateTable[250].transitionAnimation = k_TodoEntry.transitionAnimation //sub_424290,
+</code></pre></td></tr>
+<tr><td><code>REPAIRS_ABODE</code></td><td><pre><code>	.state = VillagerGoTowardsTeleportReactionQuickly,
+	k_VillagerStateTable[251].exitState = k_TodoEntry.exitState //sub_766390,
+	k_VillagerStateTable[251].saveState = k_TodoEntry.saveState //sub_7558C0,
+	k_VillagerStateTable[251].loadState = k_TodoEntry.loadState //sub_7558D0,
+	k_VillagerStateTable[251].field0x50 = Field0x50Default,
+	k_VillagerStateTable[251].validate = Avalidate_55fun,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_SCAFFOLD_FOR_PICKUP</code></td><td><pre><code>	.state = VillagerGoAndChilloutInTown,
+</code></pre></td></tr>
+<tr><td><code>ARRIVES_AT_BUILDING_SITE_WITH_SCAFFOLD</code></td><td><pre><code>	.state = VillagerWaitForArtifactDance,
+	k_VillagerStateTable[253].entryState = k_TodoEntry.entryState //sub_761800,
+	k_VillagerStateTable[253].exitState = k_TodoEntry.exitState //sub_7527E0,
+	k_VillagerStateTable[253].saveState = k_TodoEntry.saveState //sub_754AC0,
+	k_VillagerStateTable[253].loadState = k_TodoEntry.loadState //sub_754B60,
+	k_VillagerStateTable[253].field0x50 = Field0x50Default,
+	k_VillagerStateTable[253].field0x60 = k_TodoEntry.field0x60 //sub_423850,
+</code></pre></td></tr>
+<tr><td><code>MOVE_SCAFFOLD_TO_BUILDING_SITE</code></td><td><pre><code>	.state = VillagerBreederJustLanded,
+	k_VillagerStateTable[254].field0x50 = Field0x50Default,
+</code></pre></td></tr>
+  </tbody>
+</table>
