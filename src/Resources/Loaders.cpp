@@ -41,16 +41,9 @@ L3DLoader::result_type L3DLoader::operator()(FromDiskTag, const std::filesystem:
 
 	if (pathExt == ".l3d")
 	{
-		if (Locator::filesystem::value().PreferBuffer())
+		if (!mesh->LoadFromFilesystem(path))
 		{
-			mesh->LoadFromBuffer(Locator::filesystem::value().ReadAll(path));
-		}
-		else
-		{
-			if (!mesh->LoadFromFile(path))
-			{
-				throw std::runtime_error("Unable to load mesh");
-			}
+			throw std::runtime_error("Unable to load mesh");
 		}
 	}
 	else if (pathExt == ".zzz")
@@ -157,16 +150,10 @@ L3DAnimLoader::result_type L3DAnimLoader::operator()(FromBufferTag, const std::v
 L3DAnimLoader::result_type L3DAnimLoader::operator()(FromDiskTag, const std::filesystem::path& path) const
 {
 	auto animation = std::make_shared<L3DAnim>();
-	if (Locator::filesystem::value().PreferBuffer())
+
+	if (!animation->LoadFromFilesystem(path))
 	{
-		animation->LoadFromBuffer(Locator::filesystem::value().ReadAll(path));
-	}
-	else
-	{
-		if (!animation->LoadFromFile(path))
-		{
-			throw std::runtime_error("Unable to load animation");
-		}
+		throw std::runtime_error("Unable to load animation");
 	}
 
 	return animation;

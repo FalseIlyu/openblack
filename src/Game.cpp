@@ -544,14 +544,7 @@ bool Game::Initialize()
 
 	pack::PackFile pack;
 
-	if (Locator::filesystem::value().PreferBuffer())
-	{
-		pack.Open(fileSystem.ReadAll(fileSystem.GetPath<Path::Data>(true) / "AllMeshes.g3d"));
-	}
-	else
-	{
-		pack.Open(fileSystem.GetPath<Path::Data>(true) / "AllMeshes.g3d");
-	}
+	pack.ReadFile(*Locator::filesystem::value().GetData(fileSystem.GetPath<Path::Data>(true) / "AllMeshes.g3d"));
 
 	const auto& meshes = pack.GetMeshes();
 	for (size_t i = 0; const auto& mesh : meshes)
@@ -568,15 +561,8 @@ bool Game::Initialize()
 	}
 
 	pack::PackFile animationPack;
+	animationPack.ReadFile(*Locator::filesystem::value().GetData(fileSystem.GetPath<Path::Data>(true) / "AllAnims.anm"));
 
-	if (Locator::filesystem::value().PreferBuffer())
-	{
-		animationPack.Open(fileSystem.ReadAll(fileSystem.GetPath<Path::Data>(true) / "AllAnims.anm"));
-	}
-	else
-	{
-		animationPack.Open(fileSystem.GetPath<Path::Data>(true) / "AllAnims.anm");
-	}
 	const auto& animations = animationPack.GetAnimations();
 	for (size_t i = 0; i < animations.size(); i++)
 	{
@@ -767,15 +753,7 @@ bool Game::Run()
 	if (fileSystem.Exists(challengePath))
 	{
 		_lhvm = std::make_unique<LHVM::LHVM>();
-
-		if (Locator::filesystem::value().PreferBuffer())
-		{
-			_lhvm->Open(fileSystem.ReadAll(fileSystem.FindPath(challengePath)));
-		}
-		else
-		{
-			_lhvm->Open(fileSystem.FindPath(challengePath));
-		}
+		_lhvm->ReadFile(*Locator::filesystem::value().GetData(challengePath));
 	}
 	else
 	{

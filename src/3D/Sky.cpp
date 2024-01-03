@@ -33,15 +33,7 @@ Sky::Sky()
 
 	// load in the mesh
 	_model = std::make_unique<L3DMesh>("Sky");
-	if (Locator::filesystem::value().PreferBuffer())
-	{
-		_model->LoadFromBuffer(
-		    Locator::filesystem::value().ReadAll(fileSystem.GetPath<filesystem::Path::WeatherSystem>() / "sky.l3d"));
-	}
-	else
-	{
-		_model->LoadFromFile(fileSystem.GetPath<filesystem::Path::WeatherSystem>() / "sky.l3d");
-	}
+	_model->LoadFromFilesystem(fileSystem.GetPath<filesystem::Path::WeatherSystem>() / "sky.l3d");
 
 	for (uint32_t idx = 0; const auto& alignment : k_Alignments)
 	{
