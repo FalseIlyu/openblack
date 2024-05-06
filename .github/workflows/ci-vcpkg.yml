@@ -44,7 +44,9 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt update -y
-          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev
+          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev gcc-13 g++-13 ninja-build build-essential 
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 1
         if: startsWith(matrix.os, 'ubuntu')
 
       - name: Download ClangBuildAnalyzer
@@ -57,6 +59,10 @@ jobs:
       - name: Install MacOS dependencies
         run: |
           brew install pkg-config
+          brew install llvm@17
+          echo "$(brew --prefix llvm@17)/bin" >> $GITHUB_PATH
+          echo "CC=$(brew --prefix llvm@17)/bin/clang" >> $GITHUB_ENV
+          echo "CXX=$(brew --prefix llvm@17)/bin/clang++" >> $GITHUB_ENV
         if: startsWith(matrix.os, 'macos')
 
       # Setup the build machine with the most recent versions of CMake and Ninja. Both are cached if not already: on subsequent runs both will be quickly restored from GitHub cache service.
