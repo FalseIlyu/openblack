@@ -44,9 +44,13 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt update -y
-          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev gcc-13 g++-13
+          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev
+          # To remove once we move to ubuntu 24.04
+          sudo apt install -y gcc-13 g++-13
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 1
+          echo "CC=/usr/bin/gcc-13" >> $GITHUB_ENV
+          echo "CXX=/usr/bin/g++-13" >> $GITHUB_ENV
         if: startsWith(matrix.os, 'ubuntu')
 
       - name: Download ClangBuildAnalyzer
