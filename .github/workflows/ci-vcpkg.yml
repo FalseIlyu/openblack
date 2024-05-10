@@ -79,6 +79,13 @@ jobs:
           configurePreset: 'ninja-multi-vcpkg'
           configurePresetAdditionalArgs: "['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-DOPENBLACK_WARNINGS_AS_ERRORS=ON', '-DOPENBLACK_TRACE_TIME=ON']"
 
+      - name: Upload logs
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: vcpkg logs
+          path: vcpkg/buildtrees/*/*.log
+
       - name: Clang Build Analysis (Debug).
         if: matrix.cc == 'clang' || startsWith(matrix.os, 'macos')
         run: |
