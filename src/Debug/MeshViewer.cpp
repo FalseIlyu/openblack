@@ -132,21 +132,21 @@ void MeshViewer::Draw([[maybe_unused]] Game& game)
 		if (!metrics.empty() && ImGui::TreeNode("ExtraMetrics", "Extra Metrics %zu", metrics.size()))
 		{
 			std::array<char, 0x20> label;
-			for (int i = 0; auto& m : const_cast<std::vector<glm::mat4>&>(metrics))
+			for (auto [i, m] : std::views::enumerate(const_cast<std::vector<glm::mat4>&>(metrics)))
 			{
+				auto index = static_cast<int>(i);
 				if (i != 0)
 				{
 					ImGui::Separator();
 				}
-				snprintf(label.data(), label.size(), "m[%d][0]", i);
+				snprintf(label.data(), label.size(), "m[%d][0]", index);
 				ImGui::InputFloat4(label.data(), glm::value_ptr(m[0]), "%.3f", ImGuiInputTextFlags_ReadOnly);
-				snprintf(label.data(), label.size(), "m[%d][1]", i);
+				snprintf(label.data(), label.size(), "m[%d][1]", index);
 				ImGui::InputFloat4(label.data(), glm::value_ptr(m[1]), "%.3f", ImGuiInputTextFlags_ReadOnly);
-				snprintf(label.data(), label.size(), "m[%d][2]", i);
+				snprintf(label.data(), label.size(), "m[%d][2]", index);
 				ImGui::InputFloat4(label.data(), glm::value_ptr(m[2]), "%.3f", ImGuiInputTextFlags_ReadOnly);
-				snprintf(label.data(), label.size(), "m[%d][3]", i);
+				snprintf(label.data(), label.size(), "m[%d][3]", index);
 				ImGui::InputFloat4(label.data(), glm::value_ptr(m[3]), "%.3f", ImGuiInputTextFlags_ReadOnly);
-				++i;
 			}
 			ImGui::TreePop();
 		}

@@ -12,6 +12,7 @@
 #include <cassert>
 
 #include <array>
+#include <ranges>
 #include <vector>
 
 #ifdef _MSC_VER
@@ -37,14 +38,13 @@ public:
 	    : _vertices(vertexCount / stride)
 	    , _indices(vertexCount / stride)
 	{
-		for (uint16_t i = 0; auto& v : _vertices)
+		for (auto [i, v] : std::views::enumerate(_vertices))
 		{
 			const auto* vertexBase = reinterpret_cast<const float*>(&vertexData[i * stride]);
 			v[0] = vertexBase[0];
 			v[1] = vertexBase[1];
 			v[2] = vertexBase[2];
-			_indices[i] = i;
-			++i;
+			_indices[i] = static_cast<uint16_t>(i);
 		}
 	}
 
